@@ -4,16 +4,18 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath(Dependencies.Kotlin.gradle)
+        classpath(Dependencies.Android.gradle)
         classpath(Dependencies.Kotlin.gradlePlugin)
     }
 }
 
-allprojects {
+subprojects {
     repositories {
         google()
         jcenter()
     }
+
+    buildDir = File(rootProject.buildDir, name)
 }
 
 tasks.register<Delete>("clean") {
