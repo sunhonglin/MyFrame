@@ -4,44 +4,34 @@ plugins {
     kotlin("android")
 }
 
+apply("$rootDir/gradle/configure-android-defaults.gradle")
+
 android {
-    compileSdkVersion(Versions.targetSdk)
-
     defaultConfig {
-        applicationId = "com.sunhonglin.myframe"
-        minSdkVersion(Versions.minSdk)
-        targetSdkVersion(Versions.targetSdk)
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = property("GROUP").toString()
     }
 
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+//    buildTypes {
+//        getByName("release") {
+//            isMinifyEnabled = false
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//        }
+//    }
 }
 
 dependencies {
-    implementation(Dependencies.Kotlin.stdLib)
-    implementation(Dependencies.AndroidX.ktx)
-    implementation(Dependencies.AndroidX.appcompat)
+//    implementation(Dependencies.Kotlin.stdLib)
+//    implementation(Dependencies.AndroidX.ktx)
+//    implementation(Dependencies.AndroidX.appcompat)
     implementation(Dependencies.Google.material)
-    implementation(Dependencies.AndroidX.constraintLayout)
-    testImplementation(Dependencies.Test.junit)
-    androidTestImplementation(Dependencies.Test.AndroidX.junit)
-    androidTestImplementation(Dependencies.Test.AndroidX.Espresso.core)
+//    implementation(Dependencies.AndroidX.constraintLayout)
+
+    implementation(project(":core"))
+    implementation(project(":base"))
+//    testImplementation(Dependencies.Test.junit)
+//    androidTestImplementation(Dependencies.Test.AndroidX.junit)
+//    androidTestImplementation(Dependencies.Test.AndroidX.Espresso.core)
 }

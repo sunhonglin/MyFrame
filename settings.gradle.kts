@@ -1,6 +1,8 @@
 import de.fayard.refreshVersions.bootstrapRefreshVersions
 import de.fayard.refreshVersions.migrateRefreshVersionsIfNeeded
 
+include(":base")
+include(":core")
 include(":app")
 
 rootProject.name = "MyFrame"
