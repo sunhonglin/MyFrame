@@ -57,7 +57,8 @@ enum class Color(val r: Int, val g: Int, val b: Int) {
 
     fun rgb() = (r * 256 + g) * 256 + b
 }
-// when + 枚举
+
+// when + 枚举， when允许使用任何对象
 // 单选项
 fun getMnemonic(color: Color) =
     when (color) {
@@ -69,12 +70,42 @@ fun getMnemonic(color: Color) =
         Color.INDIGO -> "In"
         Color.VIOLET -> "Vain"
     }
+
 // 多选项，逗号隔开
 fun getWarmth(color: Color) =
-    when(color) {
+    when (color) {
         Color.RED, Color.ORANGE, Color.YELLOW -> "warm"
         Color.GREEN -> "neutral"
         else -> "cold"
+    }
+
+// 智能转换
+interface Expr
+class Num(val value: Int) : Expr
+class Sum(val left: Expr, val right: Expr) : Expr
+fun eval(e: Expr): Int {
+    if (e is Num) {// is 与 java 中instanceOf相似，kotlin判断后无需转换
+//        var a = e as Num // 显式转换
+        return e.value// 智能转换后会用不同背景显示
+    }
+    if (e is Sum) {
+        return eval(e.right) + eval(e.left)
+    }
+    throw IllegalArgumentException("Unknown expression")
+}
+fun evalWithLogging(e: Expr): Int =
+    when(e) {
+        is Num -> {
+            println("num: ${e.value}")
+            e.value
+        }
+        is Sum -> {
+            val left = evalWithLogging(e.left)
+            val right = evalWithLogging(e.right)
+            println("Sum: $left + $right")
+            left + right
+        }
+        else -> throw IllegalArgumentException("Unknown expression")
     }
 
 fun main(args: Array<String>) {
@@ -108,6 +139,36 @@ fun main(args: Array<String>) {
     println(Color.RED.rgb())
     // when + 枚举
     println(getMnemonic(Color.BLUE))
+    // 多选项
+    println(getWarmth(Color.BLUE))
+    // when可使用任何对象，次方式会重复创建set对象，影响效率
+    println(
+        when (setOf(Color.BLUE, Color.YELLOW)) {
+            setOf(Color.YELLOW, Color.BLUE) -> Color.ORANGE
+            else -> "not found"
+        }
+    )
+
+    // 智能转换
+    println(eval(Sum(Sum(Num(1), Num(2)), Num(4))))
+    println(evalWithLogging(Sum(Sum(Num(1), Num(2)), Num(4))))
+
+
+
+
+
+
+
+
+z,q.11.`w,.w.e3;fkedkqw,dkrkl5;5lt;]gl,,g'r;g,fv gg/g,.g
+    g.glr, r.b '
+
+
+
+
+
+
+
 }
 
 
