@@ -30,7 +30,7 @@ object OrderFuncUtil {
 
         if (index == 0) {
             var funNow = queueFun.poll()
-            currentFun = funNow.function
+            currentFun = funNow?.function
             currentFun?.invoke()
         }
     }
@@ -59,14 +59,14 @@ object OrderFuncUtil {
         if (currentFun == null) {
             if (queueFun.size != 0) {
                 var funNow = queueFun.poll()
-                currentFun = funNow.function
+                currentFun = funNow?.function
                 currentFun?.invoke()
             }
         }
     }
 
     fun hasNext(): Boolean {
-        return queueFun != null && queueFun.size > 0
+        return queueFun.size > 0
     }
 
 

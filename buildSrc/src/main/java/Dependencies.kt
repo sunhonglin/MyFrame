@@ -1,19 +1,7 @@
-import java.io.File
-import java.util.*
-
 object Versions {
     const val targetSdk = 29
     const val minSdk = 23
     const val archCore = "2.1.0"
-}
-
-object Utils {
-    fun getVersionByName(name: String): Any? {
-        val keystorePropertiesFile = File("versions.properties")
-        val keystoreProperties = Properties()
-        keystoreProperties.load(keystorePropertiesFile.inputStream())
-        return keystoreProperties[name]
-    }
 }
 
 object Dependencies {

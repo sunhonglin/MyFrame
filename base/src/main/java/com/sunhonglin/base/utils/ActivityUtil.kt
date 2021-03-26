@@ -116,7 +116,7 @@ class ActivityUtil {
             var intent = Intent(context, goal)
             intent.putExtras(bundle!!)
             context.setResult(resultCode, intent)
-            (context as Activity).finish()
+            context.finish()
         }
     }
 }

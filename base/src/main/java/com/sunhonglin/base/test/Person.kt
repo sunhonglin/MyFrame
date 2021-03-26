@@ -1,6 +1,6 @@
 package com.sunhonglin.base.test
 
-data class Person(var name: String, val age: Int? = null)
+data class Person(var name: String? = null, val age: Int? = null)
 
 // 函数式编程 - 简洁
 // 头等函数 - 把函数（一小段行为）当作值使用，可以用变量保存它，把它当做单数传递，或者当作其他函数的返回值。
@@ -160,8 +160,7 @@ fun main(args: Array<String>) {
 
 
 
-z,q.11.`w,.w.e3;fkedkqw,dkrkl5;5lt;]gl,,g'r;g,fv gg/g,.g
-    g.glr, r.b '
+
 
 
 

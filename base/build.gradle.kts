@@ -1,6 +1,6 @@
 plugins {
     id("com.android.library")
-    id("kotlin-android")
+    kotlin(module = "android")
 }
 
 apply("$rootDir/gradle/configure-android-defaults.gradle")
