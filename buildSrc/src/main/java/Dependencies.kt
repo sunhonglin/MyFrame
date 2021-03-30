@@ -2,6 +2,8 @@ object Versions {
     const val targetSdk = 29
     const val minSdk = 23
     const val archCore = "2.1.0"
+    const val appcompat = "1.1.0"
+    const val annotations = "16.0.1"
 }
 
 object Dependencies {
@@ -68,8 +70,23 @@ object Dependencies {
         }
     }
 
+    object JakeWharton {
+        const val timber = "com.jakewharton.timber:timber:_"
+    }
+
     object QMUITeam {
         const val qmui = "com.qmuiteam:qmui:_"
+    }
+
+    object SquareUp {
+        object Retrofit2 {
+            const val runtime = "com.squareup.retrofit2:retrofit:_"
+            const val converter_gson = "com.squareup.retrofit2:converter-gson:_"
+        }
+        object OkHttp3 {
+            const val runtime = "com.squareup.okhttp3:okhttp:_"
+            const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:_"
+        }
     }
 
     object Test {

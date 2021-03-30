@@ -22,10 +22,17 @@ dependencies {
     api(Dependencies.AndroidX.Lifecycle.viewModel)
     api(Dependencies.AndroidX.Lifecycle.liveData)
     implementation(Dependencies.AndroidX.Lifecycle.runtime)
-    implementation(Dependencies.AndroidX.Lifecycle.viewModeSavedState)
+    api(Dependencies.AndroidX.Lifecycle.viewModeSavedState)
     kapt(Dependencies.AndroidX.Lifecycle.compiler)
 
     // dagger
-    implementation(Dependencies.Google.Dagger.dagger)
+    api(Dependencies.Google.Dagger.dagger)
     kapt(Dependencies.Google.Dagger.compiler)
+
+    // retrofit
+    api(Dependencies.SquareUp.OkHttp3.runtime)
+    api(Dependencies.SquareUp.OkHttp3.loggingInterceptor)
+    api(Dependencies.SquareUp.Retrofit2.runtime)
+    api(Dependencies.SquareUp.Retrofit2.converter_gson)
+
 }

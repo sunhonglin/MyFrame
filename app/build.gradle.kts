@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     kotlin("android")
+    kotlin("kapt")
 }
 
 apply("$rootDir/gradle/configure-android-defaults.gradle")
@@ -136,4 +137,7 @@ dependencies {
 //    testImplementation(Dependencies.Test.junit)
 //    androidTestImplementation(Dependencies.Test.AndroidX.junit)
 //    androidTestImplementation(Dependencies.Test.AndroidX.Espresso.core)
+
+
+    kapt(Dependencies.Google.Dagger.compiler)
 }

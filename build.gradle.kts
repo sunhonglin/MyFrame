@@ -55,6 +55,14 @@ subprojects {
             )
             resolutionStrategy.force("androidx.arch.core:core-common:${Versions.archCore}")
             resolutionStrategy.force("androidx.arch.core:core-runtime:${Versions.archCore}")
+            resolutionStrategy.force("androidx.appcompat:appcompat:${Versions.appcompat}")
+            resolutionStrategy.force("org.jetbrains:annotations:${Versions.annotations}")
+            resolutionStrategy.force(
+                "com.google.code.gson:gson:${dependenciesVersion(
+                    rootProject,
+                    "version.com.google.code.gson..gson"
+                )}"
+            )
         }
     }
 }

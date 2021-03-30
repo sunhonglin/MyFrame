@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="loading">正在加载</string>
+
+    <string name="app_has_exception">程序发生异常</string>
+    <string name="restart">重新启动</string>
 </resources>

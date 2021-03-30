@@ -5,6 +5,9 @@ plugins {
 
 apply("$rootDir/gradle/configure-android-defaults.gradle")
 
-dependencies{
-    implementation(Dependencies.QMUITeam.qmui)
+dependencies {
+    implementation(project(":core"))
+    api(Dependencies.QMUITeam.qmui)
+    implementation(Dependencies.Google.gson)
+    api(Dependencies.JakeWharton.timber)
 }

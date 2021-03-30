@@ -1,6 +1,5 @@
 package com.sunhonglin.base
 
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
 
@@ -21,8 +20,9 @@ interface ProgressDialogManager {
     fun isProgressDialogShowing(): Boolean
 }
 
-class DefaultProgressDialogManager(private val activity: FragmentActivity) :
-    ProgressDialogManager {
+class DefaultProgressDialogManager(
+    private val activity: FragmentActivity
+) : ProgressDialogManager {
     private val delegate: QMUITipDialog by lazy {
         val progressDialog = QMUITipDialog.Builder(activity)
             .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
@@ -44,5 +44,4 @@ class DefaultProgressDialogManager(private val activity: FragmentActivity) :
     override fun isProgressDialogShowing(): Boolean {
         return delegate.isShowing
     }
-
 }

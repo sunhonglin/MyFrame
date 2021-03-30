@@ -1,5 +1,4 @@
 import org.gradle.api.Project
-import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
