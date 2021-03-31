@@ -1,5 +1,5 @@
 plugins {
-    kotlin(module = "jvm") version "1.4.30"
+    kotlin(module = "jvm") version "1.4.32"
 }
 
 repositories {

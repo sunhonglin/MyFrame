@@ -7,7 +7,7 @@ import timber.log.Timber
 open class BaseApplication : Application() {
     companion object {
         const val EXTRA_STACK_TRACE = "EXTRA_STACK_TRACE"
-        lateinit var app : BaseApplication
+        lateinit var app: BaseApplication
     }
 
     var crashActivity: Class<*>? = null

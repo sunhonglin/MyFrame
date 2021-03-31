@@ -8,13 +8,10 @@ import com.sunhonglin.core.util.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityMainBinding
 import com.sunhonglin.myframe.ui.login.LoginActivity
 
-
 class MainActivity : BaseActivity() {
     lateinit var binding: ActivityMainBinding
-
     lateinit var appDatabase: AppDatabase
     lateinit var mainAdapter: MainAdapter
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

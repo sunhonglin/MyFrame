@@ -37,11 +37,10 @@ class LoginActivity : BaseActivity() {
 
     private fun login(userName: String, password: String) {
         showProgressDialog()
-        var map =
-            mapOf(
-                "userName" to userName,
-                "password" to password
-            )
+        var map = mapOf(
+            "userName" to userName,
+            "password" to password
+        )
         var call =
             RequestUtil.builder(LoginService::class.java, BuildConfig.HOST_LOGIN).toLogin(map)
 
@@ -60,10 +59,12 @@ class LoginActivity : BaseActivity() {
 
                     if (body.isSuccessful()) {
                         body.result.let { result ->
-                            findReplaceType(mapOf(
-                                "Authorization" to result.token,
-                                "loginId" to result.userName
-                            ))
+                            findReplaceType(
+                                mapOf(
+                                    "Authorization" to result.token,
+                                    "loginId" to result.userName
+                                )
+                            )
                         }
                     } else {
                         dismissProgressDialog()
@@ -74,9 +75,10 @@ class LoginActivity : BaseActivity() {
         })
     }
 
-    private fun findReplaceType(headers : Map<String, String>) {
+    private fun findReplaceType(headers: Map<String, String>) {
         var call =
-            RequestUtil.builder(LoginService::class.java, BuildConfig.HOST_LOGIN).findReplaceType(headers)
+            RequestUtil.builder(LoginService::class.java, BuildConfig.HOST_LOGIN)
+                .findReplaceType(headers)
 
         call.enqueue(object : Callback<BaseResponse<MutableList<ControllerReplaceType>>> {
             override fun onFailure(

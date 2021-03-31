@@ -1,8 +1,8 @@
 package com.sunhonglin.myframe.data.api
 
-import com.sunhonglin.myframe.data.login.model.LoginData
 import com.sunhonglin.core.data.service.BaseResponse
 import com.sunhonglin.myframe.data.login.model.ControllerReplaceType
+import com.sunhonglin.myframe.data.login.model.LoginData
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.HeaderMap
@@ -23,5 +23,5 @@ interface LoginService {
     @POST("/api/findReplaceType")
     fun findReplaceType(
         @HeaderMap map: Map<String, String>
-    ) : Call<BaseResponse<MutableList<ControllerReplaceType>>>
+    ): Call<BaseResponse<MutableList<ControllerReplaceType>>>
 }

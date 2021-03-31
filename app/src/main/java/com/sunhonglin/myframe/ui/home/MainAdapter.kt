@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sunhonglin.core.data.db.entity.Student
-import com.sunhonglin.myframe.R
 import com.sunhonglin.myframe.databinding.LayoutMainItemBinding
 
 class MainAdapter : RecyclerView.Adapter<ViewHolder>() {
@@ -18,7 +17,13 @@ class MainAdapter : RecyclerView.Adapter<ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutMainItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(
+            LayoutMainItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {

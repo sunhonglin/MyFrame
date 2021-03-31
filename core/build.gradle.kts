@@ -4,8 +4,6 @@ plugins {
     kotlin("kapt")
 }
 
-
-
 apply("$rootDir/gradle/configure-android-defaults.gradle")
 
 kapt {

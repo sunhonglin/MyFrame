@@ -9,7 +9,7 @@ object Versions {
 
 object Dependencies {
     object Android {
-        const val gradle = "com.android.tools.build:gradle:_"
+        const val gradlePlugin = "com.android.tools.build:gradle:_"
     }
 
     object AndroidX {
@@ -55,7 +55,7 @@ object Dependencies {
         val gradlePlugin = kotlin("gradle-plugin", "_")
 
         private fun kotlin(module: String, version: String) =
-            "org.jetbrains.kotlin:kotlin-$module:$version"
+                "org.jetbrains.kotlin:kotlin-$module:$version"
 
         fun reflect(version: String) = kotlin("reflect", version)
 
@@ -97,6 +97,7 @@ object Dependencies {
             const val runtime = "com.squareup.retrofit2:retrofit:_"
             const val converter_gson = "com.squareup.retrofit2:converter-gson:_"
         }
+
         object OkHttp3 {
             const val runtime = "com.squareup.okhttp3:okhttp:_"
             const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:_"
