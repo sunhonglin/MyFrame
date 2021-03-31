@@ -85,7 +85,7 @@ android {
         outputs.all {
             if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
                 outputFileName =
-                    "${property("APP_NAME")}_V${versionNameOverride}_${
+                    "${property("APP_NAME")}_V${versionName}_${
                     when (buildType) {
                         "release" -> {
                             "正式版"
@@ -108,7 +108,7 @@ android {
                                     from("${buildDir}/outputs/apk/$flavorName/$buildType/$outputFileName")
                                     into("${rootDir.absolutePath}/apk/")
                                     rename {
-                                        "${project.property("APP_NAME")}_V${versionNameOverride}${
+                                        "${project.property("APP_NAME")}_V${versionName}${
                                         when (!flavorName.isNullOrBlank()) {
                                             true -> "_$flavorName"
                                             else -> ""
@@ -126,7 +126,7 @@ android {
 }
 
 dependencies {
-//    implementation(Dependencies.Kotlin.stdLib)
+//
 //    implementation(Dependencies.AndroidX.ktx)
 //    implementation(Dependencies.AndroidX.appcompat)
     implementation(Dependencies.Google.material)

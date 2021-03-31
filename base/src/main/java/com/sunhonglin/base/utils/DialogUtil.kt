@@ -73,8 +73,8 @@ class DialogUtil {
                 .setDefaultText(defaultText)
                 .setCanceledOnTouchOutside(false)
                 .create()
-            for (element in names) {
-                builder.addAction(element) { dialog, index ->
+            names.forEach {
+                builder.addAction(it) { dialog, index ->
                     hideSoftInput(builder.editText)
                     listener?.onButtonAction(dialog, index, builder.editText.text.toString())
                 }

@@ -4,6 +4,7 @@ object Versions {
     const val archCore = "2.1.0"
     const val appcompat = "1.1.0"
     const val annotations = "16.0.1"
+    const val androidxCore = "1.2.0"
 }
 
 object Dependencies {
@@ -15,6 +16,16 @@ object Dependencies {
         const val ktx = "androidx.core:core-ktx:_"
         const val appcompat = "androidx.appcompat:appcompat:_"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:_"
+
+        object Activity {
+            const val runtime = "androidx.activity:activity:_"
+            const val ktx = "androidx.activity:activity-ktx:_"
+        }
+
+        object Fragment {
+            const val runtime = "androidx.fragment:fragment:_"
+            const val ktx = "androidx.fragment:fragment-ktx:_"
+        }
 
         object Room {
             const val runtime = "androidx.room:room-runtime:_"
@@ -57,7 +68,10 @@ object Dependencies {
     }
 
     object KotlinX {
-
+        object Coroutines {
+            const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:_"
+            const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:_"
+        }
     }
 
     object Google {

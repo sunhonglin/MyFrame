@@ -26,7 +26,7 @@ class GsonUtil {
          * @param cls     目标类
          * @return bean
          */
-        fun <T> GsonToBean(jsonStr: String, cls: Class<T>): T {
+        fun <T> gsonToBean(jsonStr: String, cls: Class<T>): T {
             return gson.fromJson(jsonStr, cls)
         }
 
@@ -37,7 +37,7 @@ class GsonUtil {
          * @param cls     目标类
          * @return list
          */
-        fun <T> GsonToList(
+        fun <T> gsonToList(
             jsonStr: String,
             cls: Class<T>
         ): MutableList<T> {
@@ -56,7 +56,7 @@ class GsonUtil {
          * @param jsonStr string
          * @return list
          */
-        fun <T> GsonToListMaps(jsonStr: String?): List<Map<String, T>>? {
+        fun <T> gsonToListMaps(jsonStr: String?): List<Map<String, T>>? {
             return gson.fromJson(
                 jsonStr,
                 object :
@@ -70,7 +70,7 @@ class GsonUtil {
          * @param jsonStr string
          * @return map
          */
-        fun <T> GsonToMaps(jsonStr: String?): Map<String, T>? {
+        fun <T> gsonToMaps(jsonStr: String?): Map<String, T>? {
             return gson.fromJson(
                 jsonStr,
                 object :
@@ -93,7 +93,7 @@ class GsonUtil {
                     return null
                 }
                 var jsonObject = it.asJsonObject
-                nodeNames.forEachIndexed { index, s ->
+                nodeNames.forEachIndexed { index, _ ->
                     jsonElement = jsonObject[nodeNames[index]]
                     if (jsonElement == null) return null
                     if (!jsonElement.isJsonObject) { //当前为非JsonObject

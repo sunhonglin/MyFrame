@@ -19,7 +19,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_error"
                 android:layout_width="22dp"
                 android:layout_height="20dp"
@@ -27,7 +27,7 @@
                 android:src="@drawable/ic_crash"
                 android:scaleType="fitCenter"/>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -36,7 +36,7 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_error"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -46,7 +46,7 @@
             android:textColor="@color/color_666"/>
     </LinearLayout>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

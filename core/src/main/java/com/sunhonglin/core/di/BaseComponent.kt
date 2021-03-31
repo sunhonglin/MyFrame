@@ -1,8 +1,8 @@
 package com.sunhonglin.core.di
 
 import android.app.Activity
-import android.app.Fragment
 import android.app.Service
+import androidx.fragment.app.Fragment
 
 interface BaseComponent<T> {
     fun inject(target: T)

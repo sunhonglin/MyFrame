@@ -1,11 +1,6 @@
 package com.sunhonglin.myframe.data.login.model
 
-import androidx.annotation.NonNull
-import com.sunhonglin.base.utils.GsonUtil
-import org.jetbrains.annotations.NotNull
-import java.io.Serializable
-
-class LoginData(
+data class LoginData(
     /**
      * token
      */
@@ -27,9 +22,3 @@ class LoginData(
      */
     var imei: String
 )
-
-fun main(args: Array<String>) {
-    var str = "{\"token\":\"123\",\"userName\":null}"
-    var loginData = GsonUtil.GsonToBean(str, LoginData::class.java)
-    println(GsonUtil.toGson(loginData))
-}

@@ -108,7 +108,7 @@ fun evalWithLogging(e: Expr): Int =
         else -> throw IllegalArgumentException("Unknown expression")
     }
 
-fun main(args: Array<String>) {
+fun main() {
     val persons = mutableListOf(Person(name = "Alice"), Person(name = "Bob", age = 29))
     val oldest = persons.maxByOrNull { it.age ?: 0 }// ?: Elvis运算符
     println("The oldest is: $oldest") // The oldest is: Person(name=Bob, age=29)  -> data class 会自动生成toString 方法

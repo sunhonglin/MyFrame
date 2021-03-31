@@ -35,34 +35,19 @@ subprojects {
             resolutionStrategy.force(Dependencies.Kotlin.Stdlib.jdk7(kotlinVersion))
             resolutionStrategy.force(Dependencies.Kotlin.Stdlib.jdk6(kotlinVersion))
 
-            resolutionStrategy.force(
-                "androidx.lifecycle:lifecycle-livedata:${dependenciesVersion(
-                    rootProject,
-                    "version.androidx.lifecycle"
-                )}"
-            )
-            resolutionStrategy.force(
-                "androidx.lifecycle:lifecycle-runtime:${dependenciesVersion(
-                    rootProject,
-                    "version.androidx.lifecycle"
-                )}"
-            )
-            resolutionStrategy.force(
-                "androidx.lifecycle:lifecycle-viewmodel:${dependenciesVersion(
-                    rootProject,
-                    "version.androidx.lifecycle"
-                )}"
-            )
-            resolutionStrategy.force("androidx.arch.core:core-common:${Versions.archCore}")
-            resolutionStrategy.force("androidx.arch.core:core-runtime:${Versions.archCore}")
-            resolutionStrategy.force("androidx.appcompat:appcompat:${Versions.appcompat}")
-            resolutionStrategy.force("org.jetbrains:annotations:${Versions.annotations}")
-            resolutionStrategy.force(
-                "com.google.code.gson:gson:${dependenciesVersion(
-                    rootProject,
-                    "version.com.google.code.gson..gson"
-                )}"
-            )
+            resolutionStrategy.force(dependenciesUrl(rootProject, Dependencies.KotlinX.Coroutines.core, "version.kotlinx.coroutines"))
+            resolutionStrategy.force(dependenciesUrl(rootProject, Dependencies.KotlinX.Coroutines.android, "version.kotlinx.coroutines"))
+            resolutionStrategy.force(dependenciesUrl(rootProject, Dependencies.Google.gson, "version.com.google.code.gson..gson"))
+
+            resolutionStrategy.force(dependenciesUrl(rootProject, "androidx.lifecycle:lifecycle-livedata:", "version.androidx.lifecycle"))
+            resolutionStrategy.force(dependenciesUrl(rootProject, "androidx.lifecycle:lifecycle-runtime:", "version.androidx.lifecycle"))
+            resolutionStrategy.force(dependenciesUrl(rootProject, "androidx.lifecycle:lifecycle-viewmodel:", "version.androidx.lifecycle"))
+
+            resolutionStrategy.force(dependenciesUrl(rootProject, "androidx.core:core:", Versions.androidxCore))
+            resolutionStrategy.force(dependenciesUrl(rootProject, "androidx.appcompat:appcompat:",Versions.appcompat))
+            resolutionStrategy.force(dependenciesUrl(rootProject, "org.jetbrains:annotations:", Versions.annotations))
+            resolutionStrategy.force(dependenciesUrl(rootProject, "androidx.arch.core:core-common:", Versions.archCore))
+            resolutionStrategy.force(dependenciesUrl(rootProject, "androidx.arch.core:core-runtime:", Versions.archCore))
         }
     }
 }

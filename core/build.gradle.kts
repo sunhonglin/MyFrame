@@ -1,8 +1,10 @@
 plugins {
     id("com.android.library")
-    id("kotlin-android")
+    kotlin(module = "android")
     kotlin("kapt")
 }
+
+
 
 apply("$rootDir/gradle/configure-android-defaults.gradle")
 
@@ -13,6 +15,8 @@ kapt {
 }
 
 dependencies {
+    api(Dependencies.AndroidX.appcompat)
+
     // room
     implementation(Dependencies.AndroidX.Room.runtime)
     api(Dependencies.AndroidX.Room.ktx)
@@ -35,4 +39,7 @@ dependencies {
     api(Dependencies.SquareUp.Retrofit2.runtime)
     api(Dependencies.SquareUp.Retrofit2.converter_gson)
 
+    // Coroutines
+    implementation(Dependencies.KotlinX.Coroutines.core)
+    implementation(Dependencies.KotlinX.Coroutines.android)
 }

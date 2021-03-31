@@ -12,7 +12,6 @@ import com.sunhonglin.myframe.data.api.LoginService
 import com.sunhonglin.myframe.data.login.model.ControllerReplaceType
 import com.sunhonglin.myframe.data.login.model.LoginData
 import com.sunhonglin.myframe.databinding.ActivityLoginBinding
-import okhttp3.Headers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,25 +59,24 @@ class LoginActivity : BaseActivity() {
                     binding.tvResult.text = body.toString()
 
                     if (body.isSuccessful()) {
-                        body.result?.let { result ->
-                            var headers = Headers.headersOf(
-                                "Authorization", result.token,
-                                "loginId", result.userName
-                            )
-                            RequestUtil.addHeaders(headers)
-                            findReplaceType()
+                        body.result.let { result ->
+                            findReplaceType(mapOf(
+                                "Authorization" to result.token,
+                                "loginId" to result.userName
+                            ))
                         }
                     } else {
-                        DialogUtil.showTipDialog(mContext, "${body.message}${body.result?.userName}")
+                        dismissProgressDialog()
+                        DialogUtil.showTipDialog(mContext, body.message)
                     }
                 }
             }
         })
     }
 
-    private fun findReplaceType() {
+    private fun findReplaceType(headers : Map<String, String>) {
         var call =
-            RequestUtil.builder(LoginService::class.java, BuildConfig.HOST_LOGIN).findReplaceType()
+            RequestUtil.builder(LoginService::class.java, BuildConfig.HOST_LOGIN).findReplaceType(headers)
 
         call.enqueue(object : Callback<BaseResponse<MutableList<ControllerReplaceType>>> {
             override fun onFailure(

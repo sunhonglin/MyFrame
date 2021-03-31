@@ -7,7 +7,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 
 fun hiddenAndClearFocus(v: View?, ev: MotionEvent?) {
-    if (ev?.action === MotionEvent.ACTION_DOWN) {
+    if (ev?.action == MotionEvent.ACTION_DOWN) {
         if (isShouldHideInput(v, ev)) {
             v?.clearFocus()
             hideSoftInput(v)

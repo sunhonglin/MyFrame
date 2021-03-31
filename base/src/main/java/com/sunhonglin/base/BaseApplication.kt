@@ -16,7 +16,7 @@ open class BaseApplication : Application() {
         super.onCreate()
         app = this
         initTimber()
-        Thread.setDefaultUncaughtExceptionHandler { t, e ->
+        Thread.setDefaultUncaughtExceptionHandler { _, e ->
             crashActivity?.let {
                 val intent = Intent(this, crashActivity)
                 intent.putExtra(EXTRA_STACK_TRACE, e.stackTraceToString())

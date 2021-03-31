@@ -22,3 +22,11 @@ fun property(rootProject: Project, filePath: String, propertyName: String): Any?
     keystoreProperties.load(keystorePropertiesFile.inputStream())
     return keystoreProperties[propertyName]
 }
+
+fun dependenciesUrl(rootProject: Project, url : String, versionName: String): String {
+    var result = url
+    if (result.endsWith("_")) {
+        result = result.substring(0, url.length - 1)
+    }
+    return result + (dependenciesVersion(rootProject, versionName) ?: versionName)
+}
