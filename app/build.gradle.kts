@@ -6,10 +6,10 @@ plugins {
 }
 
 apply("$rootDir/gradle/configure-android-defaults.gradle")
-
+var appName = property("APP_NAME")
 android {
     defaultConfig {
-        applicationId = property("GROUP").toString()
+        applicationId = rootProject.group.toString()
     }
 
     signingConfigs {
@@ -85,7 +85,7 @@ android {
         outputs.all {
             if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
                 outputFileName =
-                    "${property("APP_NAME")}_V${versionName}_${
+                    "${appName}_V${versionName}_${
                     when (buildType) {
                         "release" -> {
                             "正式版"
@@ -108,7 +108,7 @@ android {
                                     from("${buildDir}/outputs/apk/$flavorName/$buildType/$outputFileName")
                                     into("${rootDir.absolutePath}/apk/")
                                     rename {
-                                        "${project.property("APP_NAME")}_V${versionName}${
+                                        "${appName}_V${versionName}${
                                         when (!flavorName.isNullOrBlank()) {
                                             true -> "_$flavorName"
                                             else -> ""

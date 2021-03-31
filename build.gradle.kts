@@ -1,3 +1,7 @@
+plugins {
+    kotlin("plugin.serialization") version "1.4.32"
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -8,6 +12,7 @@ buildscript {
     dependencies {
         classpath(Dependencies.Android.gradlePlugin)
         classpath(Dependencies.Kotlin.gradlePlugin)
+        classpath(kotlin("serialization"))
     }
 }
 

@@ -1,13 +1,15 @@
+apply("$rootDir/gradle/configure-android-defaults.gradle")
+
 plugins {
     id("com.android.library")
-    kotlin(module = "android")
+    kotlin("android")
+    kotlin("plugin.serialization")
 }
-
-apply("$rootDir/gradle/configure-android-defaults.gradle")
 
 dependencies {
     implementation(project(":core"))
     api(Dependencies.QMUITeam.qmui)
     implementation(Dependencies.Google.gson)
     api(Dependencies.JakeWharton.timber)
+    implementation(Dependencies.KotlinX.serialization)
 }

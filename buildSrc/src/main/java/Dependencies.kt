@@ -55,7 +55,7 @@ object Dependencies {
         val gradlePlugin = kotlin("gradle-plugin", "_")
 
         private fun kotlin(module: String, version: String) =
-                "org.jetbrains.kotlin:kotlin-$module:$version"
+            "org.jetbrains.kotlin:kotlin-$module:$version"
 
         fun reflect(version: String) = kotlin("reflect", version)
 
@@ -68,6 +68,8 @@ object Dependencies {
     }
 
     object KotlinX {
+        const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:_"
+
         object Coroutines {
             const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:_"
             const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:_"
@@ -115,5 +117,4 @@ object Dependencies {
 
         const val junit = "junit:junit:_"
     }
-
 }
