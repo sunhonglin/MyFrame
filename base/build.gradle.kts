@@ -11,5 +11,4 @@ dependencies {
     api(Dependencies.QMUITeam.qmui)
     implementation(Dependencies.Google.gson)
     api(Dependencies.JakeWharton.timber)
-    implementation(Dependencies.KotlinX.serialization)
 }

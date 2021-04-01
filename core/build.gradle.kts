@@ -40,4 +40,7 @@ dependencies {
     // Coroutines
     implementation(Dependencies.KotlinX.Coroutines.core)
     implementation(Dependencies.KotlinX.Coroutines.android)
+
+    // serialization
+    api(Dependencies.KotlinX.serialization)
 }

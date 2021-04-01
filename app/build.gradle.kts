@@ -6,10 +6,11 @@ plugins {
 }
 
 apply("$rootDir/gradle/configure-android-defaults.gradle")
+
 var appName = property("APP_NAME")
 android {
     defaultConfig {
-        applicationId = rootProject.group.toString()
+        applicationId = group.toString()
     }
 
     signingConfigs {
@@ -35,45 +36,24 @@ android {
             )
             isV2SigningEnabled = true
         }
-        getByName("debug") {
-            keyAlias(property(rootProject, KeystorePropertiesFilePath, "keyAlias").toString())
-            keyPassword(property(rootProject, KeystorePropertiesFilePath, "keyPassword").toString())
-            storeFile(
-                rootProject.file(
-                    property(
-                        rootProject,
-                        KeystorePropertiesFilePath,
-                        "storeFile"
-                    ).toString()
-                )
-            )
-            storePassword(
-                property(
-                    rootProject,
-                    KeystorePropertiesFilePath,
-                    "storePassword"
-                ).toString()
-            )
-            isV2SigningEnabled = true
-        }
     }
 
     buildTypes {
         getByName("release") {
             setSigningConfig(signingConfigs["release"])
-            minifyEnabled(false)
+            minifyEnabled(true)
             zipAlignEnabled(true)
             debuggable(false)
-            isShrinkResources = false
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String", "HOST_LOGIN", "\"http://iot.ksf.com.cn:90/\"")
+            buildConfigField("String", "HOST_LOGIN", "\"http://iot.ksf.com.cn:90/KSFReplaceApi/\"")
         }
         getByName("debug") {
-            setSigningConfig(signingConfigs["debug"])
+            setSigningConfig(signingConfigs["release"])
             debuggable(true)
 
             buildConfigField("String", "HOST_LOGIN", "\"http://114.116.18.154:8012/\"")
@@ -86,18 +66,18 @@ android {
             if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
                 outputFileName =
                     "${appName}_V${versionName}_${
-                    when (buildType) {
-                        "release" -> {
-                            "正式版"
+                        when (buildType) {
+                            "release" -> {
+                                "正式版"
+                            }
+                            "debug" -> "测试版"
+                            else -> outputFileName
                         }
-                        "debug" -> "测试版"
-                        else -> outputFileName
-                    }
                     }_${systemDate()}${
-                    when (!flavorName.isNullOrBlank()) {
-                        true -> "_$flavorName"
-                        else -> ""
-                    }
+                        when (!flavorName.isNullOrBlank()) {
+                            true -> "_$flavorName"
+                            else -> ""
+                        }
                     }.apk"
 
                 when (buildType == "release") {
@@ -109,10 +89,10 @@ android {
                                     into("${rootDir.absolutePath}/apk/")
                                     rename {
                                         "${appName}_V${versionName}${
-                                        when (!flavorName.isNullOrBlank()) {
-                                            true -> "_$flavorName"
-                                            else -> ""
-                                        }
+                                            when (!flavorName.isNullOrBlank()) {
+                                                true -> "_$flavorName"
+                                                else -> ""
+                                            }
                                         }.apk"
                                     }
                                 }

@@ -15,12 +15,12 @@ interface LoginService {
      * @param userName 账号
      * @param password 密码
      */
-    @POST("/api/login")
+    @POST("api/login")
     fun toLogin(
         @Body params: Map<String, String>
     ): Call<BaseResponse<LoginData>>
 
-    @POST("/api/findReplaceType")
+    @POST("api/findReplaceType")
     fun findReplaceType(
         @HeaderMap map: Map<String, String>
     ): Call<BaseResponse<MutableList<ControllerReplaceType>>>

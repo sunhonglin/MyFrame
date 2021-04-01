@@ -1,5 +1,5 @@
 plugins {
-    kotlin("plugin.serialization") version "1.4.32"
+    kotlin("plugin.serialization")
 }
 
 buildscript {
@@ -25,7 +25,6 @@ subprojects {
     }
 
     buildDir = File(rootProject.buildDir, name)
-
     group = property("GROUP").toString()
     version = property("VERSION_NAME").toString()
 
