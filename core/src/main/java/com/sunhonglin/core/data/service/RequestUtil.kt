@@ -1,8 +1,11 @@
 package com.sunhonglin.core.data.service
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.sunhonglin.core.BuildConfig
+import kotlinx.serialization.json.Json
 import okhttp3.Headers
 import okhttp3.Interceptor
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,6 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RequestUtil {
     companion object {
+        val contentType = "application/json".toMediaType()
         fun <T> builder(t: Class<T>, baseUrl: String): T {
             val interceptor = HttpLoggingInterceptor().apply {
                 level = if (BuildConfig.DEBUG) {
@@ -26,7 +30,7 @@ class RequestUtil {
             val build = okHttpClientBuilder.build()
             return Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(Json.asConverterFactory(contentType))
                 .callFactory(build)
                 .build()
                 .create(t)

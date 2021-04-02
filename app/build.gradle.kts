@@ -1,11 +1,12 @@
+apply("$rootDir/gradle/configure-android-defaults.gradle")
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
     kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.serialization")
 }
-
-apply("$rootDir/gradle/configure-android-defaults.gradle")
 
 var appName = property("APP_NAME")
 android {

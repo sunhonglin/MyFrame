@@ -1,10 +1,11 @@
+apply("$rootDir/gradle/configure-android-defaults.gradle")
+
 plugins {
     id("com.android.library")
-    kotlin(module = "android")
+    kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.serialization")
 }
-
-apply("$rootDir/gradle/configure-android-defaults.gradle")
 
 kapt {
     arguments {
@@ -36,6 +37,7 @@ dependencies {
     api(Dependencies.SquareUp.OkHttp3.loggingInterceptor)
     api(Dependencies.SquareUp.Retrofit2.runtime)
     api(Dependencies.SquareUp.Retrofit2.converter_gson)
+    implementation(Dependencies.JakeWharton.converter_serialization)
 
     // Coroutines
     implementation(Dependencies.KotlinX.Coroutines.core)

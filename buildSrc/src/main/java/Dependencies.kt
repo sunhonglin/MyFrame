@@ -88,6 +88,7 @@ object Dependencies {
 
     object JakeWharton {
         const val timber = "com.jakewharton.timber:timber:_"
+        const val converter_serialization = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:_"
     }
 
     object QMUITeam {

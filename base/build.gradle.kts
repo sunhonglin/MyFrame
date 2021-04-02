@@ -8,7 +8,8 @@ plugins {
 
 dependencies {
     implementation(project(":core"))
+
     api(Dependencies.QMUITeam.qmui)
-    implementation(Dependencies.Google.gson)
     api(Dependencies.JakeWharton.timber)
+    implementation(Dependencies.Google.gson)
 }
