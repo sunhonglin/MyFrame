@@ -21,7 +21,7 @@ class LoginViewModel(
         userName: String,
         password: String
     ) {
-        viewModelScope.launch() {
+        viewModelScope.launch {
             val result = loginRepository.toLogin(
                 userName = userName,
                 password = password

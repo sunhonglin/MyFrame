@@ -2,13 +2,14 @@ package com.sunhonglin.myframe.ui.login
 
 import android.os.Bundle
 import com.sunhonglin.base.activity.BaseActivity
-import com.sunhonglin.base.utils.DialogUtil
+import com.sunhonglin.base.utils.get
+import com.sunhonglin.base.utils.setResultAndFinish
 import com.sunhonglin.core.data.service.RequestResult
 import com.sunhonglin.core.util.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityLoginBinding
 import com.sunhonglin.myframe.di.login.inject
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import com.sunhonglin.myframe.ui.home.MainActivity
+import timber.log.Timber
 import javax.inject.Inject
 
 class LoginActivity : BaseActivity() {
@@ -34,10 +35,29 @@ class LoginActivity : BaseActivity() {
         }
 
         viewModel.login.observe(this) {
-            binding.tvResult.text = it.toString()
+            when (it) {
+                is RequestResult.Success -> {
+                    binding.tvResult.text = "${it.data}"
+                }
+                is RequestResult.Error -> {
+                    binding.tvResult.text = "${it.exception.message}"
+                }
+            }
         }
 
         viewModel.toLogin(userName = "hxbj", password = "123456")
+
+        Timber.i("key0 --> ${true}")
+        Timber.i("key0 --> ${false}")
+        Timber.i("key0 --> ${intent.get<Boolean>("key0")}")
+        Timber.i("key1 --> ${intent.get<Float>("key1")}")
+        Timber.i("key2 --> ${intent.get<MutableList<String>>("key2")}")
+
+        setResultAndFinish<MainActivity>(mContext,
+            "key0" to true,
+            "key1" to 1.23F,
+            "key2" to listOf("1", "2"),
+            resultCode = 2)
     }
 
     private fun findReplaceType(headers: Map<String, String>) {

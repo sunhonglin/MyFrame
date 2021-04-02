@@ -1,122 +1,100 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package com.sunhonglin.base.utils
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
+import java.io.Serializable
 
-class ActivityUtil {
-    companion object {
-        /**
-         * Activity 跳转
-         *
-         * @param context 上下文
-         * @param goal    目标activity
-         */
-        fun skipActivityAndFinish(
-            context: Context,
-            goal: Class<*>?
-        ) {
-            val intent = Intent(context, goal)
-            context.startActivity(intent)
-            (context as Activity).finish()
+inline fun <reified T : Activity> skipActivity(
+    context: Context,
+    vararg extras: Pair<String, Any>? = emptyArray(),
+    requestCode: Int? = null
+) {
+    val intent = Intent(context, T::class.java)
+    intent.putExtras(*extras)
+    requestCode?.let {
+        if (context is Activity) {
+            context.startActivityForResult(intent, it)
         }
+    }
+    context.startActivity(intent)
+}
 
-        /**
-         * Activity 跳转
-         *
-         * @param context 上下文
-         * @param goal    目标activity
-         * @param bundle  参数
-         */
-        fun skipActivityAndFinish(
-            context: Context,
-            goal: Class<*>?,
-            bundle: Bundle?
-        ) {
-            val intent = Intent(context, goal)
-            intent.putExtras(bundle!!)
-            context.startActivity(intent)
-            (context as Activity).finish()
+inline fun <reified T : Activity> skipActivityAndFinish(
+    context: Context,
+    vararg extras: Pair<String, Any>? = emptyArray()
+) {
+    skipActivity<T>(context, *extras)
+    (context as Activity).finish()
+}
+
+fun Intent.putExtras(vararg extras: Pair<String, Any>?): Intent {
+    if (extras.isEmpty()) return this
+    extras.forEach {
+        it?.let { (key, value) ->
+            when (value) {
+                is Boolean -> putExtra(key, value)
+                is Byte -> putExtra(key, value)
+                is Char -> putExtra(key, value)
+                is Short -> putExtra(key, value)
+                is Int -> putExtra(key, value)
+                is Long -> putExtra(key, value)
+                is Float -> putExtra(key, value)
+                is Double -> putExtra(key, value)
+                is String -> putExtra(key, value)
+                is Bundle -> putExtra(key, value)
+                is IntArray -> putExtra(key, value)
+                is ByteArray -> putExtra(key, value)
+                is CharArray -> putExtra(key, value)
+                is LongArray -> putExtra(key, value)
+                is FloatArray -> putExtra(key, value)
+                is Parcelable -> putExtra(key, value)
+                is ShortArray -> putExtra(key, value)
+                is DoubleArray -> putExtra(key, value)
+                is BooleanArray -> putExtra(key, value)
+                is CharSequence -> putExtra(key, value)
+                is Array<*> -> {
+                    when {
+                        value.isArrayOf<String>() ->
+                            putExtra(key, value)
+                        value.isArrayOf<Parcelable>() ->
+                            putExtra(key, value)
+                        value.isArrayOf<CharSequence>() ->
+                            putExtra(key, value)
+                        else -> putExtra(key, value)
+                    }
+                }
+                is Serializable -> putExtra(key, value)
+            }
         }
+    }
+    return this
+}
 
-
-        /**
-         * Activity 跳转
-         *
-         * @param context 上下文
-         * @param goal    目标activity
-         */
-        fun skipActivity(
-            context: Context,
-            goal: Class<*>?
-        ) {
-            val intent = Intent(context, goal)
-            context.startActivity(intent)
+fun <T> Intent.get(key: String): T? {
+    try {
+        this.extras?.let {
+            return (it.get(key) as T)
         }
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+    return null
+}
 
-        /**
-         * Activity 跳转
-         *
-         * @param context 上下文
-         * @param goal    目标activity
-         * @param bundle  参数
-         */
-        fun skipActivity(
-            context: Context,
-            goal: Class<*>?,
-            bundle: Bundle?
-        ) {
-            val intent = Intent(context, goal)
-            intent.putExtras(bundle!!)
-            context.startActivity(intent)
-        }
-
-        /**
-         * 带请求码跳转
-         *
-         * @param context     上下文
-         * @param goal        目标activity
-         * @param requestCode 请求码
-         */
-        fun skipActivityForResult(
-            context: Activity,
-            goal: Class<*>?,
-            requestCode: Int
-        ) {
-            val intent = Intent(context, goal)
-            context.startActivityForResult(intent, requestCode)
-        }
-
-        /**
-         * 带请求码跳转
-         *
-         * @param context     上下文
-         * @param goal        目标activity
-         * @param bundle      参数
-         * @param requestCode 请求码
-         */
-        fun skipActivityForResult(
-            context: Activity,
-            goal: Class<*>?,
-            bundle: Bundle?,
-            requestCode: Int
-        ) {
-            val intent = Intent(context, goal)
-            intent.putExtras(bundle!!)
-            context.startActivityForResult(intent, requestCode)
-        }
-
-        fun setResultAndFinish(
-            context: Activity,
-            goal: Class<*>?,
-            bundle: Bundle?,
-            resultCode: Int
-        ) {
-            var intent = Intent(context, goal)
-            intent.putExtras(bundle!!)
-            context.setResult(resultCode, intent)
-            context.finish()
-        }
+inline fun <reified T : Activity> setResultAndFinish(
+    context: Context,
+    vararg extras: Pair<String, Any>? = emptyArray(),
+    resultCode: Int
+) {
+    val intent = Intent(context, T::class.java)
+    intent.putExtras(*extras)
+    if (context is Activity) with(context) {
+        setResult(resultCode, intent)
+        finish()
     }
 }

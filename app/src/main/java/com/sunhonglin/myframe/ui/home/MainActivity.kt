@@ -2,7 +2,7 @@ package com.sunhonglin.myframe.ui.home
 
 import android.os.Bundle
 import com.sunhonglin.base.activity.BaseActivity
-import com.sunhonglin.base.utils.ActivityUtil
+import com.sunhonglin.base.utils.skipActivity
 import com.sunhonglin.core.data.db.AppDatabase
 import com.sunhonglin.core.util.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityMainBinding
@@ -18,7 +18,13 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.tvLogin.setDebounceOnClickListener {
-            ActivityUtil.skipActivity(this, LoginActivity::class.java)
+            skipActivity<LoginActivity>(
+                mContext,
+                "key0" to true,
+                "key1" to 1.23F,
+                "key2" to listOf("1", "2"),
+                requestCode = 2
+            )
         }
 //
 //        appDatabase = AppDatabase.getInstance(this)
@@ -36,6 +42,7 @@ class MainActivity : BaseActivity() {
 //            index ++
 //        }
     }
+
 //
 //    class InsertStudentTask(var appDatabase: AppDatabase, var name: String, var age: Int) :
 //        AsyncTask<Void?, Void?, Void?>() {
