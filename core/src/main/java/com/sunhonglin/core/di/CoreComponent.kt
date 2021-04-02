@@ -6,8 +6,10 @@ import com.haier.detect.android.core.di.qualifiers.ApplicationContext
 import com.sunhonglin.core.di.scope.AppScope
 import dagger.BindsInstance
 import dagger.Component
+import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Converter
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
@@ -28,8 +30,8 @@ interface CoreComponent {
 
     fun provideOkHttpClient(): OkHttpClient
     fun provideLoggingInterceptor(): HttpLoggingInterceptor
-    fun provideGson(): Gson
-    fun provideGsonConverterFactory(): GsonConverterFactory
+    fun provideJson(): Json
+    fun provideJsonConverterFactory(): Converter.Factory
 
     @ApplicationContext
     fun provideApplicationContext(): Context

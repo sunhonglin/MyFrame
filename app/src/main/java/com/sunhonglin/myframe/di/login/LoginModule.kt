@@ -1,7 +1,5 @@
 package com.sunhonglin.myframe.di.login
 
-import android.app.Activity
-import android.content.Context
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.sunhonglin.core.di.scope.FeatureScope
@@ -16,15 +14,14 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 abstract class LoginModule {
 
     @Binds
     abstract fun loginActivityAsFragmentActivity(activity: LoginActivity): FragmentActivity
-
 
 
     companion object {
@@ -42,7 +39,7 @@ abstract class LoginModule {
         @FeatureScope
         fun provideLoginService(
             client: OkHttpClient,
-            factory: GsonConverterFactory
+            factory: Converter.Factory
         ): LoginService {
             return Retrofit.Builder()
                 .baseUrl(BuildConfig.HOST_LOGIN)
@@ -57,5 +54,4 @@ abstract class LoginModule {
         fun provideLoginRepository(dataSource: LoginDataSource): LoginRepository =
             LoginRepository(dataSource)
     }
-
 }
