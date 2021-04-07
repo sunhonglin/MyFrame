@@ -59,9 +59,9 @@ class LoginActivity : BaseActivity() {
 
         var requestOptions = RequestOptions.circleCropTransform()
         binding.ivGlide.loadImage(
-            url = "https://t7.baidu.com/it/u=612028266,626816349&fm=193&f=GIF",
-            preload = false,
-            requestOptions = requestOptions
+            "https://t7.baidu.com/it/u=612028266,626816349&fm=193&f=GIF",
+            false,
+            requestOptions
         ) {
             object : CustomTarget<Bitmap>() {
                 override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
