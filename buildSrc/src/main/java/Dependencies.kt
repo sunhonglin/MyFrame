@@ -40,7 +40,7 @@ object Dependencies {
             // LiveData
             const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:_"
 
-            // Lifecycles only (without ViewModel or LiveData)
+            // lifecycle only (without ViewModel or LiveData)
             const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:_"
 
             // Saved state module for ViewModel
@@ -104,6 +104,13 @@ object Dependencies {
         object OkHttp3 {
             const val runtime = "com.squareup.okhttp3:okhttp:_"
             const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:_"
+        }
+    }
+
+    object GitHub {
+        object Glide {
+            const val runtime = "com.github.bumptech.glide:glide:_"
+            const val compiler = "com.github.bumptech.glide:compiler:_"
         }
     }
 

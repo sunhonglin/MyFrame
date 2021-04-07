@@ -32,7 +32,7 @@ dependencies {
     api(Dependencies.Google.Dagger.dagger)
     kapt(Dependencies.Google.Dagger.compiler)
 
-    // retrofit
+    // retrofit2 + okHttp3
     api(Dependencies.SquareUp.OkHttp3.runtime)
     api(Dependencies.SquareUp.OkHttp3.loggingInterceptor)
     api(Dependencies.SquareUp.Retrofit2.runtime)

@@ -14,6 +14,11 @@
         android:textColor="@color/black"
         android:textSize="18sp" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_glide"
+        android:layout_width="300dp"
+        android:layout_height="300dp"/>
+
     <Button
         android:id="@+id/btn_login1"
         android:layout_width="wrap_content"

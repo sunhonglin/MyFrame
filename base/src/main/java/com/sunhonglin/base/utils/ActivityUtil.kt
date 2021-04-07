@@ -32,6 +32,19 @@ inline fun <reified T : Activity> skipActivityAndFinish(
     (context as Activity).finish()
 }
 
+inline fun <reified T : Activity> setResultAndFinish(
+    context: Context,
+    vararg extras: Pair<String, Any>? = emptyArray(),
+    resultCode: Int
+) {
+    val intent = Intent(context, T::class.java)
+    intent.putExtras(*extras)
+    if (context is Activity) with(context) {
+        setResult(resultCode, intent)
+        finish()
+    }
+}
+
 fun Intent.putExtras(vararg extras: Pair<String, Any>?): Intent {
     if (extras.isEmpty()) return this
     extras.forEach {
@@ -84,17 +97,4 @@ fun <T> Intent.get(key: String): T? {
         e.printStackTrace()
     }
     return null
-}
-
-inline fun <reified T : Activity> setResultAndFinish(
-    context: Context,
-    vararg extras: Pair<String, Any>? = emptyArray(),
-    resultCode: Int
-) {
-    val intent = Intent(context, T::class.java)
-    intent.putExtras(*extras)
-    if (context is Activity) with(context) {
-        setResult(resultCode, intent)
-        finish()
-    }
 }
