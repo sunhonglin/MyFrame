@@ -9,7 +9,7 @@ import com.sunhonglin.core.di.DaggerCoreComponent
 class MyFrameApp : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
-        crashActivity = CrashActivity::class.java
+        crashActivity(CrashActivity::class.java)
     }
 
     private val coreComponent: CoreComponent by lazy {

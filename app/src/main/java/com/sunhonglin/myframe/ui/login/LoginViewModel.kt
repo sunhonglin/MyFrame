@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sunhonglin.core.data.service.CoroutinesDispatcherProvider
 import com.sunhonglin.core.data.service.BaseResponse
 import com.sunhonglin.core.data.service.RequestResult
 import com.sunhonglin.myframe.data.login.LoginRepository
@@ -11,7 +12,8 @@ import com.sunhonglin.myframe.data.login.model.LoginData
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val loginRepository: LoginRepository
+    private val loginRepository: LoginRepository,
+    private val dispatcherProvider: CoroutinesDispatcherProvider
 ) : ViewModel() {
     private val _login = MutableLiveData<RequestResult<BaseResponse<LoginData>>>()
     val login: LiveData<RequestResult<BaseResponse<LoginData>>>
@@ -21,7 +23,8 @@ class LoginViewModel(
         userName: String,
         password: String
     ) {
-        viewModelScope.launch {
+
+        viewModelScope.launch(dispatcherProvider.io) {
             val result = loginRepository.toLogin(
                 userName = userName,
                 password = password

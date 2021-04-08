@@ -3,4 +3,8 @@
 
     <!--  room  -->
     <string name="title_room">Room+LiveData+ViewModel</string>
+
+    <string name="title_main">主页</string>
+    <string name="title_login">登录</string>
+
 </resources>

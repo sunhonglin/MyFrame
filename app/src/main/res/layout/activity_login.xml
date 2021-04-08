@@ -11,7 +11,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="10dp"
-        android:textColor="@color/black"
+        android:textColor="@color/color_black"
         android:textSize="18sp" />
 
     <androidx.appcompat.widget.AppCompatImageView

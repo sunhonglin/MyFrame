@@ -2,6 +2,7 @@ package com.sunhonglin.core.data.service
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.sunhonglin.core.BuildConfig
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -9,6 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
 class RequestUtil {
+    @ExperimentalSerializationApi
     companion object {
         val contentType = "application/json".toMediaType()
         fun <T> builder(t: Class<T>, baseUrl: String): T {

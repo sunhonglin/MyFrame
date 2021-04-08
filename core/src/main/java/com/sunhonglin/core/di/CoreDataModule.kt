@@ -7,6 +7,7 @@ import com.sunhonglin.core.data.service.RequestUtil
 import com.sunhonglin.core.di.scope.AppScope
 import dagger.Module
 import dagger.Provides
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -39,6 +40,7 @@ class CoreDataModule {
 
     @Provides
     @AppScope
+    @ExperimentalSerializationApi
     fun provideJsonConverterFactory(json: Json): Converter.Factory =
-        Json.asConverterFactory(RequestUtil.contentType)
+        json.asConverterFactory(RequestUtil.contentType)
 }

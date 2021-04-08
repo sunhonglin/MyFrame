@@ -4,10 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.sunhonglin.base.BaseApplication
-import com.sunhonglin.base.DefaultProgressDialogManager
-import com.sunhonglin.base.ProgressDialogManager
-import com.sunhonglin.base.UiThreadExecutor
+import com.sunhonglin.base.*
 
 abstract class BaseActivity : AppCompatActivity(), UiThreadExecutor, ProgressDialogManager {
 
@@ -19,6 +16,8 @@ abstract class BaseActivity : AppCompatActivity(), UiThreadExecutor, ProgressDia
         mContext = this
         app = BaseApplication.app
     }
+
+    fun setStatusBarMode(mode: StatusBarMode) = mode.configure(this)
 
     private val progressDialogManager: ProgressDialogManager by lazy {
         DefaultProgressDialogManager(this)

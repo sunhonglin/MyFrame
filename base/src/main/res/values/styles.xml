@@ -1,0 +1,11 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppThemeNoActionBar" parent="QMUI.Compat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!-- actionbar color -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- status bar color -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+</resources>

@@ -6,8 +6,11 @@ import android.os.Bundle
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.sunhonglin.base.StatusBarMode
 import com.sunhonglin.base.activity.BaseActivity
-import com.sunhonglin.base.utils.get
+import com.sunhonglin.base.activity.DefaultToolbarActivity
+import com.sunhonglin.base.databinding.ActivityBaseContentBinding
+import com.sunhonglin.core.util.get
 import com.sunhonglin.base.utils.loadImage
 import com.sunhonglin.core.data.service.RequestResult
 import com.sunhonglin.core.util.setDebounceOnClickListener
@@ -16,18 +19,21 @@ import com.sunhonglin.myframe.di.login.inject
 import timber.log.Timber
 import javax.inject.Inject
 
-class LoginActivity : BaseActivity() {
+class LoginActivity : DefaultToolbarActivity() {
     lateinit var binding: ActivityLoginBinding
 
     @Inject
     lateinit var viewModel: LoginViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun inflateContent(
+        parentBinding: ActivityBaseContentBinding,
+        savedInstanceState: Bundle?
+    ) {
+        setStatusBarMode(StatusBarMode.LIGHT)
+
         inject(this)
 
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = ActivityLoginBinding.inflate(layoutInflater, parentBinding.content, true)
 
         binding.btnLogin1.setDebounceOnClickListener {
             viewModel.toLogin(userName = "hxbj", password = "123456")
@@ -76,25 +82,25 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    private fun findReplaceType(headers: Map<String, String>) {
-//        var call =
-//            RequestUtil.builder(LoginService::class.java, BuildConfig.HOST_LOGIN)
-//                .findReplaceType(headers)
-//
-//        call.enqueue(object : Callback<BaseResponse<MutableList<ControllerReplaceType>>> {
-//            override fun onFailure(
-//                p0: Call<BaseResponse<MutableList<ControllerReplaceType>>>,
-//                p1: Throwable
-//            ) {
-//                dismissProgressDialog()
-//            }
-//
-//            override fun onResponse(
-//                p0: Call<BaseResponse<MutableList<ControllerReplaceType>>>,
-//                p1: Response<BaseResponse<MutableList<ControllerReplaceType>>>
-//            ) {
-//                dismissProgressDialog()
-//            }
-//        })
-    }
+//    private fun findReplaceType(headers: Map<String, String>) {
+////        var call =
+////            RequestUtil.builder(LoginService::class.java, BuildConfig.HOST_LOGIN)
+////                .findReplaceType(headers)
+////
+////        call.enqueue(object : Callback<BaseResponse<MutableList<ControllerReplaceType>>> {
+////            override fun onFailure(
+////                p0: Call<BaseResponse<MutableList<ControllerReplaceType>>>,
+////                p1: Throwable
+////            ) {
+////                dismissProgressDialog()
+////            }
+////
+////            override fun onResponse(
+////                p0: Call<BaseResponse<MutableList<ControllerReplaceType>>>,
+////                p1: Response<BaseResponse<MutableList<ControllerReplaceType>>>
+////            ) {
+////                dismissProgressDialog()
+////            }
+////        })
+//    }
 }
