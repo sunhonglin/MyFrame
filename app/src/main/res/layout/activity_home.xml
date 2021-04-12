@@ -4,18 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.home.HomeActivity">
+    tools:context=".ui.home.HomeActivity"
+    android:paddingHorizontal="10dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:padding="10dp"
         android:background="@drawable/shape_corner_radius_4dp"
-        android:backgroundTint="#FF0000"
-        android:text="login"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/title_login"
         android:textColor="@color/color_white"
         android:textSize="14sp" />
 
-
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_test_rcv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_corner_radius_4dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/title_test_recyclerview"
+        android:textColor="@color/color_white"
+        android:textSize="14sp" />
 </LinearLayout>

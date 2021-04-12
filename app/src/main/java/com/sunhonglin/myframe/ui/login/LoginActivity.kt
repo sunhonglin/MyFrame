@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.sunhonglin.base.StatusBarMode
 import com.sunhonglin.base.activity.BaseActivity

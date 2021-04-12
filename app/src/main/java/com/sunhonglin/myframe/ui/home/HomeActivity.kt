@@ -10,6 +10,7 @@ import com.sunhonglin.core.util.gone
 import com.sunhonglin.core.util.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityHomeBinding
 import com.sunhonglin.myframe.ui.login.LoginActivity
+import com.sunhonglin.myframe.ui.test.RecyclerViewActivity
 
 class HomeActivity : DefaultToolbarActivity() {
     lateinit var binding: ActivityHomeBinding
@@ -34,6 +35,10 @@ class HomeActivity : DefaultToolbarActivity() {
                 "key2" to listOf("1", "2"),
                 requestCode = 2
             )
+        }
+
+        binding.tvTestRcv.setDebounceOnClickListener {
+            skipActivity<RecyclerViewActivity>(mContext)
         }
     }
 }
