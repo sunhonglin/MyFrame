@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PullToRefresh">
+
+        <!-- recyclerview背景 -->
+        <attr name="ptrRefreshableViewBackground" format="reference|color" />
+
+        <!-- 刷新布局背景 -->
+        <attr name="ptrHeaderBackground" format="reference|color" />
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views -->
+        <attr name="ptrHeaderTextAppearance" format="reference" />
+
+        <!-- 头部和底部提示文字颜色 -->
+        <attr name="ptrHeaderTextColor" format="reference|color" />
+
+        <!-- 头部子标题文字颜色 -->
+        <attr name="ptrHeaderSubTextColor" format="reference|color" />
+
+        <!-- 头部子标题文字描述，一般在代码中控制显示文字，单独设置无效 -->
+        <attr name="ptrSubHeaderTextAppearance" format="reference" />
+
+        <!-- 模式 默认pullFromStart -->
+        <attr name="ptrMode">
+            <flag name="disabled" value="0x0" /><!--无上拉下拉-->
+            <flag name="pullFromStart" value="0x1" /><!--仅支持刷新-->
+            <flag name="pullFromEnd" value="0x2" /><!--仅支持加载更多-->
+            <flag name="both" value="0x3" /><!--支持刷新和加载更多-->
+            <flag name="manualOnly" value="0x4" /><!--只允许手动触发-->
+        </attr>
+
+        <!-- Drawable to use as Loading Indicator. Changes both Header and Footer. -->
+        <attr name="ptrDrawable" format="reference" />
+
+        <!-- Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. -->
+        <attr name="ptrDrawableStart" format="reference" />
+
+        <!-- Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. -->
+        <attr name="ptrDrawableEnd" format="reference" />
+
+        <!-- Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. -->
+        <attr name="ptrOverScroll" format="reference|boolean" />
+
+        <!-- Style of Animation should be used displayed when pulling. -->
+        <attr name="ptrAnimationStyle">
+            <flag name="rotate" value="0x0" />
+            <flag name="flip" value="0x1" />
+        </attr>
+
+        <!-- Whether the user can scroll while the View is Refreshing -->
+        <attr name="ptrScrollingWhileRefreshingEnabled" format="reference|boolean" />
+
+        <!--
+        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be
+        	able to scroll while refreshing, and behaves better. It acheives this by adding
+        	Header and/or Footer Views to the ListView.
+        -->
+        <attr name="ptrListViewExtrasEnabled" format="reference|boolean" />
+
+        <!--
+        	Whether the Drawable should be continually rotated as you pull. This only
+        	takes effect when using the 'Rotate' Animation Style.
+        -->
+        <attr name="ptrRotateDrawableWhilePulling" format="reference|boolean" />
+
+        <!-- BELOW HERE ARE DEPRECEATED. DO NOT USE. -->
+        <attr name="ptrAdapterViewBackground" format="reference|color" />
+        <attr name="ptrDrawableTop" format="reference" />
+        <attr name="ptrDrawableBottom" format="reference" />
+
+        <!-- 在刷新头部添加图片-->
+        <attr name="ptrRefreshTop" format="reference" />
+        <attr name="ptrShowRefreshTips" format="reference|boolean" />
+        <attr name="ptrShowLoadMoreTips" format="reference|boolean" />
+        <attr name="ptrProgressIndeterminateDrawable" format="reference" />
+    </declare-styleable>
+</resources>

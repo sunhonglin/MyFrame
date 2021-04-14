@@ -1,16 +1,17 @@
 package com.sunhonglin.myframe.ui.test
 
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sunhonglin.base.StatusBarMode
 import com.sunhonglin.base.activity.DefaultToolbarActivity
-import com.sunhonglin.base.adapter.BaseRcvAdapter
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
+import com.sunhonglin.base.ui.pulltorefresh.PullToRefreshBase
+import com.sunhonglin.base.ui.pulltorefresh.PullToRefreshBase.OnRefreshListener2
 import com.sunhonglin.core.util.setDebounceOnClickListener
-import com.sunhonglin.myframe.R
 import com.sunhonglin.myframe.databinding.ActivityRecyclerviewTestBinding
-import com.sunhonglin.myframe.databinding.LayoutItemTestBinding
 
-class RecyclerViewActivity : DefaultToolbarActivity() {
+class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<RecyclerView> {
     lateinit var binding: ActivityRecyclerviewTestBinding
     lateinit var testAdapter: RcvAdapter
 
@@ -25,8 +26,20 @@ class RecyclerViewActivity : DefaultToolbarActivity() {
 
         testAdapter = RcvAdapter()
 
+        binding.rcvTest.getRefreshableView().layoutManager = LinearLayoutManager(mContext)
+        binding.rcvTest.getRefreshableView().adapter = testAdapter
+        binding.rcvTest.setMode(PullToRefreshBase.Mode.BOTH)
+        binding.rcvTest.setOnRefreshListener(this)
+        binding.rcvTest.setScrollingWhileRefreshingEnabled(true)
+//        binding.rcvTest.setBackUpView(btnBackTop)
+
+        onPullDownToRefresh(binding.rcvTest)
+
+        binding.rcvTest.getLoadingLayoutProxy().setLastUpdatedLabel("2019年09月24日16:33:17")
+
+
         binding.rcvTest.apply {
-            adapter = testAdapter
+            mRefreshableView.adapter = testAdapter
             testAdapter.setData(getData())
         }
 
@@ -41,6 +54,26 @@ class RecyclerViewActivity : DefaultToolbarActivity() {
             list.add("test $i")
         }
         return list
+    }
+
+    var i = 0
+    override fun onPullDownToRefresh(refreshView: PullToRefreshBase<RecyclerView>) {
+        i = 0
+        binding.rcvTest.setMode(PullToRefreshBase.Mode.BOTH)
+        testAdapter.setData(getData())
+        binding.rcvTest.onRefreshComplete()
+    }
+
+
+    override fun onPullUpToRefresh(refreshView: PullToRefreshBase<RecyclerView>) {
+        if (i == 4) {
+            binding.rcvTest.showNoMore()
+            return
+        }
+        i ++
+        testAdapter.addData(getData())
+        binding.rcvTest.onAppendData()
+        binding.rcvTest.onRefreshComplete()
     }
 }
 
