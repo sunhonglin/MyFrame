@@ -2,8 +2,8 @@ package com.sunhonglin.base.ui.pulltorefresh.inn
 
 import android.view.View
 import android.view.animation.Interpolator
-import com.sunhonglin.base.ui.pulltorefresh.PullToRefreshBase
-import com.sunhonglin.base.ui.pulltorefresh.PullToRefreshBase.State
+import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase
+import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase.State
 
 interface IPullToRefresh<T : View> {
     /**

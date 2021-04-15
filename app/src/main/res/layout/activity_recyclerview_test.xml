@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <com.sunhonglin.base.ui.pulltorefresh.LRMRecyclerView
-        android:id="@+id/rcv_test"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        app:ptrAnimationStyle="rotate"
-        app:ptrRefreshTop="@drawable/ic_crash"/>
+        android:layout_weight="1">
+
+        <com.sunhonglin.base.ui.pulltorefresh.PTRRecyclerView
+            android:id="@+id/rcv_test"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:ptrAnimationStyle="rotate"
+            app:ptrMode="both"
+            app:ptrRefreshTop="@drawable/ic_crash" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_back_top"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:background="@drawable/ic_back_top"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next"/>
+        android:text="Next" />
 </LinearLayout>

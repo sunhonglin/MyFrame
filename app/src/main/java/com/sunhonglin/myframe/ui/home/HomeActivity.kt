@@ -15,10 +15,10 @@ import com.sunhonglin.myframe.ui.test.RecyclerViewActivity
 class HomeActivity : DefaultToolbarActivity() {
     lateinit var binding: ActivityHomeBinding
 
-    override fun configureToolbarContent(binding: LayoutDefaultToolbarBinding) {
-        super.configureToolbarContent(binding)
-        binding.imageBack.gone()
-        binding.vBack.setDebounceOnClickListener { }
+    override fun configureToolbarContent(toolbarBinding: LayoutDefaultToolbarBinding) {
+        super.configureToolbarContent(toolbarBinding)
+        toolbarBinding.imageBack.gone()
+        toolbarBinding.vBack.setDebounceOnClickListener { }
     }
 
     override fun inflateContent(

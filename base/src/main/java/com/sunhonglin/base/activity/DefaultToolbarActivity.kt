@@ -16,9 +16,9 @@ abstract class DefaultToolbarActivity : BaseContentActivity() {
             .apply(::configureToolbarContent)
     }
 
-    open fun configureToolbarContent(binding: LayoutDefaultToolbarBinding) {
-        binding.textTitle.text = title
-        binding.vBack.setDebounceOnClickListener {
+    open fun configureToolbarContent(toolbarBinding: LayoutDefaultToolbarBinding) {
+        toolbarBinding.textTitle.text = title
+        toolbarBinding.vBack.setDebounceOnClickListener {
             this.onBackPressed()
         }
     }

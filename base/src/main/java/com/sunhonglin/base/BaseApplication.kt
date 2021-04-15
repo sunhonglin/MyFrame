@@ -1,6 +1,5 @@
 package com.sunhonglin.base
 
-import android.app.Activity
 import android.app.Application
 import android.content.Intent
 import com.sunhonglin.base.activity.CrashActivity
@@ -34,8 +33,6 @@ open class BaseApplication : Application() {
     }
 
     fun crashActivity(activity: Class<*>?) {
-        activity?.let {
-            if (activity is Activity) crashActivity = activity
-        }
+        crashActivity = activity
     }
 }

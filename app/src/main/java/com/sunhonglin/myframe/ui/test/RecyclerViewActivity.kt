@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sunhonglin.base.StatusBarMode
 import com.sunhonglin.base.activity.DefaultToolbarActivity
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
-import com.sunhonglin.base.ui.pulltorefresh.PullToRefreshBase
-import com.sunhonglin.base.ui.pulltorefresh.PullToRefreshBase.OnRefreshListener2
+import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase
+import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase.OnRefreshListener2
 import com.sunhonglin.core.util.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityRecyclerviewTestBinding
 
@@ -28,10 +28,9 @@ class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<Recycl
 
         binding.rcvTest.getRefreshableView().layoutManager = LinearLayoutManager(mContext)
         binding.rcvTest.getRefreshableView().adapter = testAdapter
-        binding.rcvTest.setMode(PullToRefreshBase.Mode.BOTH)
         binding.rcvTest.setOnRefreshListener(this)
         binding.rcvTest.setScrollingWhileRefreshingEnabled(true)
-//        binding.rcvTest.setBackUpView(btnBackTop)
+        binding.rcvTest.backUpView(binding.ivBackTop)
 
         onPullDownToRefresh(binding.rcvTest)
 
@@ -63,7 +62,6 @@ class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<Recycl
         testAdapter.setData(getData())
         binding.rcvTest.onRefreshComplete()
     }
-
 
     override fun onPullUpToRefresh(refreshView: PullToRefreshBase<RecyclerView>) {
         if (i == 4) {

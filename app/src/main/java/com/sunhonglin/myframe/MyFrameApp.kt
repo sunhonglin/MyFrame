@@ -7,9 +7,11 @@ import com.sunhonglin.core.di.CoreComponent
 import com.sunhonglin.core.di.DaggerCoreComponent
 
 class MyFrameApp : BaseApplication() {
-    override fun onCreate() {
-        super.onCreate()
-        crashActivity(CrashActivity::class.java)
+
+    companion object {
+        @JvmStatic
+        fun coreComponent(context: Context): CoreComponent =
+            (context.applicationContext as MyFrameApp).coreComponent
     }
 
     private val coreComponent: CoreComponent by lazy {
@@ -18,10 +20,9 @@ class MyFrameApp : BaseApplication() {
             .build()
     }
 
-    companion object {
-        @JvmStatic
-        fun coreComponent(context: Context): CoreComponent =
-            (context.applicationContext as MyFrameApp).coreComponent
+    override fun onCreate() {
+        super.onCreate()
+        crashActivity(CrashActivity::class.java)
     }
 }
 
