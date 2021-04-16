@@ -118,7 +118,6 @@ dependencies {
 //    testImplementation(Dependencies.Test.junit)
 //    androidTestImplementation(Dependencies.Test.AndroidX.junit)
 //    androidTestImplementation(Dependencies.Test.AndroidX.Espresso.core)
-
-
     kapt(Dependencies.Google.Dagger.compiler)
+    implementation(Dependencies.TenCent.bugLy)
 }

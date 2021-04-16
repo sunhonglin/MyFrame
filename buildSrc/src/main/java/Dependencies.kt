@@ -114,6 +114,10 @@ object Dependencies {
         }
     }
 
+    object TenCent {
+        const val bugLy = "com.tencent.bugly:crashreport:_"
+    }
+
     object Test {
         object AndroidX {
             const val junit = "androidx.test.ext:junit:_"

@@ -5,9 +5,9 @@ import com.sunhonglin.base.StatusBarMode
 import com.sunhonglin.base.activity.DefaultToolbarActivity
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
 import com.sunhonglin.base.databinding.LayoutDefaultToolbarBinding
-import com.sunhonglin.core.util.skipActivity
 import com.sunhonglin.core.util.gone
 import com.sunhonglin.core.util.setDebounceOnClickListener
+import com.sunhonglin.core.util.skipActivity
 import com.sunhonglin.myframe.databinding.ActivityHomeBinding
 import com.sunhonglin.myframe.ui.login.LoginActivity
 import com.sunhonglin.myframe.ui.test.RecyclerViewActivity

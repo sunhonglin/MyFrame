@@ -5,6 +5,7 @@ import com.sunhonglin.base.BaseApplication
 import com.sunhonglin.base.activity.CrashActivity
 import com.sunhonglin.core.di.CoreComponent
 import com.sunhonglin.core.di.DaggerCoreComponent
+import com.tencent.bugly.crashreport.CrashReport
 
 class MyFrameApp : BaseApplication() {
 
@@ -23,6 +24,13 @@ class MyFrameApp : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
         crashActivity(CrashActivity::class.java)
+        initBugLy()
+    }
+
+    private fun initBugLy() {
+        if (!BuildConfig.DEBUG) {
+            CrashReport.initCrashReport(applicationContext, "c3f5faabd3", false)
+        }
     }
 }
 
