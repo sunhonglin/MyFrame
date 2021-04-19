@@ -53,14 +53,9 @@ class WebActivity : DefaultToolbarActivity() {
             return
         }
 
-        var cache = WebSettings.LOAD_CACHE_ELSE_NETWORK// 加载缓存否则网络
-        intent.get<Int>(CACHE)?.let {
-            cache = it
-        }
-
         with(binding.inWebBase.wvBase) {
             settings.apply {
-                cacheMode = cache
+                cacheMode = intent.get<Int>(CACHE) ?: WebSettings.LOAD_CACHE_ELSE_NETWORK// 加载缓存否则网络
                 loadsImagesAutomatically = true  //图片自动缩放 打开
                 mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW //https和http共存
                 javaScriptEnabled = true // 设置支持javascript脚本
