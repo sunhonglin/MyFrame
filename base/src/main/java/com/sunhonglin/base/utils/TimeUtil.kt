@@ -6,7 +6,7 @@ import java.util.*
 
 class TimeUtil {
     companion object {
-        private val DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss"
+        private const val DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss"
 
         /**
          * 获取SimpleDateFormat
@@ -14,7 +14,7 @@ class TimeUtil {
          * @param pattern
          * @return 默认返回yyyy-MM-dd HH:mm:ss格式。
          */
-        private fun getSimpleDateFormat(pattern: String?): SimpleDateFormat {
+        private fun simpleDateFormat(pattern: String?): SimpleDateFormat {
             var p = pattern
             if (TextUtils.isEmpty(p)) {
                 p = DEFAULT_PATTERN
@@ -30,7 +30,7 @@ class TimeUtil {
          * @param format 时间格式
          * @return 时间字符串
          */
-        fun getCurTimeString(format: String?): String {
+        fun curTimeString(format: String?): String {
             return date2String(Date(), format)
         }
 
@@ -43,7 +43,21 @@ class TimeUtil {
          */
         fun date2String(date: Date?, pattern: String?): String {
             return if (date == null) ""
-            else getSimpleDateFormat(pattern).format(date)
+            else simpleDateFormat(pattern).format(date)
+        }
+
+        private var mExitTime = 0L
+        /**
+         * 双击返回退出
+         *
+         * @param timeDiff 时间差
+         */
+        fun doubleClickExit(timeDiff: Long): Boolean {
+            if (System.currentTimeMillis() - mExitTime > timeDiff) {
+                mExitTime = System.currentTimeMillis()
+                return false
+            }
+            return true
         }
     }
 }

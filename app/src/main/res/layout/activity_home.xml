@@ -31,4 +31,17 @@
         android:text="@string/title_test_recyclerview"
         android:textColor="@color/color_white"
         android:textSize="14sp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_corner_radius_4dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/title_test_web"
+        android:textColor="@color/color_white"
+        android:textSize="14sp" />
 </LinearLayout>

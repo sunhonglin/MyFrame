@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Handler
+import androidx.annotation.StringRes
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog.*
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
 
@@ -102,20 +103,29 @@ class DialogUtil {
         /**
          * 提示
          */
-        fun showTipDialog(context: Context?, tipMsg: String) {
+        fun showTipDialog(
+            context: Context?,
+            tipMsg: String? = null,
+            @StringRes resId: Int? = null
+        ) {
             if ((context as Activity).isDestroyed) return
-            QMUITipDialog.Builder(context).setTipWord(tipMsg).create().apply {
-                setOwnerActivity(context)
-                show()
-            }.apply {
-                Handler().postDelayed({
-                    try {
-                        dismiss()
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }, 800)
+            var resMsg: String? = null
+            resId?.let {
+                resMsg = context.getString(it)
             }
+            QMUITipDialog.Builder(context).setTipWord(resMsg ?: tipMsg).create()
+                .apply {
+                    setCancelable(false)
+                    setOwnerActivity(context)
+                    show()
+                    Handler().postDelayed({
+                        try {
+                            dismiss()
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }, 800)
+                }
         }
     }
 }
