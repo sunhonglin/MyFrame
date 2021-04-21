@@ -5,8 +5,7 @@ import com.sunhonglin.base.adapter.holder.BaseViewHolder
 import com.sunhonglin.myframe.R
 import com.sunhonglin.myframe.databinding.LayoutItemTestBinding
 
-class RcvAdapter(
-) : BaseRcvAdapter<String>(R.layout.layout_item_test, ::bind) {
+class RcvAdapter : BaseRcvAdapter<String>(R.layout.layout_item_test, ::bind) {
 
     companion object {
         fun bind(baseViewHolder: BaseViewHolder, mutableList: MutableList<String>, i: Int) {
@@ -14,4 +13,3 @@ class RcvAdapter(
         }
     }
 }
-
