@@ -118,6 +118,13 @@ object Dependencies {
         const val bugLy = "com.tencent.bugly:crashreport:_"
     }
 
+    object UMEng {
+        object UApp {
+            const val common = "com.umeng.umsdk:common:_"
+            const val asMs = "com.umeng.umsdk:asms:_"
+        }
+    }
+
     object Test {
         object AndroidX {
             const val junit = "androidx.test.ext:junit:_"

@@ -15,7 +15,7 @@
             android:id="@+id/rcv_test"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:ptrAnimationStyle="rotate"
+            app:ptrAnimationStyle="flip"
             app:ptrMode="both"
             app:ptrRefreshTop="@drawable/ic_crash" />
 
@@ -35,5 +35,6 @@
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next" />
+        android:text="Next"
+        tools:ignore="HardcodedText" />
 </LinearLayout>

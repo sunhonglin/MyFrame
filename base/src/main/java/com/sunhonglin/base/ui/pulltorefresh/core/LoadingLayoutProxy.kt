@@ -40,9 +40,9 @@ class LoadingLayoutProxy : ILoadingLayout {
         }
     }
 
-    override fun setPullLabel(label: CharSequence?) {
+    override fun setPullLabel(pullLabel: CharSequence?) {
         for (layout in mLoadingLayouts) {
-            layout.setPullLabel(label)
+            layout.setPullLabel(pullLabel)
         }
     }
 
@@ -52,9 +52,9 @@ class LoadingLayoutProxy : ILoadingLayout {
         }
     }
 
-    override fun setReleaseLabel(label: CharSequence?) {
+    override fun setReleaseLabel(releaseLabel: CharSequence?) {
         for (layout in mLoadingLayouts) {
-            layout.setReleaseLabel(label)
+            layout.setReleaseLabel(releaseLabel)
         }
     }
 

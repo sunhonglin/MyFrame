@@ -200,10 +200,6 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
                             diff = x - mLastMotionX
                             oppositeDiff = y - mLastMotionY
                         }
-                        Orientation.VERTICAL -> {
-                            diff = y - mLastMotionY
-                            oppositeDiff = x - mLastMotionX
-                        }
                         else -> {
                             diff = y - mLastMotionY
                             oppositeDiff = x - mLastMotionX
@@ -365,7 +361,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
 
     fun setState(state: State, vararg params: Boolean) {
         mState = state
-        Timber.d("State: ${mState.name}")
+//        Timber.d("State: ${mState.name}")
         when (mState) {
             State.RESET -> onReset()
             State.PULL_TO_REFRESH -> onPullToRefresh()
@@ -437,30 +433,6 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
 
     val headerSize: Int
         get() = headerLayout.contentSize
-
-    /**
-     * Allows Derivative classes to handle the XML Attrs without creating a
-     * TypedArray themsevles
-     *
-     * @param a - TypedArray of PullToRefresh Attributes
-     */
-    fun handleStyledAttributes(a: TypedArray?) {}
-
-    /**
-     * Called by [.onRestoreInstanceState] so that derivative
-     * classes can handle their saved instance state.
-     *
-     * @param savedInstanceState - Bundle which contains saved instance state.
-     */
-    fun onPtrRestoreInstanceState(savedInstanceState: Bundle?) {}
-
-    /**
-     * Called by [.onSaveInstanceState] so that derivative classes can
-     * save their instance state.
-     *
-     * @param saveState - Bundle to be updated with saved state.
-     */
-    fun onPtrSaveInstanceState(saveState: Bundle?) {}
 
     /**
      * Called when the UI has been to be updated to be in the
@@ -677,16 +649,16 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      * @param value - New Scroll value
      */
     fun setHeaderScroll(value: Int) {
-        var value = value
-        Timber.d("setHeaderScroll: $value")
+        var mValue = value
+//        Timber.d("setHeaderScroll: $mValue")
 
         // Clamp value to with pull scroll range
         val maximumPullScroll = maximumPullScroll
-        value = min(maximumPullScroll, max(-maximumPullScroll, value))
+        mValue = min(maximumPullScroll, max(-maximumPullScroll, mValue))
         if (mLayoutVisibilityChangesEnabled) {
-            if (value < 0) {
+            if (mValue < 0) {
                 headerLayout.visibility = VISIBLE
-            } else if (value > 0) {
+            } else if (mValue > 0) {
                 footerLayout.visibility = VISIBLE
             } else {
                 headerLayout.visibility = INVISIBLE
@@ -700,13 +672,13 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
              * often, which would negate any HW layer performance boost.
              */
             refreshableViewWrapper.setLayerType(
-                if (value != 0) LAYER_TYPE_HARDWARE else LAYER_TYPE_NONE,
+                if (mValue != 0) LAYER_TYPE_HARDWARE else LAYER_TYPE_NONE,
                 null
             )
         }
         when (pullToRefreshScrollDirection) {
-            Orientation.VERTICAL -> scrollTo(0, value)
-            Orientation.HORIZONTAL -> scrollTo(value, 0)
+            Orientation.VERTICAL -> scrollTo(0, mValue)
+            Orientation.HORIZONTAL -> scrollTo(mValue, 0)
         }
     }
 
@@ -798,6 +770,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
             when (mCurrentMode) {
                 Mode.PULL_FROM_START -> it.onPullDownToRefresh(this)
                 Mode.PULL_FROM_END -> it.onPullUpToRefresh(this)
+                else -> return
             }
         }
     }
@@ -805,7 +778,6 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
     private fun init(context: Context, attrs: AttributeSet?) {
         when (pullToRefreshScrollDirection) {
             Orientation.HORIZONTAL -> setOrientation(HORIZONTAL)
-            Orientation.VERTICAL -> setOrientation(VERTICAL)
             else -> setOrientation(VERTICAL)
         }
         gravity = Gravity.CENTER
@@ -813,14 +785,14 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
         mTouchSlop = config.scaledTouchSlop
 
         // Styleables from XML
-        val a = context.obtainStyledAttributes(attrs, R.styleable.PullToRefresh)
-        if (a.hasValue(R.styleable.PullToRefresh_ptrMode)) {
-            mMode = Mode.mapIntToValue(a.getInteger(R.styleable.PullToRefresh_ptrMode, 0))
+        val a = context.obtainStyledAttributes(attrs, R.styleable.PullToRefreshBase)
+        if (a.hasValue(R.styleable.PullToRefreshBase_ptrMode)) {
+            mMode = Mode.mapIntToValue(a.getInteger(R.styleable.PullToRefreshBase_ptrMode, 0))
         }
-        if (a.hasValue(R.styleable.PullToRefresh_ptrAnimationStyle)) {
+        if (a.hasValue(R.styleable.PullToRefreshBase_ptrAnimationStyle)) {
             mLoadingAnimationStyle = AnimationStyle.mapIntToValue(
                 a.getInteger(
-                    R.styleable.PullToRefresh_ptrAnimationStyle, 0
+                    R.styleable.PullToRefreshBase_ptrAnimationStyle, 0
                 )
             )
         }
@@ -831,23 +803,24 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
         /**
          * Styleables from XML
          */
-        if (a.hasValue(R.styleable.PullToRefresh_ptrRefreshableViewBackground)) {
-            val background = a.getDrawable(R.styleable.PullToRefresh_ptrRefreshableViewBackground)
+        if (a.hasValue(R.styleable.PullToRefreshBase_ptrRefreshableViewBackground)) {
+            val background =
+                a.getDrawable(R.styleable.PullToRefreshBase_ptrRefreshableViewBackground)
             if (null != background) {
                 mRefreshableView.background = background
             }
-        } else if (a.hasValue(R.styleable.PullToRefresh_ptrAdapterViewBackground)) {
-            val background = a.getDrawable(R.styleable.PullToRefresh_ptrAdapterViewBackground)
+        } else if (a.hasValue(R.styleable.PullToRefreshBase_ptrAdapterViewBackground)) {
+            val background = a.getDrawable(R.styleable.PullToRefreshBase_ptrAdapterViewBackground)
             if (null != background) {
                 mRefreshableView.background = background
             }
         }
-        if (a.hasValue(R.styleable.PullToRefresh_ptrOverScroll)) {
-            mOverScrollEnabled = a.getBoolean(R.styleable.PullToRefresh_ptrOverScroll, true)
+        if (a.hasValue(R.styleable.PullToRefreshBase_ptrOverScroll)) {
+            mOverScrollEnabled = a.getBoolean(R.styleable.PullToRefreshBase_ptrOverScroll, true)
         }
-        if (a.hasValue(R.styleable.PullToRefresh_ptrScrollingWhileRefreshingEnabled)) {
+        if (a.hasValue(R.styleable.PullToRefreshBase_ptrScrollingWhileRefreshingEnabled)) {
             mScrollingWhileRefreshingEnabled = a.getBoolean(
-                R.styleable.PullToRefresh_ptrScrollingWhileRefreshingEnabled, false
+                R.styleable.PullToRefreshBase_ptrScrollingWhileRefreshingEnabled, false
             )
         }
         handleStyledAttributes(a)
@@ -856,7 +829,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
     }
 
     private val isReadyForPull: Boolean
-        private get() {
+        get() {
             return when (mMode) {
                 Mode.PULL_FROM_START -> isReadyForPullStart
                 Mode.PULL_FROM_END -> isReadyForPullEnd
@@ -880,10 +853,6 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
             Orientation.HORIZONTAL -> {
                 initialMotionValue = mInitialMotionX
                 lastMotionValue = mLastMotionX
-            }
-            Orientation.VERTICAL -> {
-                initialMotionValue = mInitialMotionY
-                lastMotionValue = mLastMotionY
             }
             else -> {
                 initialMotionValue = mInitialMotionY
@@ -924,15 +893,11 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
     }
 
     private val loadingLayoutLayoutParams: LayoutParams
-        private get() {
+        get() {
             return when (pullToRefreshScrollDirection) {
                 Orientation.HORIZONTAL -> LayoutParams(
                     LayoutParams.WRAP_CONTENT,
                     LayoutParams.MATCH_PARENT
-                )
-                Orientation.VERTICAL -> LayoutParams(
-                    LayoutParams.MATCH_PARENT,
-                    LayoutParams.WRAP_CONTENT
                 )
                 else -> LayoutParams(
                     LayoutParams.MATCH_PARENT,
@@ -941,7 +906,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
             }
         }
     private val maximumPullScroll: Int
-        private get() {
+        get() {
             return when (pullToRefreshScrollDirection) {
                 Orientation.HORIZONTAL -> (width / FRICTION).roundToInt()
                 else -> (height / FRICTION).roundToInt()
@@ -1324,6 +1289,30 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
         }
 
     }
+
+    /**
+     * Allows Derivative classes to handle the XML Attrs without creating a
+     * TypedArray themsevles
+     *
+     * @param a - TypedArray of PullToRefresh Attributes
+     */
+    open fun handleStyledAttributes(a: TypedArray?) {}
+
+    /**
+     * Called by [.onRestoreInstanceState] so that derivative
+     * classes can handle their saved instance state.
+     *
+     * @param savedInstanceState - Bundle which contains saved instance state.
+     */
+    open fun onPtrRestoreInstanceState(savedInstanceState: Bundle?) {}
+
+    /**
+     * Called by [.onSaveInstanceState] so that derivative classes can
+     * save their instance state.
+     *
+     * @param saveState - Bundle to be updated with saved state.
+     */
+    open fun onPtrSaveInstanceState(saveState: Bundle?) {}
 
     interface OnSmoothScrollFinishedListener {
         fun onSmoothScrollFinished()

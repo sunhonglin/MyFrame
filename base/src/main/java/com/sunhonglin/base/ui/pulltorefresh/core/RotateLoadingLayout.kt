@@ -1,5 +1,6 @@
 package com.sunhonglin.base.ui.pulltorefresh.core
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Matrix
@@ -14,6 +15,7 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
 
+@SuppressLint("ViewConstructor")
 class RotateLoadingLayout(
     context: Context,
     mode: Mode,
@@ -30,7 +32,7 @@ class RotateLoadingLayout(
     var mRotationPivotX = 0f
     var mRotationPivotY = 0f
     private var mRotateDrawableWhilePulling: Boolean =
-        attrs.getBoolean(R.styleable.PullToRefresh_ptrRotateDrawableWhilePulling, true)
+        attrs.getBoolean(R.styleable.PullToRefreshBase_ptrRotateDrawableWhilePulling, true)
 
     init {
         mHeaderImage.scaleType = ScaleType.MATRIX
@@ -89,5 +91,5 @@ class RotateLoadingLayout(
     }
 
     override val defaultDrawableResId: Int
-        get() = R.drawable.pull_to_refresh_default_ptr_rotate
+        get() = R.drawable.ic_pull_to_refresh_default_ptr_rotate
 }

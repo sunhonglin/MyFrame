@@ -81,8 +81,8 @@ abstract class LoadingLayout(
         /**
          * 第一步:设置刷新控件头部的图片
          */
-        if (attrs.hasValue(R.styleable.PullToRefresh_ptrRefreshTop) && mode === Mode.PULL_FROM_START) {
-            val refreshTop = attrs.getDrawable(R.styleable.PullToRefresh_ptrRefreshTop)
+        if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrRefreshTop) && mode === Mode.PULL_FROM_START) {
+            val refreshTop = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrRefreshTop)
             refreshTop?.let {
                 ivRefreshTop?.setImageDrawable(it)
             }
@@ -90,8 +90,8 @@ abstract class LoadingLayout(
         /**
          * 第二步：控制提示文字显示不显示
          */
-        if (attrs.hasValue(R.styleable.PullToRefresh_ptrShowRefreshTips) && mode === Mode.PULL_FROM_START) {
-            val isShow = attrs.getBoolean(R.styleable.PullToRefresh_ptrShowRefreshTips, true)
+        if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrShowRefreshTips) && mode === Mode.PULL_FROM_START) {
+            val isShow = attrs.getBoolean(R.styleable.PullToRefreshBase_ptrShowRefreshTips, true)
             lRefreshTips?.let {
                 when (isShow) {
                     true -> it.visible()
@@ -99,8 +99,8 @@ abstract class LoadingLayout(
                 }
             }
         }
-        if (attrs.hasValue(R.styleable.PullToRefresh_ptrShowLoadMoreTips) && mode === Mode.PULL_FROM_END) {
-            val isShow = attrs.getBoolean(R.styleable.PullToRefresh_ptrShowLoadMoreTips, true)
+        if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrShowLoadMoreTips) && mode === Mode.PULL_FROM_END) {
+            val isShow = attrs.getBoolean(R.styleable.PullToRefreshBase_ptrShowLoadMoreTips, true)
             lRefreshTips?.let {
                 when (isShow) {
                     true -> it.visible()
@@ -111,9 +111,9 @@ abstract class LoadingLayout(
         /**
          * 设置Progress样式
          */
-        if (attrs.hasValue(R.styleable.PullToRefresh_ptrProgressIndeterminateDrawable)) {
+        if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrProgressIndeterminateDrawable)) {
             val ptrProgressIndeterminateDrawable =
-                attrs.getDrawable(R.styleable.PullToRefresh_ptrProgressIndeterminateDrawable)
+                attrs.getDrawable(R.styleable.PullToRefreshBase_ptrProgressIndeterminateDrawable)
             ptrProgressIndeterminateDrawable?.let {
                 mHeaderProgress.indeterminateDrawable = it
             }
@@ -123,7 +123,7 @@ abstract class LoadingLayout(
         when (mode) {
             Mode.PULL_FROM_END -> {
                 lp.gravity =
-                    if (scrollDirection === Orientation.VERTICAL) Gravity.TOP else Gravity.LEFT
+                    if (scrollDirection === Orientation.VERTICAL) Gravity.TOP else Gravity.START
 
                 // Load in labels
                 mPullLabel = context.getString(R.string.pull_to_refresh_from_bottom_pull_label)
@@ -136,7 +136,7 @@ abstract class LoadingLayout(
             }
             Mode.PULL_FROM_START -> {
                 lp.gravity =
-                    if (scrollDirection === Orientation.VERTICAL) Gravity.BOTTOM else Gravity.RIGHT
+                    if (scrollDirection === Orientation.VERTICAL) Gravity.BOTTOM else Gravity.END
 
                 // Load in labels
                 mPullLabel = context.getString(R.string.pull_to_refresh_pull_label)
@@ -146,63 +146,63 @@ abstract class LoadingLayout(
             }
             else -> {
                 lp.gravity =
-                    if (scrollDirection === Orientation.VERTICAL) Gravity.BOTTOM else Gravity.RIGHT
+                    if (scrollDirection === Orientation.VERTICAL) Gravity.BOTTOM else Gravity.END
                 mPullLabel = context.getString(R.string.pull_to_refresh_pull_label)
                 mRefreshingLabel = context.getString(R.string.pull_to_refresh_refreshing_label)
                 mReleaseLabel = context.getString(R.string.pull_to_refresh_release_label)
                 defaultPullLabel = context.getString(R.string.pull_to_refresh_pull_label)
             }
         }
-        if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderBackground)) {
-            val background = attrs.getDrawable(R.styleable.PullToRefresh_ptrHeaderBackground)
+        if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrHeaderBackground)) {
+            val background = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrHeaderBackground)
             background?.let {
                 ViewCompat.setBackground(this, it)
             }
         }
-        if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderTextAppearance)) {
+        if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrHeaderTextAppearance)) {
             val styleID = TypedValue()
-            attrs.getValue(R.styleable.PullToRefresh_ptrHeaderTextAppearance, styleID)
+            attrs.getValue(R.styleable.PullToRefreshBase_ptrHeaderTextAppearance, styleID)
             setTextAppearance(styleID.data)
         }
-        if (attrs.hasValue(R.styleable.PullToRefresh_ptrSubHeaderTextAppearance)) {
+        if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrSubHeaderTextAppearance)) {
             val styleID = TypedValue()
-            attrs.getValue(R.styleable.PullToRefresh_ptrSubHeaderTextAppearance, styleID)
+            attrs.getValue(R.styleable.PullToRefreshBase_ptrSubHeaderTextAppearance, styleID)
             setSubTextAppearance(styleID.data)
         }
 
         // Text Color attrs need to be set after TextAppearance attrs
-        if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderTextColor)) {
-            val colors = attrs.getColorStateList(R.styleable.PullToRefresh_ptrHeaderTextColor)
+        if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrHeaderTextColor)) {
+            val colors = attrs.getColorStateList(R.styleable.PullToRefreshBase_ptrHeaderTextColor)
             colors?.let { setTextColor(it) }
         }
-        if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderSubTextColor)) {
-            val colors = attrs.getColorStateList(R.styleable.PullToRefresh_ptrHeaderSubTextColor)
+        if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrHeaderSubTextColor)) {
+            val colors = attrs.getColorStateList(R.styleable.PullToRefreshBase_ptrHeaderSubTextColor)
             colors?.let { setSubTextColor(it) }
         }
 
         // Try and get defined drawable from Attrs
         var imageDrawable: Drawable? = null
-        if (attrs.hasValue(R.styleable.PullToRefresh_ptrDrawable)) {
-            imageDrawable = attrs.getDrawable(R.styleable.PullToRefresh_ptrDrawable)
+        if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrDrawable)) {
+            imageDrawable = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawable)
         }
         when (mode) {
             Mode.PULL_FROM_END ->
-                if (attrs.hasValue(R.styleable.PullToRefresh_ptrDrawableEnd)) {
-                    imageDrawable = attrs.getDrawable(R.styleable.PullToRefresh_ptrDrawableEnd)
-                } else if (attrs.hasValue(R.styleable.PullToRefresh_ptrDrawableBottom)) {
-                    imageDrawable = attrs.getDrawable(R.styleable.PullToRefresh_ptrDrawableBottom)
+                if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrDrawableEnd)) {
+                    imageDrawable = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawableEnd)
+                } else if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrDrawableBottom)) {
+                    imageDrawable = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawableBottom)
                 }
             else ->
-                if (attrs.hasValue(R.styleable.PullToRefresh_ptrDrawableStart)) {
-                    imageDrawable = attrs.getDrawable(R.styleable.PullToRefresh_ptrDrawableStart)
-                } else if (attrs.hasValue(R.styleable.PullToRefresh_ptrDrawableTop)) {
-                    imageDrawable = attrs.getDrawable(R.styleable.PullToRefresh_ptrDrawableTop)
+                if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrDrawableStart)) {
+                    imageDrawable = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawableStart)
+                } else if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrDrawableTop)) {
+                    imageDrawable = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawableTop)
                 }
         }
 
         // If we don't have a user defined drawable, load the default
         if (null == imageDrawable) {
-            imageDrawable = context.resources.getDrawable(defaultDrawableResId)
+            imageDrawable = context.resources.getDrawable(defaultDrawableResId, null)
         }
 
         // Set Drawable, and save width/height
@@ -322,13 +322,13 @@ abstract class LoadingLayout(
         setSubHeaderText(label)
     }
 
-    override fun setLoadingDrawable(imageDrawable: Drawable?) {
+    override fun setLoadingDrawable(drawable: Drawable?) {
         // Set Drawable
-        mHeaderImage.setImageDrawable(imageDrawable)
-        mUseIntrinsicAnimation = imageDrawable is AnimationDrawable
+        mHeaderImage.setImageDrawable(drawable)
+        mUseIntrinsicAnimation = drawable is AnimationDrawable
 
         // Now call the callback
-        onLoadingDrawableSet(imageDrawable)
+        onLoadingDrawableSet(drawable)
     }
 
     override fun setPullLabel(pullLabel: CharSequence?) {

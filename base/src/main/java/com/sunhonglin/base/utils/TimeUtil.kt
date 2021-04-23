@@ -19,7 +19,7 @@ class TimeUtil {
             if (TextUtils.isEmpty(p)) {
                 p = DEFAULT_PATTERN
             }
-            return SimpleDateFormat(p)
+            return SimpleDateFormat(p, Locale.getDefault())
         }
 
         /**

@@ -1,0 +1,177 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:autoMirrored="true"
+    android:viewportWidth="1000"
+    android:viewportHeight="1000">
+
+    <path
+        android:name="grid"
+        android:pathData="
+        h1000 v1000 h-1000 v-1000 h1000
+        M100,0 v1000
+        M200,0 v1000
+        M300,0 v1000
+        M400,0 v1000
+        M500,0 v1000
+        M600,0 v1000
+        M700,0 v1000
+        M800,0 v1000
+        M900,0 v1000
+        M0,100 h1000
+        M0,200 h1000
+        M0,300 h1000
+        M0,400 h1000
+        M0,500 h1000
+        M0,600 h1000
+        M0,700 h1000
+        M0,800 h1000
+        M0,900 h1000"
+        android:strokeWidth="1"
+        android:strokeColor="#FF0000" />
+
+    <!--    Line 1 start-->
+    <!--  L (x y) 直线连到x,y，还有简化命令H(x) 水平连接、V(y)垂直连接 -->
+    <!--  Z  close 闭合,把图封闭起来。-->
+    <!--  三角形、正方形、长方形等连线形-->
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M10,10 L10,90 90,90, 90,50, 50,10Z" />
+    <!--    Line 1 end-->
+
+    <!--    Line 2 start-->
+    <!--  Q quatratic bezier 二次贝塞尔曲线 -->
+    <path
+        android:fillColor="#FF0000"
+        android:pathData="M10,110 q20,150 80,20Z" />
+
+    <!--  C cubic bezier 三次贝塞尔曲线-->
+    <path
+        android:fillColor="#00FF00"
+        android:pathData=" M110,110 c0,0 20,150 80,20Z" />
+    <!--    Line 2 end-->
+
+    <!--    Line 3 start-->
+    <!--  a  椭圆 -->
+    <!--  A(rx ry x-axis-rotation large-arc-flag sweep-flag x y)-->
+    <!--  rx ry 椭圆半径-->
+    <!--  x-axis-rotation x轴旋转角度, 对于圆形设置无效，椭圆有效，顺时针为正-->
+    <!--  large-arc-flag 为0时表示取小弧度，1时取大弧度 （舍取的时候，是要长的还是短的）-->
+    <!--  sweep-flag 0取逆时针方向，1取顺时针方向-->
+    <path
+        android:fillColor="#FF0000"
+        android:pathData="M4,250 a45,45 0 1,1 0,1 z"
+        android:strokeWidth="4"
+        android:strokeColor="#0000FF" />
+
+    <path
+        android:fillColor="#FF0000"
+        android:pathData="M150,250 h-45 a45,45 0 1,0 45,-45 z"
+        android:strokeWidth="5"
+        android:strokeColor="#0000FF" />
+
+    <path
+        android:pathData="M293,293 v-45 a45,45 0 1,0 -45,45 z"
+        android:fillColor="@color/color_white"
+        android:strokeWidth="4"
+        android:strokeColor="#F00" />
+
+    <path
+        android:pathData="M350,250 v-45 a45,45 0 0,0 -45,45 z"
+        android:fillColor="@color/color_white"
+        android:strokeWidth="4"
+        android:strokeColor="#F00" />
+
+    <path
+        android:fillColor="#FF0000"
+        android:pathData="M404,250 a45,45 0 0,0 45,-45 z"
+        android:strokeWidth="4"
+        android:strokeColor="#0000FF" />
+
+    <path
+        android:fillColor="#FF0000"
+        android:pathData="M550,250 h-45 a45,45 0 0,0 45,-45 z"
+        android:strokeWidth="5"
+        android:strokeColor="#0000FF" />
+
+    <path
+        android:pathData="M904,250 a45,45 0 1,1 0,1 z"
+        android:strokeWidth="4"
+        android:strokeColor="@color/color_white" />
+    <!--    Line 3 end-->
+
+    <!--    Line 4 start-->
+    <!--  A ellipse 圆弧-->
+    <path
+        android:pathData="M30,330 a30,15 0 0,0 50,25"
+        android:strokeWidth="4"
+        android:strokeColor="@color/color_white" />
+    <path
+        android:pathData="M130,330 a30,15 0 1,0 50,25"
+        android:strokeWidth="4"
+        android:strokeColor="@color/color_white" />
+    <path
+        android:pathData="M230,330 a30,15 0 0,1 50,25"
+        android:strokeWidth="4"
+        android:strokeColor="@color/color_white" />
+    <path
+        android:pathData="M330,330 a30,15 0 1,1 50,25"
+        android:strokeWidth="4"
+        android:strokeColor="@color/color_white" />
+    <!--    Line 4 end-->
+
+    <!--    Line 5 start-->
+
+    <path
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M64,413 l-36,36 36,36"
+        android:strokeColor="#00F000"
+        android:strokeWidth="10"/>
+
+    <!--    Line 5 end-->
+    <!--    Line 6 start-->
+    <!--    Line 6 end-->
+    <!--    Line 7 start-->
+    <!--    Line 7 end-->
+    <!--    Line 8 start-->
+    <path
+        android:pathData="M0,1000 l 50,-25
+           a25,25   0  0,1 50,-25 l 50,-25
+           a25,50  -30 0,1 50,-25 l 50,-25
+           a25,75  -30 0,1 50,-25 l 50,-25
+           a25,100 -30 0,1 50,-25 l 50,-25"
+        android:strokeColor="#FF0000"
+        android:strokeWidth="4"/>
+
+    <path
+        android:pathData="M200,1000 l 50,-25
+           a25,25   0  0,1 50,-25 l 50,-25
+           a25,50  -30 0,1 50,-25 l 50,-25
+           a25,75  -30 0,1 50,-25 l 50,-25
+           a25,100 -30 0,1 50,-25 l 50,-25"
+        android:fillColor="#fff"/>
+
+    <path
+        android:pathData="M400,1000 l 50,-25
+           a25,25   0  0,1 50,-25 l 50,-25
+           a25,50  -30 0,1 50,-25 l 50,-25
+           a25,75  -30 0,1 50,-25 l 50,-25
+           a25,100 -30 0,1 50,-25 l 50,-25z"
+        android:fillColor="#fff"
+        android:strokeColor="#FF0000"
+        android:strokeWidth="4"/>
+
+    <path
+        android:pathData="M600,1000 l 50,-25
+           a25,25   0  0,1 50,-25 l 50,-25
+           a25,50   0 0,1 50,-25 l 50,-25
+           a25,75   0 0,1 50,-25 l 50,-25
+           a25,100  0 0,1 50,-25 l 50,-25z"
+        android:fillColor="#fff"
+        android:strokeColor="#FF0000"
+        android:strokeWidth="4"/>
+    <!--    Line 8 end-->
+
+
+</vector>

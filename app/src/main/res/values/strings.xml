@@ -1,10 +1,6 @@
 <resources>
     <string name="app_name">MyFrame</string>
 
-    <!--  room  -->
-    <string name="title_room">Room+LiveData+ViewModel</string>
-
-    <string name="title_home">主页</string>
     <string name="title_login">登录</string>
     <string name="title_test_recyclerview">RecyclerView</string>
     <string name="title_test_web">web</string>

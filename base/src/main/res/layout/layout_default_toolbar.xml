@@ -2,16 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@color/color_white">
+    android:layout_height="60dp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_back"
-        android:layout_width="12dp"
-        android:layout_height="22dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_centerVertical="true"
         android:background="@drawable/ic_back"
-        android:layout_marginStart="16dp" />
+        android:layout_marginStart="14dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/text_title"

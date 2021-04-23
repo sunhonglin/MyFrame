@@ -12,6 +12,7 @@ var appName = property("APP_NAME")
 android {
     defaultConfig {
         applicationId = group.toString()
+        flavorDimensions("channel")
     }
 
     signingConfigs {
@@ -50,15 +51,23 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
             buildConfigField("String", "HOST_LOGIN", "\"http://iot.ksf.com.cn:90/KSFReplaceApi/\"")
         }
         getByName("debug") {
             setSigningConfig(signingConfigs["release"])
             debuggable(true)
-
             buildConfigField("String", "HOST_LOGIN", "\"http://114.116.18.154:8012/\"")
         }
+    }
+
+    productFlavors {
+        create("OfficialWebsite")//官网
+        create("HuaWei")//华为
+        create("XIaoMi")//小米
+        create("YIngYongBao")//应用宝
+    }
+    productFlavors.all {
+        manifestPlaceholders["CHANNEL_NAME"] = name
     }
 
     android.applicationVariants.all {
@@ -107,17 +116,13 @@ android {
 }
 
 dependencies {
-//
-//    implementation(Dependencies.AndroidX.ktx)
-//    implementation(Dependencies.AndroidX.appcompat)
     implementation(Dependencies.Google.material)
-//    implementation(Dependencies.AndroidX.constraintLayout)
 
     implementation(project(":core"))
     implementation(project(":base"))
-//    testImplementation(Dependencies.Test.junit)
-//    androidTestImplementation(Dependencies.Test.AndroidX.junit)
-//    androidTestImplementation(Dependencies.Test.AndroidX.Espresso.core)
     kapt(Dependencies.Google.Dagger.compiler)
     implementation(Dependencies.TenCent.bugLy)
+
+    implementation(Dependencies.UMEng.UApp.common)
+    implementation(Dependencies.UMEng.UApp.asMs)
 }

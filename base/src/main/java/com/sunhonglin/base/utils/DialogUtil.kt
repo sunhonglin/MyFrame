@@ -57,6 +57,7 @@ class DialogUtil {
          * 带输入框的对话框
          * 不可取消，光标定位到最后，调用者控制隐藏
          */
+        @Suppress("DEPRECATION")
         fun showInputDialog(
             context: Context?,
             title: String,

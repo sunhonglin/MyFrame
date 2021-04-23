@@ -16,10 +16,12 @@ fun dependenciesVersion(rootProject: Project, name: String): Any? {
     return property(rootProject, DependenciesVersionPropertiesFilePath, name)
 }
 
+var a = 0
 fun property(rootProject: Project, filePath: String, propertyName: String): Any? {
-    val keystorePropertiesFile = rootProject.file(filePath)
+    val propertiesFileInputStream = rootProject.file(filePath).inputStream()
     val keystoreProperties = Properties()
-    keystoreProperties.load(keystorePropertiesFile.inputStream())
+    keystoreProperties.load(propertiesFileInputStream)
+    propertiesFileInputStream.close()
     return keystoreProperties[propertyName]
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="PullToRefresh">
+    <declare-styleable name="PullToRefreshBase">
 
         <!-- recyclerview背景 -->
         <attr name="ptrRefreshableViewBackground" format="reference|color" />
