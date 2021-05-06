@@ -13,6 +13,24 @@ kapt {
     }
 }
 
+android {
+    buildTypes {
+        getByName("debug") {
+            minifyEnabled(true)
+            //Library will be obfuscated with the mentioned rules.
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "consumer-rules.pro")
+        }
+    }
+}
+
+//artifacts {
+//    archives(androidSourcesJar)
+//}
+//
+//val androidSourcesJar = task(name = "androidSourcesJar") {
+//    classifier
+//}
+
 dependencies {
     api(Dependencies.AndroidX.appcompat)
 

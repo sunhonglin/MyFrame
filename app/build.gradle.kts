@@ -63,8 +63,6 @@ android {
     productFlavors {
         create("OfficialWebsite")//官网
         create("HuaWei")//华为
-        create("XIaoMi")//小米
-        create("YIngYongBao")//应用宝
     }
     productFlavors.all {
         manifestPlaceholders["CHANNEL_NAME"] = name
@@ -116,6 +114,12 @@ android {
 }
 
 dependencies {
+    implementation(
+        fileTree(baseDir = "libs") {
+            include("*.jar")
+            include("*.aar")
+        }
+    )
     implementation(Dependencies.Google.material)
 
     implementation(project(":core"))
