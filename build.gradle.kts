@@ -8,7 +8,7 @@ buildscript {
         jcenter()
         google()
         gradlePluginPortal()
-        maven("https://dl.bintray.com/umsdk/release")
+        maven(Repositories.REPO_MAVEN_MAVEN2)
     }
     dependencies {
         classpath(Dependencies.Android.gradlePlugin)
@@ -36,7 +36,7 @@ subprojects {
         jcenter()
         google()
         gradlePluginPortal()
-        maven("https://dl.bintray.com/umsdk/release")
+        maven(Repositories.REPO_MAVEN_MAVEN2)
     }
 
     buildDir = File(rootProject.buildDir, name)
