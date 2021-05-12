@@ -12,7 +12,7 @@ import retrofit2.Converter
 
 /**
  * Component providing application wide singletons.
- * To call this make use of MedKeyApplication.coreComponent or the
+ * To call this make use of Application.coreComponent or the
  * Activity.coreComponent extension function.
  */
 @Component(modules = [CoreDataModule::class])

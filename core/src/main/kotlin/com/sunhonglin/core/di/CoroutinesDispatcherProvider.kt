@@ -1,4 +1,4 @@
-package com.sunhonglin.core.data.service
+package com.sunhonglin.core.di
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers.Default

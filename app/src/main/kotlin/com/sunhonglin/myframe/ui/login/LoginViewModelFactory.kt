@@ -2,7 +2,7 @@ package com.sunhonglin.myframe.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.sunhonglin.core.data.service.CoroutinesDispatcherProvider
+import com.sunhonglin.core.di.CoroutinesDispatcherProvider
 import com.sunhonglin.myframe.data.login.LoginRepository
 import javax.inject.Inject
 

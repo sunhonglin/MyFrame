@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sunhonglin.core.data.service.CoroutinesDispatcherProvider
+import com.sunhonglin.core.di.CoroutinesDispatcherProvider
 import com.sunhonglin.core.data.service.BaseResponse
 import com.sunhonglin.core.data.service.RequestResult
 import com.sunhonglin.myframe.data.login.LoginRepository
