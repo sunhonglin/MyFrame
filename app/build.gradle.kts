@@ -1,4 +1,4 @@
-apply("$rootDir/gradle/configure-android-defaults.gradle")
+apply("$rootDir/gradle/configure-android-defaults.kts")
 
 plugins {
     id("com.android.application")
