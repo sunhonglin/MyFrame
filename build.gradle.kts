@@ -5,7 +5,6 @@ plugins {
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
         google()
         gradlePluginPortal()
         maven(Repositories.REPO_MAVEN_MAVEN2)
@@ -33,7 +32,6 @@ val coreRuntime = dependenciesUrl(rootProject, "androidx.arch.core:core-runtime:
 subprojects {
     repositories {
         mavenCentral()
-        jcenter()
         google()
         gradlePluginPortal()
         maven(Repositories.REPO_MAVEN_MAVEN2)

@@ -23,14 +23,6 @@ android {
     }
 }
 
-//artifacts {
-//    archives(androidSourcesJar)
-//}
-//
-//val androidSourcesJar = task(name = "androidSourcesJar") {
-//    classifier
-//}
-
 dependencies {
     api(Dependencies.AndroidX.appcompat)
 
