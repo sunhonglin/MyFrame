@@ -23,7 +23,6 @@ class HomeActivity : DefaultToolbarActivity() {
     override fun configureToolbarContent(toolbarBinding: LayoutDefaultToolbarBinding) {
         super.configureToolbarContent(toolbarBinding)
         toolbarBinding.imageBack.gone()
-        toolbarBinding.vBack.setDebounceOnClickListener { }
     }
 
     override fun inflateContent(

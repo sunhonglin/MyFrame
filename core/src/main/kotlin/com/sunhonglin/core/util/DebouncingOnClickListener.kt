@@ -4,29 +4,28 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 
-fun View.setDebounceOnClickListener(listener: (View) -> Unit) {
-    setOnClickListener(object : DebounceOnClickListener() {
+private const val enableTimeDefault = 500L
+fun View.setDebounceOnClickListener(enableT: Long = enableTimeDefault, listener: (View) -> Unit) {
+    setOnClickListener(object : DebounceOnClickListener(enableT) {
         override fun doClick(v: View) {
             listener(v)
         }
     })
 }
 
-abstract class DebounceOnClickListener : View.OnClickListener {
-    companion object {
-        private var enableTime = 100L
-        private var enable = true
-        private val ENABLE_AGAIN = Runnable { enable = true }
-        private val MAIN = Handler(Looper.getMainLooper())
-    }
+
+abstract class DebounceOnClickListener(var enableT: Long) : View.OnClickListener {
+    private var enable = true
+    private val enableRunnable = Runnable { enable = true }
+    private val mainHandler = Handler(Looper.getMainLooper())
 
     override fun onClick(v: View) {
         if (enable) {
             enable = false
             doClick(v)
-            MAIN.postDelayed(ENABLE_AGAIN, enableTime)
+            mainHandler.postDelayed(enableRunnable, enableT)
         }
     }
 
-    abstract fun doClick(v : View)
+    abstract fun doClick(v: View)
 }
