@@ -8,6 +8,7 @@ import com.sunhonglin.base.activity.DefaultToolbarActivity
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase.OnRefreshListener2
+import com.sunhonglin.base.utils.TimeUtil
 import com.sunhonglin.core.util.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityRecyclerviewTestBinding
 
@@ -34,7 +35,7 @@ class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<Recycl
 
         onPullDownToRefresh(binding.rcvTest)
 
-        binding.rcvTest.getLoadingLayoutProxy().setLastUpdatedLabel("2019年09月24日16:33:17")
+        binding.rcvTest.getLoadingLayoutProxy().setLastUpdatedLabel(TimeUtil.curTimeString("yyyy年MM月dd日 HH:mm:ss"))
 
 
         binding.rcvTest.apply {
@@ -49,8 +50,8 @@ class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<Recycl
 
     private fun getData(): MutableList<String> {
         var list = mutableListOf<String>()
-        for (i in 0..100) {
-            list.add("test $i")
+        for (i in 0 until 20) {
+            list.add("test ${i + 1}")
         }
         return list
     }
@@ -61,6 +62,7 @@ class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<Recycl
         binding.rcvTest.setMode(PullToRefreshBase.Mode.BOTH)
         testAdapter.setData(getData())
         binding.rcvTest.onRefreshComplete()
+        binding.rcvTest.getLoadingLayoutProxy().setLastUpdatedLabel(TimeUtil.curTimeString("yyyy年MM月dd日 HH:mm:ss"))
     }
 
     override fun onPullUpToRefresh(refreshView: PullToRefreshBase<RecyclerView>) {
@@ -72,6 +74,7 @@ class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<Recycl
         testAdapter.addData(getData())
         binding.rcvTest.onAppendData()
         binding.rcvTest.onRefreshComplete()
+        binding.rcvTest.getLoadingLayoutProxy().setLastUpdatedLabel(TimeUtil.curTimeString("yyyy年MM月dd日 HH:mm:ss"))
     }
 }
 

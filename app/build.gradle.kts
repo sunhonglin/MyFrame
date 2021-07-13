@@ -36,7 +36,7 @@ android {
                     "storePassword"
                 ).toString()
             )
-            isV2SigningEnabled = true
+            enableV2Signing = true
         }
     }
 
@@ -44,7 +44,6 @@ android {
         getByName("release") {
             setSigningConfig(signingConfigs["release"])
             minifyEnabled(true)
-            zipAlignEnabled(true)
             debuggable(false)
             isShrinkResources = true
             proguardFiles(
@@ -56,7 +55,7 @@ android {
         getByName("debug") {
             setSigningConfig(signingConfigs["release"])
             debuggable(true)
-            buildConfigField("String", "HOST_LOGIN", "\"http://114.116.18.154:8012/\"")
+            buildConfigField("String", "HOST_LOGIN", "\"http://iot.ksf.com.cn:90/KSFReplaceApi/\"")
         }
     }
 

@@ -7,7 +7,6 @@ buildscript {
         mavenCentral()
         google()
         gradlePluginPortal()
-        maven(Repositories.REPO_MAVEN_MAVEN2)
     }
     dependencies {
         classpath(Dependencies.Android.gradlePlugin)

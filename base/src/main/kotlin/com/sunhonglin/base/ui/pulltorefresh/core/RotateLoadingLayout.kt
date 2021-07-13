@@ -29,8 +29,8 @@ class RotateLoadingLayout(
 
     private val mRotateAnimation: Animation
     private var mHeaderImageMatrix: Matrix? = null
-    var mRotationPivotX = 0f
-    var mRotationPivotY = 0f
+    private var mRotationPivotX = 0f
+    private var mRotationPivotY = 0f
     private var mRotateDrawableWhilePulling: Boolean =
         attrs.getBoolean(R.styleable.PullToRefreshBase_ptrRotateDrawableWhilePulling, true)
 
