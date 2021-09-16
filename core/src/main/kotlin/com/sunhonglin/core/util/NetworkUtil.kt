@@ -1,10 +1,10 @@
 package com.sunhonglin.core.util
 
+import android.text.TextUtils
 import com.sunhonglin.core.data.service.RequestResult
 import java.io.IOException
-import java.net.ConnectException
-import java.net.SocketException
-import java.net.UnknownHostException
+import java.io.InterruptedIOException
+import java.net.SocketTimeoutException
 
 suspend fun <T : Any> safeApiCall(
     call: suspend () -> RequestResult<T>,
@@ -12,17 +12,14 @@ suspend fun <T : Any> safeApiCall(
 ): RequestResult<T> {
     return try {
         call()
-    } catch (e: SocketException) {
-        e.printStackTrace()
-        RequestResult.Error(IOException(errorMessage, e))
-    } catch (e: ConnectException) {
-        e.printStackTrace()
-        RequestResult.Error(IOException(errorMessage, e))
-    } catch (e: UnknownHostException) {
-        e.printStackTrace()
-        RequestResult.Error(IOException(errorMessage, e))
     } catch (e: Exception) {
         e.printStackTrace()
-        RequestResult.Error(IOException(errorMessage, e))
+        when {
+            e is SocketTimeoutException || (e is InterruptedIOException && TextUtils.equals(
+                e.message,
+                "timeout"
+            )) -> RequestResult.Error(IOException("$errorMessage：请求超时", e))
+            else -> RequestResult.Error(IOException("$errorMessage：网络请求异常", e))
+        }
     }
 }

@@ -1,10 +1,12 @@
 apply("$rootDir/gradle/configure-android-defaults.kts")
 
 plugins {
-    id("com.android.library")
+    id("com.android.application")
+    id("kotlin-android")
     kotlin("android")
     kotlin("kapt")
     kotlin("plugin.serialization")
+    id("dagger.hilt.android.plugin")
 }
 
 kapt {
@@ -14,9 +16,13 @@ kapt {
 }
 
 android {
+    defaultConfig {
+        applicationId = "com.sunhonglin.core"
+    }
+
     buildTypes {
         getByName("debug") {
-            minifyEnabled(true)
+            minifyEnabled(false)
             //Library will be obfuscated with the mentioned rules.
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "consumer-rules.pro")
         }
@@ -25,33 +31,41 @@ android {
 
 dependencies {
     api(Dependencies.AndroidX.appcompat)
-
-    // room
-    implementation(Dependencies.AndroidX.Room.runtime)
-    api(Dependencies.AndroidX.Room.ktx)
-    kapt(Dependencies.AndroidX.Room.compiler)
+    api(Dependencies.AndroidX.activity)
+    api(Dependencies.AndroidX.fragment)
+    api(Dependencies.AndroidX.core)
+    api(Dependencies.AndroidX.loader)
+    api(Dependencies.AndroidX.customView)
+    api(Dependencies.AndroidX.viewPager2)
+    api(Dependencies.AndroidX.drawerLayout)
+    api(Dependencies.AndroidX.constraintLayout)
+    api(Dependencies.AndroidX.Annotation.runtime)
 
     // lifecycle
     api(Dependencies.AndroidX.Lifecycle.viewModel)
     api(Dependencies.AndroidX.Lifecycle.liveData)
     implementation(Dependencies.AndroidX.Lifecycle.runtime)
-    api(Dependencies.AndroidX.Lifecycle.viewModeSavedState)
+    api(Dependencies.AndroidX.Lifecycle.viewModelSavedState)
     kapt(Dependencies.AndroidX.Lifecycle.compiler)
 
-    // dagger
-    api(Dependencies.Google.Dagger.dagger)
-    kapt(Dependencies.Google.Dagger.compiler)
+    // room
+    api(Dependencies.AndroidX.Room.ktx)
+    kapt(Dependencies.AndroidX.Room.compiler)
+
+    // hilt
+    implementation(Dependencies.Google.Hilt.hilt)
+    kapt(Dependencies.Google.Hilt.compiler)
+    kapt(Dependencies.AndroidX.Hilt.compiler)
+    implementation(Dependencies.AndroidX.Hilt.viewModel)
 
     // retrofit2 + okHttp3
     api(Dependencies.SquareUp.OkHttp3.runtime)
     api(Dependencies.SquareUp.OkHttp3.loggingInterceptor)
     api(Dependencies.SquareUp.Retrofit2.runtime)
-    api(Dependencies.SquareUp.Retrofit2.converter_gson)
-    implementation(Dependencies.JakeWharton.converter_serialization)
+    api(Dependencies.JakeWharton.converter_serialization)
 
     // Coroutines
-    implementation(Dependencies.KotlinX.Coroutines.core)
-    implementation(Dependencies.KotlinX.Coroutines.android)
+    implementation(Dependencies.KotlinX.coroutines)
 
     // serialization
     api(Dependencies.KotlinX.serialization)

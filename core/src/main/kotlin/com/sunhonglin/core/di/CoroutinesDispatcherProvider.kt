@@ -16,5 +16,5 @@ data class CoroutinesDispatcherProvider(
 ) {
 
     @Inject
-    constructor() : this(Main, Default, IO)
+    constructor() : this(main = Main, computation = Default, io = IO)
 }
