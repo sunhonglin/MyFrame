@@ -7,7 +7,6 @@ import com.sunhonglin.core.util.defaultJson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
@@ -19,7 +18,7 @@ import retrofit2.Converter
  */
 @Module
 @InstallIn(SingletonComponent::class)
-open class CoreModule {
+class CoreModule {
 
     @Provides
     fun providesJson(): Json = defaultJson()
@@ -41,6 +40,4 @@ open class CoreModule {
     @Provides
     fun providesOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient.Builder().addInterceptor(interceptor).build()
-
-
 }

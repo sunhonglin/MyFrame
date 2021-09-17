@@ -7,7 +7,7 @@ import com.sunhonglin.core.data.service.RequestResult
 import com.sunhonglin.core.util.safeApiCall
 import javax.inject.Inject
 
-class AppUpdateDataSource (
+class AppUpdateDataSource @Inject constructor(
     private val appUpdateService: AppUpdateService
 ) {
     suspend fun toAppUpdate(

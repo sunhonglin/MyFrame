@@ -1,8 +1,7 @@
 apply("$rootDir/gradle/configure-android-defaults.kts")
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    id("com.android.library")
     kotlin("android")
     kotlin("kapt")
     kotlin("plugin.serialization")
@@ -16,13 +15,9 @@ kapt {
 }
 
 android {
-    defaultConfig {
-        applicationId = "com.sunhonglin.core"
-    }
-
     buildTypes {
         getByName("debug") {
-            minifyEnabled(false)
+            minifyEnabled(true)
             //Library will be obfuscated with the mentioned rules.
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "consumer-rules.pro")
         }
