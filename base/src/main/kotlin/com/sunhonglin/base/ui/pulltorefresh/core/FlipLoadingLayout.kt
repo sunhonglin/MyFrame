@@ -11,9 +11,9 @@ import android.widget.ImageView.ScaleType
 import com.sunhonglin.base.R
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase.Mode
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase.Orientation
-import com.sunhonglin.core.util.gone
-import com.sunhonglin.core.util.inVisible
-import com.sunhonglin.core.util.visible
+import com.sunhonglin.base.utils.gone
+import com.sunhonglin.base.utils.inVisible
+import com.sunhonglin.base.utils.visible
 import kotlin.math.max
 
 @SuppressLint("ViewConstructor")

@@ -40,12 +40,12 @@
     <!--    Line 1 end-->
 
     <!--    Line 2 start-->
-    <!--  Q quatratic bezier 二次贝塞尔曲线 -->
+    <!--  Quartic bezier 二次贝塞尔曲线 -->
     <path
         android:fillColor="#FF0000"
         android:pathData="M10,110 q20,150 80,20Z" />
 
-    <!--  C cubic bezier 三次贝塞尔曲线-->
+    <!--  Cubic bezier 三次贝塞尔曲线-->
     <path
         android:fillColor="#00FF00"
         android:pathData=" M110,110 c0,0 20,150 80,20Z" />

@@ -9,9 +9,9 @@ import com.sunhonglin.base.activity.WebActivity
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
 import com.sunhonglin.base.databinding.LayoutDefaultToolbarBinding
 import com.sunhonglin.base.utils.TimeUtil
-import com.sunhonglin.core.util.gone
+import com.sunhonglin.base.utils.gone
+import com.sunhonglin.base.utils.skipActivity
 import com.sunhonglin.core.util.setDebounceOnClickListener
-import com.sunhonglin.core.util.skipActivity
 import com.sunhonglin.myframe.R
 import com.sunhonglin.myframe.databinding.ActivityHomeBinding
 import com.sunhonglin.myframe.ui.login.LoginActivity

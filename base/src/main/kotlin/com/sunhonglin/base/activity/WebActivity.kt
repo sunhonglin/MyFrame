@@ -12,10 +12,10 @@ import com.sunhonglin.base.StatusBarMode
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
 import com.sunhonglin.base.databinding.ActivityWebBinding
 import com.sunhonglin.base.databinding.LayoutDefaultToolbarBinding
-import com.sunhonglin.base.utils.DialogUtil
-import com.sunhonglin.core.util.get
-import com.sunhonglin.core.util.gone
-import com.sunhonglin.core.util.visible
+import com.sunhonglin.base.utils.showToastInfo
+import com.sunhonglin.base.utils.get
+import com.sunhonglin.base.utils.gone
+import com.sunhonglin.base.utils.visible
 import timber.log.Timber
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -49,7 +49,7 @@ class WebActivity : DefaultToolbarActivity() {
 
         val webPath = intent.get<String>(PATH) //加载的URL
         if (webPath.isNullOrBlank()) {
-            DialogUtil.showTipDialog(mContext, getString(R.string.url_cannot_null))
+            showToastInfo(resId = R.string.tip_url_cannot_null)
             return
         }
 

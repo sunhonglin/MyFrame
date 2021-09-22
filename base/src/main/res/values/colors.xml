@@ -4,6 +4,14 @@
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="colorPrimaryCold">#00FF00</color>
+    <color name="colorPrimaryDarkCold">#00FF00</color>
+    <color name="colorAccentCold">#00FF00</color>
+
+    <color name="colorPrimaryHeat">#FF0000</color>
+    <color name="colorPrimaryDarkHeat">#FF0000</color>
+    <color name="colorAccentHeat">#FF0000</color>
+
     <!--纯透明-->
     <color name="color_transparent">#00000000</color>
 
@@ -32,9 +40,13 @@
     <color name="color_black_alpha_10">#1A000000</color><!--90%透明度黑色-->
 
     <!--other-->
-    <color name="color_333">#333333</color>
+    <color name="color_333">#333333</color>¬
     <color name="color_666">#666666</color>
     <color name="color_999">#999999</color>
     <color name="color_eee">#EEEEEE</color>
     <color name="color_bbb">#BBBBBB</color>
+    <color name="color_ccc">#CCCCCC</color>
+
+    <color name="color_D5FAFF">#D5FAFF</color>
+    <color name="color_3678CC">#3678CC</color>
 </resources>

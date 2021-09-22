@@ -9,9 +9,12 @@ import com.sunhonglin.core.data.service.BaseResponse
 import com.sunhonglin.core.data.service.RequestResult
 import com.sunhonglin.myframe.data.login.LoginRepository
 import com.sunhonglin.myframe.data.login.model.LoginData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel(
+@HiltViewModel
+class LoginViewModel @Inject constructor(
     private val loginRepository: LoginRepository,
     private val dispatcherProvider: CoroutinesDispatcherProvider
 ) : ViewModel() {

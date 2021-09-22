@@ -9,7 +9,7 @@ class BaseViewHolder(
 ) : RecyclerView.ViewHolder(itemView) {
 
     companion object {
-        internal inline fun create(
+        inline fun create(
             parent: ViewGroup,
             layoutId: Int,
             crossinline inflate: (layoutId: Int, container: ViewGroup, attach: Boolean) -> View

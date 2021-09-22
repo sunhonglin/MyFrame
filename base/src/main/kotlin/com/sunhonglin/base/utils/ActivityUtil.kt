@@ -1,6 +1,6 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.sunhonglin.core.util
+package com.sunhonglin.base.utils
 
 import android.app.Activity
 import android.content.Context

@@ -6,9 +6,9 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase
-import com.sunhonglin.core.util.inVisible
+import com.sunhonglin.base.utils.inVisible
 import com.sunhonglin.core.util.setDebounceOnClickListener
-import com.sunhonglin.core.util.visible
+import com.sunhonglin.base.utils.visible
 
 class PTRRecyclerView : PullToRefreshBase<RecyclerView> {
     var ddy = 0

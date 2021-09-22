@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/color_white">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_debug"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,7 +21,7 @@
             android:visibility="gone"
             tools:visibility="visible">
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -38,10 +39,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="@string/app_has_exception"
+                    android:text="@string/tip_app_has_exception"
                     android:textColor="@color/color_333"
                     android:textSize="18sp" />
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_error_debug"
@@ -51,9 +52,9 @@
                 android:scrollbars="vertical"
                 android:textColor="@color/color_666"
                 android:textSize="12sp" />
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_release"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -75,10 +76,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/app_has_exception"
+                android:text="@string/tip_app_has_exception"
                 android:textColor="@color/color_333"
                 android:textSize="18sp" />
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -87,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_margin="20dp"
-        android:background="@drawable/shape_corner_circle"
+        android:background="@drawable/shape_circle"
         android:backgroundTint="@color/colorAccent"
         android:gravity="center"
         android:paddingHorizontal="40dp"
@@ -95,4 +96,4 @@
         android:text="@string/restart"
         android:textColor="@color/color_white"
         android:textSize="16sp" />
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

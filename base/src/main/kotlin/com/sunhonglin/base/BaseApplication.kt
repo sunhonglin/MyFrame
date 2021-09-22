@@ -1,7 +1,9 @@
 package com.sunhonglin.base
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Intent
+import androidx.annotation.CallSuper
 import com.sunhonglin.base.activity.CrashActivity
 import timber.log.Timber
 
@@ -12,6 +14,8 @@ open class BaseApplication : Application() {
 
     private var crashActivity: Class<*>? = null
 
+    @CallSuper
+    @SuppressLint("MissingSuperCall")
     override fun onCreate() {
         super.onCreate()
         app = this

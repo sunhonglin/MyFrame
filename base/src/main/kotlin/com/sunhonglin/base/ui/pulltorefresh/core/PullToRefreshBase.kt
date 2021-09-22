@@ -14,8 +14,8 @@ import androidx.core.view.ViewCompat
 import com.sunhonglin.base.R
 import com.sunhonglin.base.ui.pulltorefresh.inn.ILoadingLayout
 import com.sunhonglin.base.ui.pulltorefresh.inn.IPullToRefresh
-import com.sunhonglin.base.utils.DialogUtil
-import com.sunhonglin.core.util.inVisible
+import com.sunhonglin.base.utils.showToastInfo
+import com.sunhonglin.base.utils.inVisible
 import timber.log.Timber
 import kotlin.math.abs
 import kotlin.math.max
@@ -48,7 +48,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
     private var mMode = Mode.default
     private lateinit var mCurrentMode: Mode
     lateinit var mRefreshableView: T
-    lateinit var refreshableViewWrapper: FrameLayout
+    private lateinit var refreshableViewWrapper: FrameLayout
     private var mShowViewWhileRefreshing = true
     private var mScrollingWhileRefreshingEnabled = false
     private var mFilterTouchEvents = true
@@ -57,9 +57,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
     private var mScrollAnimationInterpolator: Interpolator? = null
     private var mLoadingAnimationStyle = AnimationStyle.default
     private lateinit var headerLayout: LoadingLayout
-        private set
-    lateinit var footerLayout: LoadingLayout
-        private set
+    private lateinit var footerLayout: LoadingLayout
     private var mOnRefreshListener: OnRefreshListener<T>? = null
     private var mOnRefreshListener2: OnRefreshListener2<T>? = null
     private var mOnPullEventListener: OnPullEventListener<T>? = null
@@ -152,7 +150,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
     fun showNoMore() {
         setMode(Mode.PULL_FROM_START)
         onRefreshComplete()
-        DialogUtil.showTipDialog(context, "没有更多了")
+        context.showToastInfo(resId = R.string.tip_no_more)
     }
 
     override fun isPullToRefreshEnabled(): Boolean {
@@ -381,7 +379,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      * Used internally for adding view. Need because we override addView to
      * pass-through to the Refreshable View
      */
-    fun addViewInternal(child: View, index: Int, params: ViewGroup.LayoutParams) {
+    private fun addViewInternal(child: View, index: Int, params: ViewGroup.LayoutParams) {
         super.addView(child, index, params)
     }
 
@@ -389,11 +387,11 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      * Used internally for adding view. Need because we override addView to
      * pass-through to the Refreshable View
      */
-    fun addViewInternal(child: View, params: ViewGroup.LayoutParams) {
+    private fun addViewInternal(child: View, params: ViewGroup.LayoutParams) {
         super.addView(child, -1, params)
     }
 
-    fun createLoadingLayout(
+    private fun createLoadingLayout(
         context: Context,
         mode: Mode,
         attrs: TypedArray
@@ -428,17 +426,17 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
         mLayoutVisibilityChangesEnabled = false
     }
 
-    val footerSize: Int
+    private val footerSize: Int
         get() = footerLayout.contentSize
 
-    val headerSize: Int
+    private val headerSize: Int
         get() = headerLayout.contentSize
 
     /**
      * Called when the UI has been to be updated to be in the
      * [State.PULL_TO_REFRESH] state.
      */
-    fun onPullToRefresh() {
+    private fun onPullToRefresh() {
         when (mCurrentMode) {
             Mode.PULL_FROM_END -> footerLayout.pullToRefresh()
             Mode.PULL_FROM_START -> headerLayout.pullToRefresh()
@@ -453,7 +451,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      *
      * @param doScroll - Whether the UI should scroll for this event.
      */
-    fun onRefreshing(doScroll: Boolean) {
+    private fun onRefreshing(doScroll: Boolean) {
         if (mMode.showHeaderLoadingLayout()) {
             headerLayout.refreshing()
         }
@@ -490,7 +488,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      * Called when the UI has been to be updated to be in the
      * [State.RELEASE_TO_REFRESH] state.
      */
-    fun onReleaseToRefresh() {
+    private fun onReleaseToRefresh() {
         when (mCurrentMode) {
             Mode.PULL_FROM_END -> footerLayout.releaseToRefresh()
             Mode.PULL_FROM_START -> headerLayout.releaseToRefresh()
@@ -503,7 +501,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      * Called when the UI has been to be updated to be in the
      * [State.RESET] state.
      */
-    fun onReset() {
+    private fun onReset() {
         mIsBeingDragged = false
         mLayoutVisibilityChangesEnabled = true
 
@@ -515,7 +513,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
 
     override fun onRestoreInstanceState(state: Parcelable) {
         /**
-         * 解决sameid crash 的问题
+         * 解决same id crash 的问题
          */
         try {
             if (state is Bundle) {
@@ -547,7 +545,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
         val bundle = Bundle()
 
         // Let derivative classes get a chance to save state first, that way we
-        // can make sure they don't overrite any of our values
+        // can make sure they don't overwrite any of our values
         onPtrSaveInstanceState(bundle)
         bundle.putInt(STATE_STATE, mState.intValue)
         bundle.putInt(STATE_MODE, mMode.intValue)
@@ -578,7 +576,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      * Re-measure the Loading Views height, and adjust internal padding as
      * necessary
      */
-    fun refreshLoadingViewsSize() {
+    private fun refreshLoadingViewsSize() {
         val maximumPullScroll = (maximumPullScroll * 1.2f).toInt()
         var pLeft = paddingLeft
         var pTop = paddingTop
@@ -626,7 +624,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
         setPadding(pLeft, pTop, pRight, pBottom)
     }
 
-    fun refreshRefreshableViewSize(width: Int, height: Int) {
+    private fun refreshRefreshableViewSize(width: Int, height: Int) {
         // We need to set the Height of the Refreshable View to the same as
         // this layout
         val lp = refreshableViewWrapper.layoutParams as LayoutParams
@@ -656,13 +654,17 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
         val maximumPullScroll = maximumPullScroll
         mValue = min(maximumPullScroll, max(-maximumPullScroll, mValue))
         if (mLayoutVisibilityChangesEnabled) {
-            if (mValue < 0) {
-                headerLayout.visibility = VISIBLE
-            } else if (mValue > 0) {
-                footerLayout.visibility = VISIBLE
-            } else {
-                headerLayout.visibility = INVISIBLE
-                footerLayout.visibility = INVISIBLE
+            when {
+                mValue < 0 -> {
+                    headerLayout.visibility = VISIBLE
+                }
+                mValue > 0 -> {
+                    footerLayout.visibility = VISIBLE
+                }
+                else -> {
+                    headerLayout.visibility = INVISIBLE
+                    footerLayout.visibility = INVISIBLE
+                }
             }
         }
         if (USE_HW_LAYERS) {
@@ -688,7 +690,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      *
      * @param scrollValue - Position to scroll to
      */
-    fun smoothScrollTo(scrollValue: Int) {
+    private fun smoothScrollTo(scrollValue: Int) {
         smoothScrollTo(scrollValue, pullToRefreshScrollDuration.toLong())
     }
 
@@ -699,7 +701,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      * @param scrollValue - Position to scroll to
      * @param listener    - Listener for scroll
      */
-    fun smoothScrollTo(scrollValue: Int, listener: OnSmoothScrollFinishedListener?) {
+    private fun smoothScrollTo(scrollValue: Int, listener: OnSmoothScrollFinishedListener?) {
         smoothScrollTo(scrollValue, pullToRefreshScrollDuration.toLong(), 0, listener)
     }
 
@@ -717,7 +719,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      * Updates the View State when the mode has been set. This does not do any
      * checking that the mode is different to current state so always updates.
      */
-    fun updateUIForMode() {
+    private fun updateUIForMode() {
         // We need to use the correct LayoutParam values, based on scroll
         // direction
         val lp = loadingLayoutLayoutParams
@@ -878,7 +880,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
         }
         setHeaderScroll(newScrollValue)
         if (newScrollValue != 0 && !isRefreshing()) {
-            val scale = Math.abs(newScrollValue) / itemDimension.toFloat()
+            val scale = abs(newScrollValue) / itemDimension.toFloat()
             when (mCurrentMode) {
                 Mode.PULL_FROM_END -> footerLayout.onPull(scale)
                 Mode.PULL_FROM_START -> headerLayout.onPull(scale)
@@ -927,9 +929,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
         newScrollValue: Int, duration: Long, delayMillis: Long,
         listener: OnSmoothScrollFinishedListener?
     ) {
-        mCurrentSmoothScrollRunnable?.let {
-            it.stop()
-        }
+        mCurrentSmoothScrollRunnable?.stop()
         val oldScrollValue = when (pullToRefreshScrollDirection) {
             Orientation.HORIZONTAL -> scrollX
             else -> scrollY
@@ -1216,7 +1216,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
         MANUAL_REFRESHING(0x9),
 
         /**
-         * When the UI is currently overscrolling, caused by a fling on the
+         * When the UI is currently overScrolling, caused by a fling on the
          * Refreshable View.
          * 由于结束滑动，可以刷新视图
          */
@@ -1292,7 +1292,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
 
     /**
      * Allows Derivative classes to handle the XML Attrs without creating a
-     * TypedArray themsevles
+     * TypedArray
      *
      * @param a - TypedArray of PullToRefresh Attributes
      */
@@ -1357,5 +1357,4 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
      * [Orientation.HORIZONTAL] depending on the scroll direction.
      */
     abstract val pullToRefreshScrollDirection: Orientation
-        get
 }

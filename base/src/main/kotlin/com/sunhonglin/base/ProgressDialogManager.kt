@@ -4,19 +4,8 @@ import androidx.fragment.app.FragmentActivity
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
 
 interface ProgressDialogManager {
-    /**
-     * Creates a progress dialog and immediately displays it.
-     */
     fun showProgressDialog()
-
-    /**
-     * Dismiss this progress dialog, removing it from the screen.
-     */
     fun dismissProgressDialog()
-
-    /**
-     * Returns whether the progress dialog is currently showing.
-     */
     fun isProgressDialogShowing(): Boolean
 }
 

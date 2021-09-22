@@ -4,7 +4,7 @@ import com.sunhonglin.core.data.service.BaseResponse
 import com.sunhonglin.core.data.service.RequestResult
 import com.sunhonglin.myframe.data.login.model.LoginData
 
-class LoginRepository(
+class LoginRepository (
     private val loginDataSource: LoginDataSource
 ) {
     suspend fun toLogin(

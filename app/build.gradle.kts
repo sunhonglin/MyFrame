@@ -2,25 +2,25 @@ apply("$rootDir/gradle/configure-android-defaults.kts")
 
 plugins {
     id("com.android.application")
-    id("kotlin-android")
     kotlin("android")
     kotlin("kapt")
     kotlin("plugin.serialization")
+    id("dagger.hilt.android.plugin")
 }
 
 var appName = property("APP_NAME")
 android {
     defaultConfig {
         applicationId = group.toString()
-        flavorDimensions("channel")
+        flavorDimensions.add("channel")
     }
 
     signingConfigs {
         create("release") {
-            rootProject
-            keyAlias(property(rootProject, KeystorePropertiesFilePath, "keyAlias").toString())
-            keyPassword(property(rootProject, KeystorePropertiesFilePath, "keyPassword").toString())
-            storeFile(
+            keyAlias = property(rootProject, KeystorePropertiesFilePath, "keyAlias").toString()
+            keyPassword =
+                property(rootProject, KeystorePropertiesFilePath, "keyPassword").toString()
+            storeFile =
                 rootProject.file(
                     property(
                         rootProject,
@@ -28,23 +28,21 @@ android {
                         "storeFile"
                     ).toString()
                 )
-            )
-            storePassword(
+            storePassword =
                 property(
                     rootProject,
                     KeystorePropertiesFilePath,
                     "storePassword"
                 ).toString()
-            )
             enableV2Signing = true
         }
     }
 
     buildTypes {
         getByName("release") {
-            setSigningConfig(signingConfigs["release"])
-            minifyEnabled(true)
-            debuggable(false)
+            signingConfig = signingConfigs["release"]
+            isMinifyEnabled = true
+            isDebuggable = false
             isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -53,15 +51,20 @@ android {
             buildConfigField("String", "HOST_LOGIN", "\"http://iot.ksf.com.cn:90/KSFReplaceApi/\"")
         }
         getByName("debug") {
-            setSigningConfig(signingConfigs["release"])
-            debuggable(true)
+            signingConfig = signingConfigs["release"]
+            isMinifyEnabled = true
+            isDebuggable = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             buildConfigField("String", "HOST_LOGIN", "\"http://iot.ksf.com.cn:90/KSFReplaceApi/\"")
         }
     }
 
     productFlavors {
-        create("OfficialWebsite")//官网
-        create("HuaWei")//华为
+        create("official")//官网
+//        create("HuaWei")//华为
     }
     productFlavors.all {
         manifestPlaceholders["CHANNEL_NAME"] = name
@@ -72,36 +75,19 @@ android {
         outputs.all {
             if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
                 outputFileName =
-                    "${appName}_V${versionName}_${
-                        when (buildType) {
-                            "release" -> {
-                                "正式版"
-                            }
-                            "debug" -> "测试版"
-                            else -> outputFileName
-                        }
-                    }_${systemDate()}${
+                    "${appName}_${buildType}_V${versionName}_${systemDate()}${
                         when (!flavorName.isNullOrBlank()) {
                             true -> "_$flavorName"
                             else -> ""
                         }
                     }.apk"
-
-                when (buildType == "release") {
-                    true -> tasks.forEach {
-                        if (it.name == ("assemble" + flavorName.capitalize() + "Release")) {
-                            it.doLast {
+                when (buildType) {
+                    "release" -> {
+                        tasks.getByName("assemble${flavorName.capitalize()}Release") {
+                            this.doLast {
                                 copy {
                                     from("${buildDir}/outputs/apk/$flavorName/$buildType/$outputFileName")
                                     into("${rootDir.absolutePath}/apk/")
-                                    rename {
-                                        "${appName}_V${versionName}${
-                                            when (!flavorName.isNullOrBlank()) {
-                                                true -> "_$flavorName"
-                                                else -> ""
-                                            }
-                                        }.apk"
-                                    }
                                 }
                             }
                         }
@@ -119,13 +105,15 @@ dependencies {
             include("*.aar")
         }
     )
-    implementation(Dependencies.Google.material)
 
     implementation(project(":core"))
     implementation(project(":base"))
-    kapt(Dependencies.Google.Dagger.compiler)
-    implementation(Dependencies.TenCent.bugLy)
 
-    implementation(Dependencies.UMEng.UApp.common)
-    implementation(Dependencies.UMEng.UApp.asMs)
+
+    implementation(Dependencies.Google.Hilt.hilt)
+    kapt(Dependencies.Google.Hilt.compiler)
+    kapt(Dependencies.AndroidX.Hilt.compiler)
+    implementation(Dependencies.AndroidX.Hilt.viewModel)
+
+    implementation(Dependencies.TenCent.bugLy)
 }

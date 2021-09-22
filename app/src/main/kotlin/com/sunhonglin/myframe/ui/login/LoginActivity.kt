@@ -3,36 +3,32 @@ package com.sunhonglin.myframe.ui.login
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.sunhonglin.base.StatusBarMode
-import com.sunhonglin.base.activity.BaseActivity
 import com.sunhonglin.base.activity.DefaultToolbarActivity
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
-import com.sunhonglin.core.util.get
+import com.sunhonglin.base.utils.get
 import com.sunhonglin.base.utils.loadImage
 import com.sunhonglin.core.data.service.RequestResult
 import com.sunhonglin.core.util.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityLoginBinding
-import com.sunhonglin.myframe.di.login.inject
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginActivity : DefaultToolbarActivity() {
     lateinit var binding: ActivityLoginBinding
 
-    @Inject
-    lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun inflateContent(
         parentBinding: ActivityBaseContentBinding,
         savedInstanceState: Bundle?
     ) {
         setStatusBarMode(StatusBarMode.LIGHT)
-
-        inject(this)
 
         binding = ActivityLoginBinding.inflate(layoutInflater, parentBinding.content, true)
 
@@ -64,7 +60,7 @@ class LoginActivity : DefaultToolbarActivity() {
         Timber.i("key2 --> ${intent.get<MutableList<String>>("key2")}")
 
 
-        var requestOptions = RequestOptions.circleCropTransform()
+        val requestOptions = RequestOptions.circleCropTransform()
         binding.ivGlide.loadImage(
             "https://t7.baidu.com/it/u=612028266,626816349&fm=193&f=GIF",
             false,

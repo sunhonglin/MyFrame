@@ -1,8 +1,9 @@
 package com.sunhonglin.base.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.text.Html
+import android.provider.Settings
 import android.text.Spanned
 import androidx.core.text.HtmlCompat
 import kotlin.system.exitProcess
@@ -18,4 +19,21 @@ fun restartApp(context: Context) {
         context.startActivity(it)
     }
     exitProcess(1)
+}
+
+fun Context.getAppVersionName(): String {
+    return packageManager.getPackageInfo(packageName, 0).versionName
+}
+
+fun Context.getAndroidId(): String {
+    return Settings.System.getString(
+        contentResolver,
+        Settings.Secure.ANDROID_ID
+    )
+}
+
+fun Context.postMainThread(unit: () -> Unit) {
+    (this as Activity).runOnUiThread {
+        unit()
+    }
 }

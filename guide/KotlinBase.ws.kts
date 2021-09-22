@@ -61,6 +61,7 @@ class Rectangle(val height: Int, val width: Int) {
     //声明无参数的函数
 //    val isSquare = height == width
 }
+
 val rectangle = Rectangle(41, 43)
 println(rectangle.isSquare)
 
@@ -158,11 +159,46 @@ fun evalWithLogging(e: Expr): Int =
         }
         else -> throw IllegalArgumentException("Unknown expression")
     }
-println(evalWithLogging(
-    Sum(
+println(
+    evalWithLogging(
         Sum(
-            Num(1),
-            Num(2)),
-        Num(4)
+            Sum(
+                Num(1),
+                Num(2)
+            ),
+            Num(4)
+        )
     )
-))
+)
+
+//--------------------------------------------------------------------------------------------------
+@Suppress("LeakingThis")
+abstract class abs(a: Int) {
+    abstract val text: String
+
+    init {
+        println(text)
+    }
+}
+
+class b(
+    b: Int
+): abs(b) {
+    override val text: String
+        get() = "234"
+}
+
+
+b(567)
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------------------------------

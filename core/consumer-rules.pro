@@ -22,7 +22,7 @@
 
 -keep class *.**{ *; }
 
--keep class kotlinx.serialization.*.** { *; }
+#-keep class kotlinx.serialization.*.** { *; }
 
 #-keepattributes *Annotation*, InnerClasses
 #-dontnote kotlinx.serialization.AnnotationsKt # core serialization annotations
@@ -44,4 +44,5 @@
 #    kotlinx.serialization.KSerializer serializer(...);
 #}
 
--dontwarn org.conscrypt.ConscryptHostnameVerifier
+#-dontwarn org.conscrypt.ConscryptHostnameVerifier
+-dontwarn java.lang.invoke.StringConcatFactory

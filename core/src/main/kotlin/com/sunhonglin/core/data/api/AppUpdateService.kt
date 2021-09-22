@@ -24,7 +24,7 @@ interface AppUpdateService {
 
     @GET
     @Streaming
-    suspend fun toDownLoadApk(
+    fun toDownLoadApk(
         @Url url: String
-    ): ResponseBody
+    ): Call<ResponseBody>
 }

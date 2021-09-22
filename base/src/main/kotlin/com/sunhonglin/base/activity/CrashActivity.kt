@@ -3,21 +3,20 @@ package com.sunhonglin.base.activity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import com.sunhonglin.base.BuildConfig
-import com.sunhonglin.base.StatusBarMode
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
 import com.sunhonglin.base.databinding.ActivityCrashBinding
 import com.sunhonglin.base.databinding.LayoutDefaultToolbarBinding
 import com.sunhonglin.base.utils.restartApp
-import com.sunhonglin.core.util.gone
+import com.sunhonglin.base.utils.gone
 import com.sunhonglin.core.util.setDebounceOnClickListener
-import com.sunhonglin.core.util.visible
+import com.sunhonglin.base.utils.visible
 
 class CrashActivity : DefaultToolbarActivity() {
     companion object {
         const val EXTRA_STACK_TRACE = "EXTRA_STACK_TRACE"
     }
 
-    lateinit var binding: ActivityCrashBinding
+    private lateinit var binding: ActivityCrashBinding
 
     override fun configureToolbarContent(toolbarBinding: LayoutDefaultToolbarBinding) {
         super.configureToolbarContent(toolbarBinding)
@@ -29,7 +28,6 @@ class CrashActivity : DefaultToolbarActivity() {
         parentBinding: ActivityBaseContentBinding,
         savedInstanceState: Bundle?
     ) {
-        setStatusBarMode(StatusBarMode.LIGHT)
 
         binding = ActivityCrashBinding.inflate(layoutInflater, parentBinding.content, true)
 

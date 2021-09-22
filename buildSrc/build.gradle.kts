@@ -1,5 +1,5 @@
 plugins {
-    kotlin(module = "jvm") version "1.5.0"
+    kotlin(module = "jvm") version "1.5.30"
 }
 
 repositories {
@@ -7,6 +7,6 @@ repositories {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }

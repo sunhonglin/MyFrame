@@ -10,11 +10,14 @@ plugins {
 dependencies {
     implementation(project(":core"))
 
-    api(Dependencies.QMUITeam.qmui)
-    api(Dependencies.JakeWharton.timber)
-    implementation(Dependencies.Google.gson)
-
     // glide
     api(Dependencies.GitHub.Glide.runtime)
     kapt(Dependencies.GitHub.Glide.compiler)
+
+    api(Dependencies.eventBus)
+    api(Dependencies.QMUITeam.qmui)
+    api(Dependencies.JakeWharton.timber)
+    api(Dependencies.autoSize)
+    implementation(Dependencies.PERMISSION.acp)
+    implementation(Dependencies.AndroidX.Datastore.preferences)
 }

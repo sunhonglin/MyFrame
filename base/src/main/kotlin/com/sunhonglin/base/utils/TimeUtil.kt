@@ -1,6 +1,5 @@
 package com.sunhonglin.base.utils
 
-import android.text.TextUtils
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -14,12 +13,8 @@ class TimeUtil {
          * @param pattern
          * @return 默认返回yyyy-MM-dd HH:mm:ss格式。
          */
-        private fun simpleDateFormat(pattern: String?): SimpleDateFormat {
-            var p = pattern
-            if (TextUtils.isEmpty(p)) {
-                p = DEFAULT_PATTERN
-            }
-            return SimpleDateFormat(p, Locale.getDefault())
+        private fun simpleDateFormat(pattern: String? = DEFAULT_PATTERN): SimpleDateFormat {
+            return SimpleDateFormat(pattern, Locale.getDefault())
         }
 
         /**
@@ -30,7 +25,7 @@ class TimeUtil {
          * @param format 时间格式
          * @return 时间字符串
          */
-        fun curTimeString(format: String?): String {
+        fun curTimeString(format: String? = null): String {
             return date2String(Date(), format)
         }
 
@@ -41,12 +36,13 @@ class TimeUtil {
          * @param date   日期
          * @return
          */
-        fun date2String(date: Date?, pattern: String?): String {
+        fun date2String(date: Date?, pattern: String? = DEFAULT_PATTERN): String {
             return if (date == null) ""
             else simpleDateFormat(pattern).format(date)
         }
 
         private var mExitTime = 0L
+
         /**
          * 双击返回退出
          *

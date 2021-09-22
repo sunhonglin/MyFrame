@@ -156,7 +156,7 @@ interface IPullToRefresh<T : View> {
      * Set OnPullEventListener for the Widget
      *
      * @param listener - Listener to be used when the Widget has a pull event to
-     * propogate.
+     * propagate.
      */
     fun setOnPullEventListener(listener: PullToRefreshBase.OnPullEventListener<T>?)
 

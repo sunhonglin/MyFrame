@@ -1,5 +1,6 @@
 package com.sunhonglin.base.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -12,6 +13,7 @@ open class BaseRcvAdapter<T>(
 ) : RecyclerView.Adapter<BaseViewHolder>() {
     open val mList = mutableListOf<T>()
 
+    @SuppressLint("NotifyDataSetChanged")
     open fun setData(list: MutableList<T>) {
         mList.clear()
         mList.addAll(list)
@@ -20,8 +22,9 @@ open class BaseRcvAdapter<T>(
 
     /**
      * 添加数据
-     * @param datas 数据
+     * @param list 数据
      */
+    @SuppressLint("NotifyDataSetChanged")
     open fun addData(list: MutableList<T>) {
         mList.addAll(list)
         notifyDataSetChanged()
@@ -31,7 +34,7 @@ open class BaseRcvAdapter<T>(
         return mList.size
     }
 
-    open fun getItem(position: Int): Any? {
+    open fun getItem(position: Int): T {
         return mList[position]
     }
 

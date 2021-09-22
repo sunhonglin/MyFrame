@@ -12,7 +12,7 @@ object OrderFuncUtil {
      * 添加任务到末尾
      */
     fun addFunc(function: () -> Unit?) {
-        var func = Function(function)
+        val func = Function(function)
         doFunc(func)
     }
 
@@ -29,7 +29,7 @@ object OrderFuncUtil {
         queueFun.add(index, Function(function))
 
         if (index == 0) {
-            var funNow = queueFun.poll()
+            val funNow = queueFun.poll()
             currentFun = funNow?.function
             currentFun?.invoke()
         }
@@ -38,7 +38,7 @@ object OrderFuncUtil {
     /**
      * 结束当前任务
      */
-    fun finishFunc() {
+    private fun finishFunc() {
         doFunc(null)
     }
 
@@ -58,7 +58,7 @@ object OrderFuncUtil {
         }
         if (currentFun == null) {
             if (queueFun.size != 0) {
-                var funNow = queueFun.poll()
+                val funNow = queueFun.poll()
                 currentFun = funNow?.function
                 currentFun?.invoke()
             }

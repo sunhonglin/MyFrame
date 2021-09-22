@@ -49,7 +49,7 @@ class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<Recycl
     }
 
     private fun getData(): MutableList<String> {
-        var list = mutableListOf<String>()
+        val list = mutableListOf<String>()
         for (i in 0 until 20) {
             list.add("test ${i + 1}")
         }

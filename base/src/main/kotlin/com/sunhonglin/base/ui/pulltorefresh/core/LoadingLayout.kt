@@ -10,9 +10,15 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.Interpolator
 import android.view.animation.LinearInterpolator
-import android.widget.*
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import com.sunhonglin.base.R
 import com.sunhonglin.base.databinding.LayoutPullToRefreshHeaderHorizontalBinding
@@ -20,44 +26,44 @@ import com.sunhonglin.base.databinding.LayoutPullToRefreshHeaderVerticalBinding
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase.Mode
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase.Orientation
 import com.sunhonglin.base.ui.pulltorefresh.inn.ILoadingLayout
-import com.sunhonglin.core.util.gone
-import com.sunhonglin.core.util.inVisible
-import com.sunhonglin.core.util.visible
+import com.sunhonglin.base.utils.gone
+import com.sunhonglin.base.utils.inVisible
+import com.sunhonglin.base.utils.visible
 
+@Suppress("LeakingThis")
 abstract class LoadingLayout(
     context: Context,
     mode: Mode,
     scrollDirection: Orientation,
     attrs: TypedArray
 ) : FrameLayout(context), ILoadingLayout {
+    companion object {
+        val ANIMATION_INTERPOLATOR: Interpolator = LinearInterpolator()
+    }
 
-    var mInnerLayout: FrameLayout
+    private var mInnerLayout: FrameLayout
     var mHeaderImage: ImageView
     var mHeaderProgress: ProgressBar
 
     var ivRefreshTop: ImageView? = null
-    var lRefreshTips: LinearLayout? = null
-    var mHeaderText: TextView? = null
-    var mSubHeaderText: TextView? = null
+    var lRefreshTips: LinearLayoutCompat? = null
+    private var mHeaderText: TextView? = null
+    private var mSubHeaderText: TextView? = null
 
-    var mUseIntrinsicAnimation = false
-    val mMode: Mode = mode
-    val mScrollDirection: Orientation = scrollDirection
+    private var mUseIntrinsicAnimation = false
+    var mMode: Mode = mode
+    var mScrollDirection: Orientation = scrollDirection
     var mPullLabel: CharSequence? = null
     var defaultPullLabel: CharSequence? = null
     var mRefreshingLabel: CharSequence? = null
-    var mReleaseLabel: CharSequence? = null
+    private var mReleaseLabel: CharSequence? = null
 
-    companion object {
-        val ANIMATION_INTERPOLATOR: Interpolator = LinearInterpolator()
-    }
 
     init {
         when (scrollDirection) {
             Orientation.HORIZONTAL -> {
                 val binding = LayoutPullToRefreshHeaderHorizontalBinding.inflate(
-                    LayoutInflater.from(context),
-                    this
+                    LayoutInflater.from(context), rootView as ViewGroup
                 )
                 mInnerLayout = binding.flInner
                 mHeaderImage = binding.pullToRefreshImage
@@ -65,7 +71,7 @@ abstract class LoadingLayout(
             }
             Orientation.VERTICAL -> {
                 val binding = LayoutPullToRefreshHeaderVerticalBinding.inflate(
-                    LayoutInflater.from(context), this
+                    LayoutInflater.from(context), rootView as ViewGroup
                 )
                 mInnerLayout = binding.flInner
                 mHeaderImage = binding.pullToRefreshImage
@@ -176,7 +182,8 @@ abstract class LoadingLayout(
             colors?.let { setTextColor(it) }
         }
         if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrHeaderSubTextColor)) {
-            val colors = attrs.getColorStateList(R.styleable.PullToRefreshBase_ptrHeaderSubTextColor)
+            val colors =
+                attrs.getColorStateList(R.styleable.PullToRefreshBase_ptrHeaderSubTextColor)
             colors?.let { setSubTextColor(it) }
         }
 
@@ -190,11 +197,13 @@ abstract class LoadingLayout(
                 if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrDrawableEnd)) {
                     imageDrawable = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawableEnd)
                 } else if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrDrawableBottom)) {
-                    imageDrawable = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawableBottom)
+                    imageDrawable =
+                        attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawableBottom)
                 }
             else ->
                 if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrDrawableStart)) {
-                    imageDrawable = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawableStart)
+                    imageDrawable =
+                        attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawableStart)
                 } else if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrDrawableTop)) {
                     imageDrawable = attrs.getDrawable(R.styleable.PullToRefreshBase_ptrDrawableTop)
                 }
@@ -202,7 +211,8 @@ abstract class LoadingLayout(
 
         // If we don't have a user defined drawable, load the default
         if (null == imageDrawable) {
-            imageDrawable = context.resources.getDrawable(defaultDrawableResId, null)
+            imageDrawable =
+                ResourcesCompat.getDrawable(context.resources, defaultDrawableResId, null)
         }
 
         // Set Drawable, and save width/height
@@ -282,9 +292,7 @@ abstract class LoadingLayout(
             // Now call the callback
             refreshingImpl()
         }
-        mSubHeaderText?.let {
-            it.gone()
-        }
+        mSubHeaderText?.gone()
     }
 
     fun releaseToRefresh() {

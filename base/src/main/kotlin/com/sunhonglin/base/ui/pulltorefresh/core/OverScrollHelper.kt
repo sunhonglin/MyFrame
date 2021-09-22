@@ -61,7 +61,7 @@ class OverScrollHelper {
      * @param isTouchEvent - true if this scroll operation is the result of a
      * touch event, passed through from from overScrollBy call
      */
-    fun overScrollBy(
+    private fun overScrollBy(
         view: PullToRefreshBase<*>, deltaX: Int, scrollX: Int,
         deltaY: Int, scrollY: Int, scrollRange: Int, isTouchEvent: Boolean
     ) {
@@ -100,7 +100,7 @@ class OverScrollHelper {
      * @param isTouchEvent - true if this scroll operation is the result of a
      * touch event, passed through from from overScrollBy call
      */
-    fun overScrollBy(
+    private fun overScrollBy(
         view: PullToRefreshBase<*>, deltaX: Int, scrollX: Int,
         deltaY: Int, scrollY: Int, scrollRange: Int, fuzzyThreshold: Int,
         scaleFactor: Float, isTouchEvent: Boolean

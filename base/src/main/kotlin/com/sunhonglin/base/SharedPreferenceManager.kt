@@ -15,7 +15,7 @@ interface SharedPreferenceManager {
 class DefaultSharedPreferenceManager(private val activity: FragmentActivity) :
     SharedPreferenceManager {
     private val sharedPreferences: SharedPreferences by lazy {
-        activity.getSharedPreferences("com_sunhonglin_myframe", Context.MODE_PRIVATE)
+        activity.getSharedPreferences("com_sunhonglin_frame", Context.MODE_PRIVATE)
     }
 
 

@@ -8,12 +8,9 @@ import com.sunhonglin.core.data.db.entity.Student
 
 
 class StudentViewModel(application: Application) : AndroidViewModel(application) {
-    private val appDatabase: AppDatabase = AppDatabase.getInstance(application)
-    private val liveDataStudent: LiveData<MutableList<Student>>
 
-    init {
-        liveDataStudent = appDatabase.studentDao().getStudentList()
-    }
+    private val appDatabase: AppDatabase = AppDatabase.getInstance(application)
+    private val liveDataStudent: LiveData<MutableList<Student>> = appDatabase.studentDao().getStudentList()
 
     fun getLiveDataStudent(): LiveData<MutableList<Student>> {
         return liveDataStudent

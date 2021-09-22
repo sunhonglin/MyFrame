@@ -14,16 +14,6 @@ kapt {
     }
 }
 
-android {
-    buildTypes {
-        getByName("debug") {
-            minifyEnabled(true)
-            //Library will be obfuscated with the mentioned rules.
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "consumer-rules.pro")
-        }
-    }
-}
-
 dependencies {
     api(Dependencies.AndroidX.appcompat)
     api(Dependencies.AndroidX.activity)
@@ -39,7 +29,7 @@ dependencies {
     // lifecycle
     api(Dependencies.AndroidX.Lifecycle.viewModel)
     api(Dependencies.AndroidX.Lifecycle.liveData)
-    implementation(Dependencies.AndroidX.Lifecycle.runtime)
+    api(Dependencies.AndroidX.Lifecycle.runtime)
     api(Dependencies.AndroidX.Lifecycle.viewModelSavedState)
     kapt(Dependencies.AndroidX.Lifecycle.compiler)
 
@@ -48,10 +38,10 @@ dependencies {
     kapt(Dependencies.AndroidX.Room.compiler)
 
     // hilt
-    implementation(Dependencies.Google.Hilt.hilt)
+    api(Dependencies.Google.Hilt.hilt)
     kapt(Dependencies.Google.Hilt.compiler)
     kapt(Dependencies.AndroidX.Hilt.compiler)
-    implementation(Dependencies.AndroidX.Hilt.viewModel)
+    api(Dependencies.AndroidX.Hilt.viewModel)
 
     // retrofit2 + okHttp3
     api(Dependencies.SquareUp.OkHttp3.runtime)
@@ -60,7 +50,7 @@ dependencies {
     api(Dependencies.JakeWharton.converter_serialization)
 
     // Coroutines
-    implementation(Dependencies.KotlinX.coroutines)
+    api(Dependencies.KotlinX.coroutines)
 
     // serialization
     api(Dependencies.KotlinX.serialization)
