@@ -40,7 +40,7 @@
     <color name="color_black_alpha_10">#1A000000</color><!--90%透明度黑色-->
 
     <!--other-->
-    <color name="color_333">#333333</color>¬
+    <color name="color_333">#333333</color>
     <color name="color_666">#666666</color>
     <color name="color_999">#999999</color>
     <color name="color_eee">#EEEEEE</color>
