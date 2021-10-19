@@ -4,6 +4,8 @@
     <string name="title_login">登录</string>
     <string name="title_test_recyclerview">RecyclerView</string>
     <string name="title_test_web">web</string>
+    <string name="title_test_component">ComponentActivity</string>
+    <string name="title_test_component2">ComponentResultActivity</string>
 
     <string name="tip_exit_app">再按一次返回退出程序</string>
 

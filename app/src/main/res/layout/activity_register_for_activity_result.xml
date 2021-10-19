@@ -8,19 +8,32 @@
     android:paddingHorizontal="10dp">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_login"
+        android:id="@+id/tv_request_permission"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
         android:background="@drawable/shape_corner_radius_4dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="@string/title_login"
+        android:text="RequestPermission"
         android:textColor="@color/color_white"
         android:textSize="14sp" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_test_rcv"
+        android:id="@+id/tv_request_multiple_permissions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_corner_radius_4dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="RequestMultiplePermissions"
+        android:textColor="@color/color_white"
+        android:textSize="14sp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_customer_contract"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -28,12 +41,12 @@
         android:padding="10dp"
         android:background="@drawable/shape_corner_radius_4dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="@string/title_test_recyclerview"
+        android:text="StartActivityForResult By Customer Contract"
         android:textColor="@color/color_white"
         android:textSize="14sp" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_web"
+        android:id="@+id/tv_default_contract"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -41,20 +54,7 @@
         android:padding="10dp"
         android:background="@drawable/shape_corner_radius_4dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="@string/title_test_web"
-        android:textColor="@color/color_white"
-        android:textSize="14sp" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_component_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:padding="10dp"
-        android:background="@drawable/shape_corner_radius_4dp"
-        android:backgroundTint="@color/colorAccent"
-        android:text="@string/title_test_component"
+        android:text="StartActivityForResult By Default Contract"
         android:textColor="@color/color_white"
         android:textSize="14sp" />
 </LinearLayout>

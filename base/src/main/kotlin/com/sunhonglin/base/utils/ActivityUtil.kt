@@ -7,32 +7,51 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
+import androidx.activity.ComponentActivity
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import java.io.Serializable
 
-/**
- * Activity间跳转
- */
-inline fun <reified T : Activity> skipActivity(
-    context: Context,
+fun ComponentActivity.permissionContracts(unit: (granted: Boolean) -> Unit) =
+    registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+        unit(it)
+    }
+
+fun ComponentActivity.multiplePermissionContracts(unit: (map: Map<String, Boolean>) -> Unit) =
+    registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+        unit(it)
+    }
+
+fun ComponentActivity.multiplePermissionContractsPass(unit: (allPass: Boolean) -> Unit) =
+    registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { map ->
+        unit(map.filter { !it.value }.isEmpty())
+    }
+
+fun ComponentActivity.activityResultDefaultContracts(unit: (result: ActivityResult) -> Unit) =
+    registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        unit(it)
+    }
+
+inline fun <reified T : Activity> Context.skipActivity(
     vararg extras: Pair<String, Any>? = emptyArray(),
     requestCode: Int? = null
 ) {
-    val intent = Intent(context, T::class.java)
+    val intent = Intent(this, T::class.java)
     intent.putExtras(*extras)
     requestCode?.let {
-        if (context is Activity) {
-            context.startActivityForResult(intent, it)
+        if (this is Activity) {
+            startActivityForResult(intent, it)
             return
         }
     }
-    context.startActivity(intent)
+    startActivity(intent)
 }
 
-inline fun <reified T : Activity> skipActivityAndFinish(
+inline fun <reified T : Activity> Context.skipActivityAndFinish(
     context: Context,
     vararg extras: Pair<String, Any>? = emptyArray()
 ) {
-    skipActivity<T>(context, *extras)
+    skipActivity<T>(*extras)
     if (context is Activity) with(context) {
         finish()
     }

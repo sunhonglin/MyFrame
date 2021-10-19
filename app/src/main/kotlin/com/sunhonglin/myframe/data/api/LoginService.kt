@@ -16,9 +16,4 @@ interface LoginService {
     suspend fun toLogin(
         @Body params: Map<String, String>
     ): BaseResponse<LoginData>
-
-    @POST("api/findReplaceType")
-    suspend fun findReplaceType(
-        @HeaderMap map: Map<String, String>
-    ): BaseResponse<MutableList<ControllerReplaceType>>
 }

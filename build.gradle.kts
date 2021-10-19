@@ -20,7 +20,6 @@ buildscript {
 //val kotlinVersion = dependenciesVersion(rootProject, "version.kotlin").toString()
 //val coroutinesCore = dependenciesUrl(rootProject, Dependencies.KotlinX.Coroutines.core, "version.kotlinx.coroutines")
 //val coroutinesAndroid = dependenciesUrl(rootProject, Dependencies.KotlinX.Coroutines.android, "version.kotlinx.coroutines")
-//val gson = dependenciesUrl(rootProject, Dependencies.Google.gson, "version.com.google.code.gson..gson")
 //val lifecycleLiveData = dependenciesUrl(rootProject, "androidx.lifecycle:lifecycle-livedata:", "version.androidx.lifecycle")
 //val lifecycleRuntime = dependenciesUrl(rootProject, "androidx.lifecycle:lifecycle-runtime:", "version.androidx.lifecycle")
 //val lifecycleViewModel = dependenciesUrl(rootProject, "androidx.lifecycle:lifecycle-viewmodel:", "version.androidx.lifecycle")

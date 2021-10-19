@@ -15,6 +15,7 @@ import com.sunhonglin.core.util.setDebounceOnClickListener
 import com.sunhonglin.myframe.R
 import com.sunhonglin.myframe.databinding.ActivityHomeBinding
 import com.sunhonglin.myframe.ui.login.LoginActivity
+import com.sunhonglin.myframe.ui.test.RegisterForActivityResultTestActivity
 import com.sunhonglin.myframe.ui.test.RecyclerViewActivity
 
 class HomeActivity : DefaultToolbarActivity() {
@@ -33,7 +34,6 @@ class HomeActivity : DefaultToolbarActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater, parentBinding.content, true)
         binding.tvLogin.setDebounceOnClickListener {
             skipActivity<LoginActivity>(
-                mContext,
                 "key0" to true,
                 "key1" to 1.23F,
                 "key2" to listOf("1", "2"),
@@ -42,15 +42,18 @@ class HomeActivity : DefaultToolbarActivity() {
         }
 
         binding.tvTestRcv.setDebounceOnClickListener {
-            skipActivity<RecyclerViewActivity>(mContext)
+            skipActivity<RecyclerViewActivity>()
         }
 
         binding.tvWeb.setDebounceOnClickListener {
             skipActivity<WebActivity>(
-                mContext,
                 WebActivity.PATH to "https://www.bilibili.com/",
                 WebActivity.CACHE to WebSettings.LOAD_NO_CACHE
             )
+        }
+
+        binding.tvComponentTest.setDebounceOnClickListener {
+            skipActivity<RegisterForActivityResultTestActivity>()
         }
     }
 
