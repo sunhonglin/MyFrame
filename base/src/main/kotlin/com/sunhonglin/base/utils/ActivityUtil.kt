@@ -48,11 +48,10 @@ inline fun <reified T : Activity> Context.skipActivity(
 }
 
 inline fun <reified T : Activity> Context.skipActivityAndFinish(
-    context: Context,
     vararg extras: Pair<String, Any>? = emptyArray()
 ) {
     skipActivity<T>(*extras)
-    if (context is Activity) with(context) {
+    if (this is Activity) {
         finish()
     }
 }
