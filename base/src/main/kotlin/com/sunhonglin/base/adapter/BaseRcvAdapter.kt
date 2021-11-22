@@ -7,16 +7,18 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.sunhonglin.base.adapter.holder.BaseViewHolder
 
-open class BaseRcvAdapter<T>(
-    @LayoutRes private val layoutId: Int,
-    private val onBind: ((BaseViewHolder, MutableList<T>, Int) -> Unit)
+abstract class BaseRcvAdapter<T>(
+    @LayoutRes private val layoutId: Int
 ) : RecyclerView.Adapter<BaseViewHolder>() {
+
+    var selectedIndex = -1
+
     open val mList = mutableListOf<T>()
 
     @SuppressLint("NotifyDataSetChanged")
-    open fun setData(list: MutableList<T>) {
+    open fun setData(list: MutableList<T>?) {
         mList.clear()
-        mList.addAll(list)
+        mList.addAll(list ?: mutableListOf())
         notifyDataSetChanged()
     }
 
@@ -43,6 +45,8 @@ open class BaseRcvAdapter<T>(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        onBind(holder, mList, position)
+        onBind(holder, getItem(position), position)
     }
+
+    abstract fun onBind(holder: BaseViewHolder, item: T, i: Int)
 }
