@@ -140,6 +140,10 @@ object Dependencies {
         const val acp = "com.mylhyl:acp:_"
     }
 
+    object SunHongLin {
+        const val core_ktx = "com.sunhonglin:core-ktx:_"
+    }
+
     const val autoSize = "me.jessyan:autosize:_"
     const val eventBus = "org.greenrobot:eventbus:_"
 }

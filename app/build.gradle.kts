@@ -106,7 +106,8 @@ dependencies {
         }
     )
 
-    implementation(project(":core"))
+//    implementation(project(":core"))
+    implementation(Dependencies.SunHongLin.core_ktx)
     implementation(project(":base"))
 
 

@@ -1,7 +1,7 @@
 plugins {
-    id("de.fayard.refreshVersions") version "0.21.0"
+    id("de.fayard.refreshVersions") version "0.40.1"
 }
 
 include(":base")
-include(":core")
+//include(":core")
 include(":app")

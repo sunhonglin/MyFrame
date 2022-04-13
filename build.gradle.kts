@@ -7,6 +7,7 @@ buildscript {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven(url = Repositories.REPO_MAVEN_LANGCOO)
     }
 
     dependencies {
@@ -34,6 +35,7 @@ subprojects {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven(url = Repositories.REPO_MAVEN_LANGCOO)
     }
 
     buildDir = File(rootProject.buildDir, name)

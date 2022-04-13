@@ -41,5 +41,10 @@
       <option name="name" value="maven" />
       <option name="url" value="http://sfcss.langcoo.net:9102/repository/maven-public/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://sfcss1.langcoo.net:9888/repository/maven-public/" />
+    </remote-repository>
   </component>
 </project>
