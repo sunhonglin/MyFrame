@@ -5,7 +5,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     kotlin("plugin.serialization")
-    id("dagger.hilt.android.plugin")
+    id("com.google.dagger.hilt.android")
 }
 
 kapt {

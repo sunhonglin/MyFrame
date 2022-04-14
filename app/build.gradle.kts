@@ -5,7 +5,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     kotlin("plugin.serialization")
-    id("dagger.hilt.android.plugin")
+    id("com.google.dagger.hilt.android")
 }
 
 var appName = property("APP_NAME")
@@ -106,10 +106,8 @@ dependencies {
         }
     )
 
-    implementation(project(":core"))
-//    implementation(Dependencies.SunHongLin.core_ktx)
+    implementation(Dependencies.SunHongLin.core_ktx)
     implementation(project(":base"))
-
 
     implementation(Dependencies.Google.Hilt.hilt)
     kapt(Dependencies.Google.Hilt.compiler)

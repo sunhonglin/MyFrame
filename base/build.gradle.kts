@@ -8,8 +8,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":core"))
-//    implementation(Dependencies.SunHongLin.core_ktx)
+    implementation(Dependencies.SunHongLin.core_ktx)
     // glide
     api(Dependencies.GitHub.Glide.runtime)
     kapt(Dependencies.GitHub.Glide.compiler)
