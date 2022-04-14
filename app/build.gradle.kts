@@ -106,15 +106,14 @@ dependencies {
         }
     )
 
-//    implementation(project(":core"))
-    implementation(Dependencies.SunHongLin.core_ktx)
+    implementation(project(":core"))
+//    implementation(Dependencies.SunHongLin.core_ktx)
     implementation(project(":base"))
 
 
     implementation(Dependencies.Google.Hilt.hilt)
     kapt(Dependencies.Google.Hilt.compiler)
     kapt(Dependencies.AndroidX.Hilt.compiler)
-    implementation(Dependencies.AndroidX.Hilt.viewModel)
 
     implementation(Dependencies.TenCent.bugLy)
 }

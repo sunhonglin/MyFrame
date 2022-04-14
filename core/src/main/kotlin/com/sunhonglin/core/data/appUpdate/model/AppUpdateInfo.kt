@@ -6,7 +6,6 @@ import kotlinx.serialization.Serializable
 
 @Keep
 @Serializable
-@Entity(tableName = "table_app_update_info")
 data class AppUpdateInfo(
     var version: String,
     var forceUpdate: Int = 0,

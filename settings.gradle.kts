@@ -3,5 +3,5 @@ plugins {
 }
 
 include(":base")
-//include(":core")
+include(":core")
 include(":app")

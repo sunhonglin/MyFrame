@@ -26,6 +26,7 @@ import com.sunhonglin.base.databinding.LayoutPullToRefreshHeaderVerticalBinding
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase.Mode
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase.Orientation
 import com.sunhonglin.base.ui.pulltorefresh.inn.ILoadingLayout
+import com.sunhonglin.base.utils.changeVisible
 import com.sunhonglin.base.utils.gone
 import com.sunhonglin.base.utils.inVisible
 import com.sunhonglin.base.utils.visible
@@ -98,21 +99,11 @@ abstract class LoadingLayout(
          */
         if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrShowRefreshTips) && mode === Mode.PULL_FROM_START) {
             val isShow = attrs.getBoolean(R.styleable.PullToRefreshBase_ptrShowRefreshTips, true)
-            lRefreshTips?.let {
-                when (isShow) {
-                    true -> it.visible()
-                    false -> it.gone()
-                }
-            }
+            lRefreshTips?.changeVisible(isShow)
         }
         if (attrs.hasValue(R.styleable.PullToRefreshBase_ptrShowLoadMoreTips) && mode === Mode.PULL_FROM_END) {
             val isShow = attrs.getBoolean(R.styleable.PullToRefreshBase_ptrShowLoadMoreTips, true)
-            lRefreshTips?.let {
-                when (isShow) {
-                    true -> it.visible()
-                    false -> it.gone()
-                }
-            }
+            lRefreshTips?.changeVisible(isShow)
         }
         /**
          * 设置Progress样式
@@ -254,13 +245,13 @@ abstract class LoadingLayout(
         mHeaderProgress.inVisible()
         mHeaderImage.inVisible()
         mHeaderText?.let {
-            when (it.visibility == View.VISIBLE) {
-                true -> it.inVisible()
+            if (it.visibility == View.VISIBLE) {
+                it.inVisible()
             }
         }
         mSubHeaderText?.let {
-            when (it.visibility == View.VISIBLE) {
-                true -> it.inVisible()
+            if (it.visibility == View.VISIBLE) {
+                it.inVisible()
             }
         }
     }
@@ -318,11 +309,7 @@ abstract class LoadingLayout(
             resetImpl()
         }
         mSubHeaderText?.let {
-            if (it.text.isNullOrBlank()) {
-                it.gone()
-            } else {
-                it.visible()
-            }
+            it.changeVisible(!it.text.isNullOrBlank())
         }
     }
 
@@ -363,14 +350,10 @@ abstract class LoadingLayout(
 
     fun showInvisibleViews() {
         mHeaderText?.let {
-            when (it.visibility == INVISIBLE) {
-                true -> it.visible()
-            }
+            it.changeVisible(it.visibility == INVISIBLE)
         }
         mSubHeaderText?.let {
-            when (it.visibility == INVISIBLE) {
-                true -> it.visible()
-            }
+            it.changeVisible(it.visibility == INVISIBLE)
         }
         if (INVISIBLE == mHeaderProgress.visibility) {
             mHeaderProgress.visibility = VISIBLE
@@ -389,9 +372,7 @@ abstract class LoadingLayout(
             // Only set it to Visible if we're GONE, otherwise VISIBLE will
             // be set soon
             mSubHeaderText?.let {
-                when (it.visibility == GONE) {
-                    true -> it.visible()
-                }
+                it.changeVisible(it.visibility == GONE)
             }
         }
     }

@@ -8,8 +8,8 @@ plugins {
 }
 
 dependencies {
-//    implementation(project(":core"))
-    implementation(Dependencies.SunHongLin.core_ktx)
+    implementation(project(":core"))
+//    implementation(Dependencies.SunHongLin.core_ktx)
     // glide
     api(Dependencies.GitHub.Glide.runtime)
     kapt(Dependencies.GitHub.Glide.compiler)
@@ -18,6 +18,5 @@ dependencies {
     api(Dependencies.QMUITeam.qmui)
     api(Dependencies.JakeWharton.timber)
     api(Dependencies.autoSize)
-    implementation(Dependencies.PERMISSION.acp)
     implementation(Dependencies.AndroidX.Datastore.preferences)
 }

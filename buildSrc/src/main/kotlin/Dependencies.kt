@@ -37,14 +37,13 @@ object Dependencies {
         }
 
         object Room {
-            const val compiler = "androidx.room:room-compiler:_"
             const val ktx = "androidx.room:room-ktx:_"
+            const val compiler = "androidx.room:room-compiler:_"
         }
 
         object Hilt {
-            const val compiler = "androidx.hilt:hilt-compiler:_"
             const val work = "androidx.hilt:hilt-work:_"
-            const val viewModel = "androidx.hilt:hilt-lifecycle-viewmodel:_"
+            const val compiler = "androidx.hilt:hilt-compiler:_"
         }
 
         object Datastore {

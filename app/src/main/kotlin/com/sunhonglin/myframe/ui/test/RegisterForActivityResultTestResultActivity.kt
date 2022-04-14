@@ -29,7 +29,7 @@ class RegisterForActivityResultTestResultActivity : DefaultToolbarActivity() {
     }
 
     class Contract : ActivityResultContract<String, String>() {
-        override fun createIntent(context: Context, input: String?): Intent =
+        override fun createIntent(context: Context, input: String): Intent =
             Intent(context, RegisterForActivityResultTestResultActivity::class.java).apply {
                 putExtra("KEY_NAME", input + "Message from main activity ")
             }

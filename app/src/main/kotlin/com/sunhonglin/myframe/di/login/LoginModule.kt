@@ -11,13 +11,14 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 import okhttp3.OkHttpClient
 import retrofit2.Converter
 import retrofit2.Retrofit
+import javax.inject.Inject
 
 @Module
 @InstallIn(ActivityRetainedComponent::class)
 class LoginModule {
 
     @Provides
-    fun providesLoginService(
+    fun providesLoginService (
         client: OkHttpClient,
         factory: Converter.Factory
     ): LoginService {
@@ -30,6 +31,7 @@ class LoginModule {
     }
 
     @Provides
-    fun providesLoginRepository(dataSource: LoginDataSource): LoginRepository =
-        LoginRepository(dataSource)
+    fun providesLoginRepository(
+        dataSource: LoginDataSource
+    ): LoginRepository = LoginRepository(dataSource)
 }

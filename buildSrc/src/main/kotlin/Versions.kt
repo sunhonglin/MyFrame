@@ -1,4 +1,4 @@
 object Versions {
     const val minSdk = 23
-    const val targetSdk = 30
+    const val targetSdk = 31
 }

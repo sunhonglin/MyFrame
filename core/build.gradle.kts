@@ -41,7 +41,6 @@ dependencies {
     api(Dependencies.Google.Hilt.hilt)
     kapt(Dependencies.Google.Hilt.compiler)
     kapt(Dependencies.AndroidX.Hilt.compiler)
-    api(Dependencies.AndroidX.Hilt.viewModel)
 
     // retrofit2 + okHttp3
     api(Dependencies.SquareUp.OkHttp3.runtime)

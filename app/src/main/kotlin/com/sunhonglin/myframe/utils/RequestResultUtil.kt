@@ -29,5 +29,6 @@ fun <T> Context.isRequestResultSuccess(
         is RequestResult.Error -> {
             showToastInfo(result.exception.message)
         }
+        else -> {}
     }
 }
