@@ -3,5 +3,4 @@ plugins {
 }
 
 include(":base")
-include(":core")
 include(":app")

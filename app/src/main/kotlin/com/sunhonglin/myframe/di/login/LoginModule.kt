@@ -17,7 +17,6 @@ import javax.inject.Inject
 @InstallIn(ActivityRetainedComponent::class)
 class LoginModule {
 
-    @Inject
     @Provides
     fun providesLoginService (
         client: OkHttpClient,
