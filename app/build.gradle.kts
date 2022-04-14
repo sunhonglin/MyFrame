@@ -17,22 +17,22 @@ android {
 
     signingConfigs {
         create("release") {
-            keyAlias = property(rootProject, KeystorePropertiesFilePath, "keyAlias").toString()
+            keyAlias = property(rootProject, KeystorePropertiesFilePath, "key.alias").toString()
             keyPassword =
-                property(rootProject, KeystorePropertiesFilePath, "keyPassword").toString()
+                property(rootProject, KeystorePropertiesFilePath, "key.password").toString()
             storeFile =
                 rootProject.file(
                     property(
                         rootProject,
                         KeystorePropertiesFilePath,
-                        "storeFile"
+                        "key.store.file"
                     ).toString()
                 )
             storePassword =
                 property(
                     rootProject,
                     KeystorePropertiesFilePath,
-                    "storePassword"
+                    "key.store.password"
                 ).toString()
             enableV2Signing = true
         }
