@@ -1,25 +1,25 @@
 package com.sunhonglin.base
 
 import android.app.Activity
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import com.sunhonglin.base.utils.StatusBarHelper
 
 enum class StatusBarMode {
 
     LIGHT {
         override fun configure(activity: Activity) {
-            QMUIStatusBarHelper.setStatusBarLightMode(activity)
+            StatusBarHelper.setStatusBarLightMode(activity)
         }
     },
 
     DARK {
         override fun configure(activity: Activity) {
-            QMUIStatusBarHelper.setStatusBarDarkMode(activity)
+            StatusBarHelper.setStatusBarDarkMode(activity)
         }
     },
 
     TRANSLUCENT {
         override fun configure(activity: Activity) {
-            QMUIStatusBarHelper.translucent(activity)
+            StatusBarHelper.translucent(activity)
         }
     };
 

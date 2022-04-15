@@ -100,7 +100,7 @@ class FlipLoadingLayout(
     }
 
     override val defaultDrawableResId: Int
-        get() = R.drawable.pull_to_refresh_default_ptr_flip
+        get() = R.drawable.ic_down
 
     private val drawableRotationAngle: Float
         get() {

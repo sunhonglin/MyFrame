@@ -7,10 +7,8 @@ import android.view.WindowManager
 import android.widget.PopupWindow
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.LifecycleEventObserver
 import com.sunhonglin.base.utils.dp2px
-import com.qmuiteam.qmui.skin.QMUISkinManager
 
 @SuppressLint("ClickableViewAccessibility")
 class CustomPopup(
@@ -24,15 +22,10 @@ class CustomPopup(
 ) {
 
     init {
-//        popupWindow.isTouchable = true
-//        popupWindow.isOutsideTouchable = true
-
-        QMUISkinManager.defaultInstance(activity).register(this)
-        activity.lifecycle.addObserver(object : LifecycleObserver {
-            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-            fun onDestroy() {
-                QMUISkinManager.defaultInstance(activity).unRegister(this@CustomPopup)
-                dismiss()
+        activity.lifecycle.addObserver(LifecycleEventObserver { _, event ->
+            when (event) {
+                Lifecycle.Event.ON_DESTROY -> dismiss()
+                else -> {}
             }
         })
 

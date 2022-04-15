@@ -55,8 +55,7 @@
                 android:id="@+id/v_line"
                 android:layout_width="1dp"
                 android:layout_height="10dp"
-                app:qmui_skin_background="?attr/app_skin_color_base"
-                tools:background="@color/color_cold"/>
+                android:background="@color/colorTheme"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_ok"

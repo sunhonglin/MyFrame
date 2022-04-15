@@ -14,7 +14,6 @@ dependencies {
     kapt(Dependencies.GitHub.Glide.compiler)
 
     api(Dependencies.eventBus)
-    api(Dependencies.QMUITeam.qmui)
     api(Dependencies.JakeWharton.timber)
     api(Dependencies.autoSize)
     implementation(Dependencies.AndroidX.Datastore.preferences)

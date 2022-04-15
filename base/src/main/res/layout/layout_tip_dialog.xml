@@ -59,7 +59,7 @@
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_circle"
-                android:backgroundTint="@color/color_F0F0F0"
+                android:backgroundTint="@color/color_ccc"
                 android:gravity="center"
                 android:paddingVertical="8dp"
                 android:text="@string/cancel"
@@ -77,8 +77,7 @@
                 android:text="@string/sure"
                 android:textColor="@color/color_white"
                 android:textSize="13sp"
-                app:qmui_skin_bg_tint_color="?attr/app_skin_color_base"
-                tools:backgroundTint="@color/color_cold" />
+                android:backgroundTint="@color/colorTheme" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

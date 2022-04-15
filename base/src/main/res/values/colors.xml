@@ -3,6 +3,7 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorTheme">#008577</color>
 
     <!--纯透明-->
     <color name="color_transparent">#00000000</color>
@@ -38,25 +39,4 @@
     <color name="color_eee">#EEEEEE</color>
     <color name="color_bbb">#BBBBBB</color>
     <color name="color_ccc">#CCCCCC</color>
-
-
-    <color name="color_3D86F7">#3D86F7</color>
-    <color name="color_F7F8FC">#F7F8FC</color>
-    <color name="color_cold">#005F3D</color>
-    <color name="color_heat">#F79841</color>
-    <color name="color_D5FAFF">#D5FAFF</color>
-    <color name="color_3678CC">#3678CC</color>
-    <color name="color_08DA71">#08DA71</color>
-    <color name="color_F0F0F0">#F0F0F0</color>
-    <color name="color_F3F3F3">#F3F3F3</color>
-    <color name="color_CECECE">#CECECE</color>
-    <color name="color_979797">#979797</color>
-    <color name="color_BFBFBF">#BFBFBF</color>
-    <color name="color_DCDCDC">#DCDCDC</color>
-    <color name="color_B10404">#B10404</color>
-    <color name="color_F7F7F7">#F7F7F7</color>
-    <color name="color_C6C6C6">#C6C6C6</color>
-    <color name="color_9B9B9B">#9B9B9B</color>
-    <color name="color_EBEBEB">#EBEBEB</color>
-    <color name="color_05C162">#05C162</color>
 </resources>

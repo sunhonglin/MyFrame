@@ -1,25 +1,12 @@
 <resources>
-    <!-- skin attr define-->
-    <attr name="app_skin_color_base" format="color|reference" />
-    <attr name="app_skin_selector_color_cold_heat_dc" format="color|reference" />
-    <attr name="app_skin_selector_color_cold_heat_999" format="color|reference" />
-
-    <!-- Base application theme. please not change parent theme, change will lead no progress bar -->
-    <style name="AppThemeNoActionBar" parent="QMUI.Compat.NoActionBar">
+    <!-- Base application theme. -->
+    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <!-- actionbar color -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <!-- status bar color -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@color/color_white</item>
-        <item name="windowActionBar">false</item>
-
-        <item name="app_skin_color_base">@color/color_cold</item>
     </style>
-
-    <style name="AppThemeNoActionBarCold" parent="AppThemeNoActionBar"/>
-
-    <style name="AppThemeNoActionBarHeat" parent="AppThemeNoActionBar"/>
 </resources>

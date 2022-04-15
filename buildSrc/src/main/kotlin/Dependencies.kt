@@ -101,10 +101,6 @@ object Dependencies {
         }
     }
 
-    object QMUITeam {
-        const val qmui = "com.qmuiteam:qmui:_"
-    }
-
     object GitHub {
         object Glide {
             const val runtime = "com.github.bumptech.glide:glide:_"

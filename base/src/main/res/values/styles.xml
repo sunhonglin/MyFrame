@@ -18,4 +18,11 @@
         <item name="android:windowBackground">@color/color_transparent</item><!--背景透明-->
         <item name="android:backgroundDimEnabled">true</item><!--模糊-->
     </style>
+
+    <!--加载-->
+    <style name="loadProgressBarStyle">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:indeterminateDrawable">@drawable/progressbar</item>
+    </style>
 </resources>

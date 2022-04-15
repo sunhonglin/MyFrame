@@ -5,9 +5,4 @@
     <dimen name="header_footer_top_bottom_padding">12dp</dimen>
 
     <dimen name="line_1px">1px</dimen>
-
-    <!--    BottomNavigationView-->
-    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12sp</dimen>
-    <dimen name="design_bottom_navigation_text_size" tools:override="true">12sp</dimen>
-
 </resources>

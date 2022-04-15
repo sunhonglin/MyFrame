@@ -9,12 +9,39 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/layout/activity_register_for_activity_result_2.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_theme_change.xml" value="0.4010416666666667" />
+        <entry key="base/src/main/res/drawable/ic_back.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/ic_back_top.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/ic_crash.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/ic_pull_to_refresh_default_ptr_rotate.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/progressbar.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/pull_to_refresh_default_ptr_flip.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/selector_app_update_btn.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_apk_download_progressbar.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_circle.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_circle_edge_1dp.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_corner_circle_only_right.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_corner_radius_3dp.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_corner_radius_3dp_edge_1dp.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_corner_radius_3dp_only_bottom.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_corner_radius_3dp_only_left.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_corner_radius_3dp_only_right.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_corner_radius_3dp_only_top.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_corner_radius_4dp.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_corner_radius_7dp.xml" value="0.241" />
+        <entry key="base/src/main/res/drawable/shape_mask_black_50_100_v.xml" value="0.241" />
         <entry key="base/src/main/res/drawable/vector_guide.xml" value="0.20833333333333334" />
         <entry key="base/src/main/res/layout/activity_base_content.xml" value="0.2046875" />
+        <entry key="base/src/main/res/layout/activity_crash.xml" value="0.3802083333333333" />
+        <entry key="base/src/main/res/layout/activity_web.xml" value="0.3802083333333333" />
         <entry key="base/src/main/res/layout/layout_app_update.xml" value="0.109375" />
+        <entry key="base/src/main/res/layout/layout_bottom_sheet.xml" value="0.3515625" />
+        <entry key="base/src/main/res/layout/layout_custom_dialog.xml" value="0.5645833333333333" />
         <entry key="base/src/main/res/layout/layout_default_toolbar.xml" value="0.375" />
+        <entry key="base/src/main/res/layout/layout_dialog_input.xml" value="0.3515625" />
+        <entry key="base/src/main/res/layout/layout_loading.xml" value="0.38645833333333335" />
         <entry key="base/src/main/res/layout/layout_pull_to_refresh_header_horizontal.xml" value="0.21614583333333334" />
         <entry key="base/src/main/res/layout/layout_pull_to_refresh_header_vertical.xml" value="0.21614583333333334" />
+        <entry key="base/src/main/res/layout/layout_tip_dialog.xml" value="0.3515625" />
         <entry key="base/src/main/res/layout/layout_toast.xml" value="0.2046875" />
         <entry key="base/src/main/res/layout/layout_web_base.xml" value="0.2046875" />
       </map>

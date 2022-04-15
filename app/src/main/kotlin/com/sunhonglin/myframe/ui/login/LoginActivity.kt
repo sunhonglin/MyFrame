@@ -33,6 +33,7 @@ class LoginActivity : DefaultToolbarActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater, parentBinding.content, true)
 
         binding.btnLogin1.setDebounceOnClickListener {
+            showProgressDialog()
             viewModel.toLogin(userName = "hxbj", password = "123456")
         }
 
@@ -51,6 +52,7 @@ class LoginActivity : DefaultToolbarActivity() {
             }
         }
 
+        showProgressDialog()
         viewModel.toLogin(userName = "hxbj", password = "123456")
 
         Timber.i("key0 --> ${true}")

@@ -113,7 +113,7 @@ fun <T> ComponentActivity.showSelectorDialog(
 ): CustomDialog {
     val dialog = CustomDialog(this).apply {
         setCancelable(cancelable)
-        setOutSideCancelable(outSideCancelable)
+        setCanceledOnTouchOutside(outSideCancelable)
     }
 
     val binding = LayoutBottomSheetBinding.inflate(layoutInflater).apply {

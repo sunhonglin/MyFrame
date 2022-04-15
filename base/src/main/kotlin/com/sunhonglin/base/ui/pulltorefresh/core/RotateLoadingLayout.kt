@@ -91,5 +91,5 @@ class RotateLoadingLayout(
     }
 
     override val defaultDrawableResId: Int
-        get() = R.drawable.ic_pull_to_refresh_default_ptr_rotate
+        get() = R.drawable.ic_refresh
 }

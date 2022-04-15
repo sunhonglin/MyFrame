@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -53,7 +52,7 @@
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_circle"
-                android:backgroundTint="@color/color_F0F0F0"
+                android:backgroundTint="@color/color_ccc"
                 android:gravity="center"
                 android:paddingVertical="8dp"
                 android:text="@string/cancel"
@@ -66,13 +65,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/shape_circle"
+                android:backgroundTint="@color/colorTheme"
                 android:gravity="center"
                 android:paddingVertical="8dp"
                 android:text="@string/sure"
                 android:textColor="@color/color_white"
-                android:textSize="13sp"
-                app:qmui_skin_bg_tint_color="?attr/app_skin_color_base"
-                tools:backgroundTint="@color/color_cold" />
+                android:textSize="13sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>
