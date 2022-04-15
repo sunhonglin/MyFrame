@@ -108,7 +108,7 @@ dependencies {
     )
 
     implementation(Dependencies.SunHongLin.core_ktx)
-    implementation(project(":base"))
+    implementation(Dependencies.SunHongLin.base_ktx)
 
     implementation(Dependencies.Google.Hilt.hilt)
     kapt(Dependencies.Google.Hilt.compiler)

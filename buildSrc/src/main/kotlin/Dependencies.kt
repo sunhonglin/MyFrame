@@ -137,6 +137,7 @@ object Dependencies {
 
     object SunHongLin {
         const val core_ktx = "com.sunhonglin:core-ktx:_"
+        const val base_ktx = "com.sunhonglin:base-ktx:_"
     }
 
     const val autoSize = "me.jessyan:autosize:_"

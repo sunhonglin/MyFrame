@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
-
-    <dimen name="header_footer_left_right_padding">24dp</dimen>
-    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
-
-    <dimen name="line_1px">1px</dimen>
-</resources>
