@@ -2,7 +2,7 @@
 <resources>
     <declare-styleable name="PullToRefreshBase">
 
-        <!-- recyclerview背景 -->
+        <!-- 背景 -->
         <attr name="ptrRefreshableViewBackground" format="reference|color" />
 
         <!-- 刷新布局背景 -->

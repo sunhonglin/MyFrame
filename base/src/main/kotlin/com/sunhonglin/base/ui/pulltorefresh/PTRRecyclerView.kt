@@ -6,9 +6,9 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase
+import com.sunhonglin.base.utils.changeVisible
 import com.sunhonglin.base.utils.inVisible
 import com.sunhonglin.core.util.setDebounceOnClickListener
-import com.sunhonglin.base.utils.visible
 
 class PTRRecyclerView : PullToRefreshBase<RecyclerView> {
     var ddy = 0
@@ -44,11 +44,7 @@ class PTRRecyclerView : PullToRefreshBase<RecyclerView> {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     ddy += dy
-                    if (ddy > 1200) {
-                        it.visible()
-                    } else {
-                        it.inVisible()
-                    }
+                    it.changeVisible(ddy > 1200)
                 }
             })
             it.setDebounceOnClickListener { view ->

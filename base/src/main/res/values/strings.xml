@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
     <string name="loading">正在加载</string>
 
+    <string name="tip">提示</string>
+    <string name="sure">确定</string>
     <string name="add">添加</string>
     <string name="back">返回</string>
     <string name="exit">退出</string>
@@ -36,4 +38,5 @@
     <string name="app_update_error_install">安装失败，本地文件不完整，请重新下载</string>
     <string name="app_update_fmt_progress">%1$d%%</string>
 
+    <string name="app_dot_keep_activities_value">由于您已开启\"不保留活动\"，导致%1$s部分功能无法正常使用。我们建议您点击右下方\"去设置\"按钮，在\"开发者选项\"中关闭\"不保留活动\"功能。</string>
 </resources>

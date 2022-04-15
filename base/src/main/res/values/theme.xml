@@ -1,8 +1,10 @@
 <resources>
     <!-- skin attr define-->
-    <attr name="app_skin_common_background" format="color|reference" />
+    <attr name="app_skin_color_base" format="color|reference" />
+    <attr name="app_skin_selector_color_cold_heat_dc" format="color|reference" />
+    <attr name="app_skin_selector_color_cold_heat_999" format="color|reference" />
 
-    <!-- Base application theme. -->
+    <!-- Base application theme. please not change parent theme, change will lead no progress bar -->
     <style name="AppThemeNoActionBar" parent="QMUI.Compat.NoActionBar">
         <!-- Customize your theme here. -->
         <!-- actionbar color -->
@@ -10,34 +12,14 @@
         <!-- status bar color -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@color/color_white</item>
+        <item name="windowActionBar">false</item>
 
-        <item name="app_skin_common_background">#0000FF</item>
+        <item name="app_skin_color_base">@color/color_cold</item>
     </style>
 
+    <style name="AppThemeNoActionBarCold" parent="AppThemeNoActionBar"/>
 
-    <style name="AppThemeNoActionBarCold" parent="QMUI.Compat.NoActionBar">
-        <!-- Customize your theme here. -->
-        <!-- actionbar color -->
-        <item name="colorPrimary">@color/colorPrimaryCold</item>
-        <!-- status bar color -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkCold</item>
-        <item name="colorAccent">@color/colorAccentCold</item>
-        <item name="android:windowBackground">@color/colorAccentCold</item>
-
-        <item name="app_skin_common_background">#00FF00</item>
-
-    </style>
-
-    <style name="AppThemeNoActionBarHeat" parent="QMUI.Compat.NoActionBar">
-        <!-- Customize your theme here. -->
-        <!-- actionbar color -->
-        <item name="colorPrimary">@color/colorPrimaryHeat</item>
-        <!-- status bar color -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkHeat</item>
-        <item name="colorAccent">@color/colorAccentHeat</item>
-        <item name="android:windowBackground">@color/colorAccentHeat</item>
-
-        <item name="app_skin_common_background">@color/colorAccentHeat</item>
-    </style>
+    <style name="AppThemeNoActionBarHeat" parent="AppThemeNoActionBar"/>
 </resources>

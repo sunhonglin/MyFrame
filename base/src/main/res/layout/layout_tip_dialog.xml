@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
     tools:background="@color/color_black">
@@ -10,9 +11,9 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="45dp"
         android:layout_marginVertical="40dp"
-        android:background="@drawable/shape_corner_radius_7dp"
+        android:background="@drawable/shape_corner_radius_13dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -20,8 +21,8 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:text="@string/app_update_fmt_title_update"
+            android:layout_marginTop="13dp"
+            android:text="@string/tip"
             android:textColor="@color/color_333"
             android:textSize="16sp" />
 
@@ -29,48 +30,55 @@
             android:id="@+id/tv_content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="26dp"
             android:layout_weight="1"
-            android:scrollbars="vertical"
-            android:paddingHorizontal="20dp"
-            android:layout_marginTop="18dp"
             android:lineSpacingMultiplier="1.2"
-            tools:text="1、tip1\n2、tip2\n3、tip3"
-            android:textColor="@color/color_666"
-            android:textSize="15sp" />
+            android:paddingHorizontal="20dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/color_333"
+            android:textSize="13sp"
+            tools:text="1、tip1\n2、tip2\n3、tip3" />
 
         <ProgressBar
             android:id="@+id/number_progress_bar"
             style="@style/AppUpdateHorizontalProgressBar"
             android:layout_marginTop="10dp"
-            android:visibility="gone" />
+            android:visibility="invisible" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_marginBottom="14dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingHorizontal="18dp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_cancel"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/selector_app_update_btn"
+                android:layout_width="107dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_circle"
+                android:backgroundTint="@color/color_F0F0F0"
                 android:gravity="center"
+                android:paddingVertical="8dp"
                 android:text="@string/cancel"
                 android:textColor="@color/color_333"
-                android:textSize="17sp" />
+                android:textSize="13sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_ok"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/selector_app_update_btn"
+                android:layout_width="107dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/shape_circle"
                 android:gravity="center"
-                android:text="@string/update"
-                android:textColor="@color/colorAccent"
-                android:textSize="17sp" />
+                android:paddingVertical="8dp"
+                android:text="@string/sure"
+                android:textColor="@color/color_white"
+                android:textSize="13sp"
+                app:qmui_skin_bg_tint_color="?attr/app_skin_color_base"
+                tools:backgroundTint="@color/color_cold" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

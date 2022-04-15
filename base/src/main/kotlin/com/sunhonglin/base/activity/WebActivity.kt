@@ -12,9 +12,9 @@ import com.sunhonglin.base.StatusBarMode
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
 import com.sunhonglin.base.databinding.ActivityWebBinding
 import com.sunhonglin.base.databinding.LayoutDefaultToolbarBinding
-import com.sunhonglin.base.utils.showToastInfo
 import com.sunhonglin.base.utils.get
 import com.sunhonglin.base.utils.gone
+import com.sunhonglin.base.utils.showToast
 import com.sunhonglin.base.utils.visible
 import timber.log.Timber
 
@@ -49,7 +49,7 @@ class WebActivity : DefaultToolbarActivity() {
 
         val webPath = intent.get<String>(PATH) //加载的URL
         if (webPath.isNullOrBlank()) {
-            showToastInfo(resId = R.string.tip_url_cannot_null)
+            showToast(resId = R.string.tip_url_cannot_null)
             return
         }
 

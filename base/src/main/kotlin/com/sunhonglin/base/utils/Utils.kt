@@ -12,11 +12,11 @@ fun formatToHtml(value: String): Spanned {
     return HtmlCompat.fromHtml(value, HtmlCompat.FROM_HTML_MODE_LEGACY)
 }
 
-fun restartApp(context: Context) {
-    val intent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+fun Context.restartApp() {
+    val intent = packageManager.getLaunchIntentForPackage(packageName)
     intent?.let {
         it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        context.startActivity(it)
+        startActivity(it)
     }
     exitProcess(1)
 }
@@ -36,4 +36,12 @@ fun Context.postMainThread(unit: () -> Unit) {
     (this as Activity).runOnUiThread {
         unit()
     }
+}
+
+/**
+ * 不保留活动开启状态
+ * @return true 开启
+ */
+fun Context.isDotKeepActivities(): Boolean {
+    return Settings.Global.getInt(contentResolver, Settings.Global.ALWAYS_FINISH_ACTIVITIES, 0) != 0
 }

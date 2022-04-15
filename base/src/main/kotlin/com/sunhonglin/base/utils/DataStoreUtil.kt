@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "MyFrameDataStore")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "SmartCoolerDataStore")
 
 object DataStoreUtil {
 
@@ -76,11 +76,11 @@ object DataStoreUtil {
 
     fun readLongData(key: String, default: Long = 0L): Long = getSyncData(key, default)
 
-    fun removeBooleanData(key: String) = remove(key, false)
-    fun removeIntData(key: String) = remove(key, 0)
-    fun removeStringData(key: String) = remove(key, "")
-    fun removeFloatData(key: String) = remove(key, 0f)
-    fun removeLongData(key: String) = remove(key, 0L)
+    fun removeBooleanData(key: String) = removeSync(key, false)
+    fun removeIntData(key: String) = removeSync(key, 0)
+    fun removeStringData(key: String) = removeSync(key, "")
+    fun removeFloatData(key: String) = removeSync(key, 0f)
+    fun removeLongData(key: String) = removeSync(key, 0L)
 
     @Suppress("UNCHECKED_CAST")
     private fun <U> getKey(key: String, value: U): Preferences.Key<U> {
@@ -95,9 +95,11 @@ object DataStoreUtil {
         return data as Preferences.Key<U>
     }
 
-    private fun <U> remove(key: String, value: U) {
-        dataStore.data.map {
-            it.toMutablePreferences().remove(getKey(key, value))
+    private fun <U> removeSync(key: String, value: U) {
+        runBlocking {
+            dataStore.edit {
+                it.remove(getKey(key, value))
+            }
         }
     }
 

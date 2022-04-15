@@ -16,7 +16,7 @@ class MyFrameApp : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
         app = this
-        crashActivity(CrashActivity::class.java)
+        crashActivity = CrashActivity::class.java
         initBugLy()
     }
 

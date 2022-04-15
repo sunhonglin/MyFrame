@@ -10,15 +10,6 @@ import com.sunhonglin.base.databinding.LayoutToastBinding
 import com.sunhonglin.base.utils.ToastUtil.Companion.DURATION_DEFAULT
 import com.sunhonglin.base.utils.ToastUtil.Companion.toast
 
-
-fun Context.showToastInfo(
-    info: String? = null,
-    @StringRes resId: Int? = null,
-    duration: Int = DURATION_DEFAULT
-) {
-    showToast(text = info, resId = resId, duration = duration)
-}
-
 @SuppressLint("ShowToast", "WrongConstant")
 fun Context.showToast(
     text: String? = null,
@@ -42,7 +33,7 @@ fun Context.showToast(
 
 class ToastUtil {
     companion object {
-        const val DURATION_DEFAULT = Toast.LENGTH_LONG
+        const val DURATION_DEFAULT = Toast.LENGTH_SHORT
         var toast: Toast? = null
     }
 }

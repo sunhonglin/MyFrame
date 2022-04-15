@@ -32,6 +32,12 @@ fun ComponentActivity.activityResultDefaultContracts(unit: (result: ActivityResu
         unit(it)
     }
 
+inline fun <reified T : ComponentActivity> ComponentActivity.createIntent(
+    vararg extras: Pair<String, Any>? = emptyArray()
+): Intent {
+    return Intent(this, T::class.java).putExtras(*extras)
+}
+
 inline fun <reified T : Activity> Context.skipActivity(
     vararg extras: Pair<String, Any>? = emptyArray(),
     requestCode: Int? = null
@@ -56,17 +62,13 @@ inline fun <reified T : Activity> Context.skipActivityAndFinish(
     }
 }
 
-inline fun <reified T : Activity> setResultAndFinish(
-    context: Context,
+fun ComponentActivity.setResultAndFinish(
     vararg extras: Pair<String, Any>? = emptyArray(),
-    resultCode: Int
+    resultCode: Int = ComponentActivity.RESULT_OK
 ) {
-    val intent = Intent(context, T::class.java)
     intent.putExtras(*extras)
-    if (context is Activity) with(context) {
-        setResult(resultCode, intent)
-        finish()
-    }
+    setResult(resultCode, intent)
+    finish()
 }
 
 fun Intent.putExtras(

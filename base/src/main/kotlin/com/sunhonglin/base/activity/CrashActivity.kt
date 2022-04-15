@@ -43,7 +43,7 @@ class CrashActivity : DefaultToolbarActivity() {
         }
 
         binding.tvRestart.setDebounceOnClickListener {
-            restartApp(mContext)
+            restartApp()
         }
     }
 }

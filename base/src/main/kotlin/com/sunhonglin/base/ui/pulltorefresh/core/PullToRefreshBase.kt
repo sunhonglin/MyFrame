@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat
 import com.sunhonglin.base.R
 import com.sunhonglin.base.ui.pulltorefresh.inn.ILoadingLayout
 import com.sunhonglin.base.ui.pulltorefresh.inn.IPullToRefresh
-import com.sunhonglin.base.utils.showToastInfo
+import com.sunhonglin.base.utils.showToast
 import com.sunhonglin.base.utils.inVisible
 import timber.log.Timber
 import kotlin.math.abs
@@ -150,7 +150,7 @@ abstract class PullToRefreshBase<T : View> : LinearLayout, IPullToRefresh<T> {
     fun showNoMore() {
         setMode(Mode.PULL_FROM_START)
         onRefreshComplete()
-        context.showToastInfo(resId = R.string.tip_no_more)
+        context.showToast(resId = R.string.tip_no_more)
     }
 
     override fun isPullToRefreshEnabled(): Boolean {
