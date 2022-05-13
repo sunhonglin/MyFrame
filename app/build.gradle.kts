@@ -48,7 +48,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "HOST_LOGIN", "\"http://iot.ksf.com.cn:90/KSFReplaceApi/\"")
+            buildConfigField("String", "HOST_LOGIN", "\"http://iottest.langcoo.net:8012/after/sale/service/center/\"")
         }
         getByName("debug") {
             signingConfig = signingConfigs["release"]
@@ -59,7 +59,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "HOST_LOGIN", "\"http://iot.ksf.com.cn:90/KSFReplaceApi/\"")
+            buildConfigField("String", "HOST_LOGIN", "\"http://iottest.langcoo.net:8012/after/sale/service/center/\"")
         }
     }
 

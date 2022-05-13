@@ -193,35 +193,6 @@ call = DownloadUtil.loadFile(downloadUrl, filePath,
             })
 ```
 
-## Theme Switch. Powered By QMUISkinLayoutInflaterFactory In QMUI
-> Settable Items
-```xml
-    <declare-styleable name="QMUISkinDef">
-        <attr name="qmui_skin_background" format="string" />
-        <attr name="qmui_skin_text_color" format="string" />
-        <attr name="qmui_skin_second_text_color" format="string" />
-        <attr name="qmui_skin_src" format="string" />
-        <attr name="qmui_skin_border" format="string" />
-        <attr name="qmui_skin_separator_top" format="string" />
-        <attr name="qmui_skin_separator_right" format="string" />
-        <attr name="qmui_skin_separator_bottom" format="string" />
-        <attr name="qmui_skin_separator_left" format="string" />
-        <attr name="qmui_skin_alpha" format="string" />
-        <attr name="qmui_skin_tint_color" format="string" />
-        <attr name="qmui_skin_bg_tint_color" format="string" />
-        <attr name="qmui_skin_progress_color" format="string" />
-        <attr name="qmui_skin_underline" format="string"/>
-        <attr name="qmui_skin_more_text_color" format="string"/>
-        <attr name="qmui_skin_more_bg_color" format="string"/>
-        <attr name="qmui_skin_hint_color" format="string"/>
-        <attr name="qmui_skin_text_compound_tint_color" format="string"/>
-        <attr name="qmui_skin_text_compound_src_left" format="string"/>
-        <attr name="qmui_skin_text_compound_src_top" format="string"/>
-        <attr name="qmui_skin_text_compound_src_right" format="string"/>
-        <attr name="qmui_skin_text_compound_src_bottom" format="string"/>
-    </declare-styleable>
-```
-
 ## todo
 1.权限申请
 3.Room

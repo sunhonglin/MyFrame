@@ -12,7 +12,8 @@ import com.sunhonglin.base.activity.DefaultToolbarActivity
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
 import com.sunhonglin.base.utils.get
 import com.sunhonglin.base.utils.loadImage
-import com.sunhonglin.core.data.service.RequestResult
+import com.sunhonglin.core.util.encodeToString
+import com.sunhonglin.core.util.isRequestResultSuccess
 import com.sunhonglin.core.util.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,16 +39,14 @@ class LoginActivity : DefaultToolbarActivity() {
         }
 
         binding.btnLogin2.setDebounceOnClickListener {
+            showProgressDialog()
             viewModel.toLogin(userName = "hxbj", password = "123")
         }
 
         viewModel.login.observe(this) {
-            when (it) {
-                is RequestResult.Success -> {
-                    binding.tvResult.text = "${it.data}"
-                }
-                is RequestResult.Error -> {
-                    binding.tvResult.text = "${it.exception.message}"
+            isRequestResultSuccess(it) { result ->
+                result?.let { loginData ->
+                    binding.tvResult.text = loginData.encodeToString()
                 }
             }
         }
@@ -81,6 +80,7 @@ class LoginActivity : DefaultToolbarActivity() {
         }
     }
 
+
 //    private fun findReplaceType(headers: Map<String, String>) {
 ////        var call =
 ////            RequestUtil.builder(LoginService::class.java, BuildConfig.HOST_LOGIN)
@@ -103,3 +103,5 @@ class LoginActivity : DefaultToolbarActivity() {
 ////        })
 //    }
 }
+
+

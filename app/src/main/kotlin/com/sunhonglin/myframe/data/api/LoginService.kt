@@ -12,7 +12,7 @@ interface LoginService {
     /**
      * 登录
      */
-    @POST("api/login")
+    @POST("login")
     suspend fun toLogin(
         @Body params: Map<String, String>
     ): BaseResponse<LoginData>
