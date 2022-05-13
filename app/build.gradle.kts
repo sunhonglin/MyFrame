@@ -87,7 +87,7 @@ android {
                         tasks.getByName("assemble${flavorName.capitalize()}Release") {
                             this.doLast {
                                 copy {
-                                    from("${buildDir}/outputs/apk/$flavorName/$buildType/$outputFileName")
+                                    from("${buildDir}/intermediates/apk/$flavorName/$buildType/$outputFileName")
                                     into("${rootDir.absolutePath}/apk/")
                                 }
                             }
