@@ -131,7 +131,7 @@ object Dependencies {
         const val junit = "junit:junit:_"
     }
 
-    object PERMISSION {
+    object Permission {
         const val acp = "com.mylhyl:acp:_"
     }
 
