@@ -7,7 +7,5 @@
     <string name="title_test_component">ComponentActivity</string>
     <string name="title_test_component2">ComponentResultActivity</string>
 
-    <string name="tip_exit_app">再按一次返回退出程序</string>
-
 
 </resources>
