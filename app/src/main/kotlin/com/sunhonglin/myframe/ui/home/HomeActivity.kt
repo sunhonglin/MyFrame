@@ -15,8 +15,8 @@ import com.sunhonglin.core.util.setDebounceOnClickListener
 import com.sunhonglin.myframe.R
 import com.sunhonglin.myframe.databinding.ActivityHomeBinding
 import com.sunhonglin.myframe.ui.login.LoginActivity
-import com.sunhonglin.myframe.ui.test.RegisterForActivityResultTestActivity
 import com.sunhonglin.myframe.ui.test.RecyclerViewActivity
+import com.sunhonglin.myframe.ui.test.RegisterForActivityResultTestActivity
 
 class HomeActivity : DefaultToolbarActivity() {
     lateinit var binding: ActivityHomeBinding
