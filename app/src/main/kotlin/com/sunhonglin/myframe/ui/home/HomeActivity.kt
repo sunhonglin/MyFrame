@@ -3,6 +3,7 @@ package com.sunhonglin.myframe.ui.home
 import android.os.Bundle
 import android.webkit.WebSettings
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import com.sunhonglin.base.StatusBarMode
 import com.sunhonglin.base.activity.DefaultToolbarActivity
 import com.sunhonglin.base.activity.WebActivity
@@ -21,6 +22,16 @@ import com.sunhonglin.myframe.ui.test.RegisterForActivityResultTestActivity
 class HomeActivity : DefaultToolbarActivity() {
     lateinit var binding: ActivityHomeBinding
 
+    private val onBackPress = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if (TimeUtil.doubleClickExit(1500)) {
+                finish()
+            } else {
+                Toast.makeText(mContext, R.string.tip_exit_app, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     override fun configureToolbarContent(toolbarBinding: LayoutDefaultToolbarBinding) {
         super.configureToolbarContent(toolbarBinding)
         toolbarBinding.imageBack.gone()
@@ -31,6 +42,9 @@ class HomeActivity : DefaultToolbarActivity() {
         savedInstanceState: Bundle?
     ) {
         setStatusBarMode(StatusBarMode.LIGHT)
+
+        onBackPressedDispatcher.addCallback(onBackPress)
+
         binding = ActivityHomeBinding.inflate(layoutInflater, parentBinding.content, true)
         binding.tvLogin.setDebounceOnClickListener {
             skipActivity<LoginActivity>(
@@ -54,14 +68,6 @@ class HomeActivity : DefaultToolbarActivity() {
 
         binding.tvComponentTest.setDebounceOnClickListener {
             skipActivity<RegisterForActivityResultTestActivity>()
-        }
-    }
-
-    override fun onBackPressed() {
-        if (TimeUtil.doubleClickExit(1500)) {
-            finish()
-        } else {
-            Toast.makeText(mContext, R.string.tip_exit_app, Toast.LENGTH_SHORT).show()
         }
     }
 }
