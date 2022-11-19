@@ -8,32 +8,13 @@ plugins {
     id("com.google.dagger.hilt.android")
 }
 
-var appName = property("APP_NAME")
 android {
-    defaultConfig {
-        applicationId = group.toString()
-        flavorDimensions.add("channel")
-    }
-
     signingConfigs {
         create("release") {
             keyAlias = property(rootProject, KeystorePropertiesFilePath, "key.alias").toString()
-            keyPassword =
-                property(rootProject, KeystorePropertiesFilePath, "key.password").toString()
-            storeFile =
-                rootProject.file(
-                    property(
-                        rootProject,
-                        KeystorePropertiesFilePath,
-                        "key.store.file"
-                    ).toString()
-                )
-            storePassword =
-                property(
-                    rootProject,
-                    KeystorePropertiesFilePath,
-                    "key.store.password"
-                ).toString()
+            keyPassword = property(rootProject, KeystorePropertiesFilePath, "key.password").toString()
+            storeFile = rootProject.file(property(rootProject, KeystorePropertiesFilePath, "key.store.file").toString())
+            storePassword = property(rootProject, KeystorePropertiesFilePath, "key.store.password").toString()
             enableV2Signing = true
         }
     }
@@ -44,10 +25,6 @@ android {
             isMinifyEnabled = true
             isDebuggable = false
             isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
             buildConfigField("String", "HOST_LOGIN", "\"http://iottest.langcoo.net:8012/after/sale/service/center/\"")
         }
         getByName("debug") {
@@ -55,20 +32,8 @@ android {
             isMinifyEnabled = false
             isDebuggable = true
             isShrinkResources = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
             buildConfigField("String", "HOST_LOGIN", "\"http://iottest.langcoo.net:8012/after/sale/service/center/\"")
         }
-    }
-
-    productFlavors {
-        create("official")//官网
-//        create("HuaWei")//华为
-    }
-    productFlavors.all {
-        manifestPlaceholders["CHANNEL_NAME"] = name
     }
 
     android.applicationVariants.all {
@@ -76,7 +41,7 @@ android {
         outputs.all {
             if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
                 outputFileName =
-                    "${appName}_${buildType}_V${versionName}_${systemDate()}${
+                    "${property("app.name")}_${buildType}_V${versionName}_${systemDate()}${
                         when (!flavorName.isNullOrBlank()) {
                             true -> "_$flavorName"
                             else -> ""
@@ -87,7 +52,7 @@ android {
                         tasks.getByName("assemble${flavorName.capitalize()}Release") {
                             this.doLast {
                                 copy {
-                                    from("${buildDir}/intermediates/apk/$flavorName/$buildType/$outputFileName")
+                                    from("${buildDir}/outputs/apk/$flavorName/$buildType/$outputFileName")
                                     into("${rootDir.absolutePath}/apk/")
                                 }
                             }
@@ -97,6 +62,14 @@ android {
             }
         }
     }
+
+//    productFlavors {
+//        create("official")//官网
+////        create("HuaWei")//华为
+//    }
+//    productFlavors.all {
+//        manifestPlaceholders["CHANNEL_NAME"] = name
+//    }
 }
 
 dependencies {

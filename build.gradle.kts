@@ -39,8 +39,7 @@ subprojects {
     }
 
     buildDir = File(rootProject.buildDir, name)
-    group = property("GROUP").toString()
-    version = property("VERSION_NAME").toString()
+    group = property("app.group").toString()
 
     afterEvaluate {
         configurations.configureEach {
