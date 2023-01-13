@@ -3,15 +3,16 @@ package com.sunhonglin.myframe.ui.test
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
 import com.sunhonglin.base.activity.DefaultToolbarActivity
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
-import com.sunhonglin.base.utils.*
-import com.sunhonglin.core.util.setDebounceOnClickListener
+import com.sunhonglin.base.utils.ActivityUtil.activityResultDefaultContracts
+import com.sunhonglin.base.utils.ActivityUtil.multiplePermissionContractsPass
+import com.sunhonglin.base.utils.ActivityUtil.permissionContracts
+import com.sunhonglin.base.utils.ToastUtil.showToast
+import com.sunhonglin.base.utils.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityRegisterForActivityResultBinding
-import timber.log.Timber
 
-class RegisterForActivityResultTestActivity: DefaultToolbarActivity() {
+class RegisterForActivityResultTestActivity : DefaultToolbarActivity() {
     private lateinit var binding: ActivityRegisterForActivityResultBinding
 
     private val requestPermission = permissionContracts { granted ->
@@ -41,9 +42,10 @@ class RegisterForActivityResultTestActivity: DefaultToolbarActivity() {
         }
     }
 
-    private val activityResultByCustomerContract = registerForActivityResult(RegisterForActivityResultTestResultActivity.Contract()) { result ->
-        showToast(result)
-    }
+    private val activityResultByCustomerContract =
+        registerForActivityResult(RegisterForActivityResultTestResultActivity.Contract()) { result ->
+            showToast(result)
+        }
 
     private val activityResultByDefaultContract = activityResultDefaultContracts { result ->
         when (result.resultCode) {
@@ -56,14 +58,23 @@ class RegisterForActivityResultTestActivity: DefaultToolbarActivity() {
         parentBinding: ActivityBaseContentBinding,
         savedInstanceState: Bundle?
     ) {
-        binding = ActivityRegisterForActivityResultBinding.inflate(layoutInflater, parentBinding.content, true)
+        binding = ActivityRegisterForActivityResultBinding.inflate(
+            layoutInflater,
+            parentBinding.content,
+            true
+        )
 
         binding.tvRequestPermission.setDebounceOnClickListener {
             requestPermission.launch(Manifest.permission.READ_CONTACTS)
         }
 
         binding.tvRequestMultiplePermissions.setDebounceOnClickListener {
-            requestMultiplePermission.launch(arrayOf(Manifest.permission.READ_CONTACTS, Manifest.permission.CAMERA))
+            requestMultiplePermission.launch(
+                arrayOf(
+                    Manifest.permission.READ_CONTACTS,
+                    Manifest.permission.CAMERA
+                )
+            )
         }
 
         binding.tvCustomerContract.setDebounceOnClickListener {
@@ -71,19 +82,13 @@ class RegisterForActivityResultTestActivity: DefaultToolbarActivity() {
         }
 
         binding.tvDefaultContract.setDebounceOnClickListener {
-            activityResultByDefaultContract.launch(Intent(this, RegisterForActivityResultTestResultActivity::class.java))
+            activityResultByDefaultContract.launch(
+                Intent(
+                    this,
+                    RegisterForActivityResultTestResultActivity::class.java
+                )
+            )
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

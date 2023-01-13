@@ -10,12 +10,13 @@ import com.sunhonglin.base.activity.WebActivity
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
 import com.sunhonglin.base.databinding.LayoutDefaultToolbarBinding
 import com.sunhonglin.base.utils.TimeUtil
-import com.sunhonglin.base.utils.gone
-import com.sunhonglin.base.utils.skipActivity
-import com.sunhonglin.core.util.setDebounceOnClickListener
+import com.sunhonglin.base.utils.ViewUtil.gone
+import com.sunhonglin.base.utils.ActivityUtil.skipActivity
+import com.sunhonglin.base.utils.setDebounceOnClickListener
 import com.sunhonglin.myframe.R
 import com.sunhonglin.myframe.databinding.ActivityHomeBinding
 import com.sunhonglin.myframe.ui.login.LoginActivity
+import com.sunhonglin.myframe.ui.room.RoomActivity
 import com.sunhonglin.myframe.ui.test.RecyclerViewActivity
 import com.sunhonglin.myframe.ui.test.RegisterForActivityResultTestActivity
 
@@ -68,6 +69,10 @@ class HomeActivity : DefaultToolbarActivity() {
 
         binding.tvComponentTest.setDebounceOnClickListener {
             skipActivity<RegisterForActivityResultTestActivity>()
+        }
+
+        binding.tvRoom.setDebounceOnClickListener {
+            skipActivity<RoomActivity>()
         }
     }
 }

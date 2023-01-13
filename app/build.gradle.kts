@@ -72,6 +72,12 @@ android {
 //    }
 }
 
+kapt {
+    arguments {
+        arg("room.schemaLocation", "$projectDir/schemas")
+    }
+}
+
 dependencies {
     implementation(
         fileTree(baseDir = "libs") {
@@ -88,4 +94,8 @@ dependencies {
     kapt(Dependencies.AndroidX.Hilt.compiler)
 
     implementation(Dependencies.TenCent.bugLy)
+
+    // room
+    api(Dependencies.AndroidX.Room.ktx)
+    kapt(Dependencies.AndroidX.Room.compiler)
 }

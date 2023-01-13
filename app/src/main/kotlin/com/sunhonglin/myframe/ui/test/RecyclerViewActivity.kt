@@ -9,7 +9,7 @@ import com.sunhonglin.base.databinding.ActivityBaseContentBinding
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase
 import com.sunhonglin.base.ui.pulltorefresh.core.PullToRefreshBase.OnRefreshListener2
 import com.sunhonglin.base.utils.TimeUtil
-import com.sunhonglin.core.util.setDebounceOnClickListener
+import com.sunhonglin.base.utils.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityRecyclerviewTestBinding
 
 class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<RecyclerView> {

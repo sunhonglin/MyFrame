@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_student"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_insert_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner_radius_7dp"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:text="@string/room_insert_1"
+            android:textColor="@color/color_white"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_insert_10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner_radius_7dp"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:text="@string/room_insert_10"
+            android:textColor="@color/color_white"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_insert_100"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner_radius_7dp"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:text="@string/room_insert_100"
+            android:textColor="@color/color_white"
+            android:textSize="16sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_delete_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner_radius_7dp"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:text="@string/room_delete_1"
+            android:textColor="@color/color_white"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_delete_10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner_radius_7dp"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:text="@string/room_delete_10"
+            android:textColor="@color/color_white"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_delete_100"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner_radius_7dp"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:text="@string/room_delete_100"
+            android:textColor="@color/color_white"
+            android:textSize="16sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_update_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner_radius_7dp"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:text="@string/room_update_1"
+            android:textColor="@color/color_white"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_update_10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner_radius_7dp"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:text="@string/room_update_10"
+            android:textColor="@color/color_white"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_update_100"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_corner_radius_7dp"
+            android:backgroundTint="@color/colorAccent"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:text="@string/room_update_100"
+            android:textColor="@color/color_white"
+            android:textSize="16sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

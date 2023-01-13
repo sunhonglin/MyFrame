@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContract
 import com.sunhonglin.base.activity.DefaultToolbarActivity
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
-import com.sunhonglin.core.util.setDebounceOnClickListener
+import com.sunhonglin.base.utils.setDebounceOnClickListener
 import com.sunhonglin.myframe.databinding.ActivityRegisterForActivityResult2Binding
 
 class RegisterForActivityResultTestResultActivity : DefaultToolbarActivity() {

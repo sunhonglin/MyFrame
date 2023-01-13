@@ -7,5 +7,21 @@
     <string name="title_test_component">ComponentActivity</string>
     <string name="title_test_component2">ComponentResultActivity</string>
 
+    <!--    Room start-->
+    <string name="title_room">Room</string>
+    <string name="room_insert_1">增1</string>
+    <string name="room_insert_10">增10</string>
+    <string name="room_insert_100">增100</string>
+    <string name="room_delete_1">删1</string>
+    <string name="room_delete_10">删10</string>
+    <string name="room_delete_100">删100</string>
+    <string name="room_update_1">改1</string>
+    <string name="room_update_10">改10</string>
+    <string name="room_update_100">改100</string>
+    <string name="room_sex_man">男</string>
+    <string name="room_sex_woman">女</string>
+    <string name="room_sex_none">未知</string>
+    <!--    Room end-->
 
+    <string name="title_detail">详情</string>
 </resources>
