@@ -3,21 +3,14 @@ package com.sunhonglin.myframe.ui.room
 import android.content.Intent
 import com.sunhonglin.base.adapter.BaseRcvAdapter
 import com.sunhonglin.base.adapter.holder.BaseViewHolder
+import com.sunhonglin.core.util.prettyPrintJson
 import com.sunhonglin.myframe.R
 import com.sunhonglin.myframe.data.db.entity.Student
 import com.sunhonglin.myframe.databinding.LayoutItemRoomBinding
 import com.sunhonglin.myframe.ui.DetailActivity
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString
 
 class RoomAdapter : BaseRcvAdapter<Student>(R.layout.layout_item_room) {
-
-    private val prettyPrintJson = Json {
-            prettyPrint = true
-            ignoreUnknownKeys = true
-            encodeDefaults = true
-            coerceInputValues = true
-        }
 
     override fun onBind(holder: BaseViewHolder, item: Student, position: Int) {
         LayoutItemRoomBinding.bind(holder.itemView).apply {
@@ -33,7 +26,7 @@ class RoomAdapter : BaseRcvAdapter<Student>(R.layout.layout_item_room) {
                 val intent = Intent(it.context, DetailActivity::class.java)
                 intent.putExtra(
                     DetailActivity.DETAIL,
-                    prettyPrintJson.encodeToString(item)
+                    prettyPrintJson().encodeToString(item)
                 )
                 it.context.startActivity(intent)
             }
