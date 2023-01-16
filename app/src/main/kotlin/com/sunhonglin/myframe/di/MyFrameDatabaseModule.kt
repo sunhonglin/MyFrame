@@ -17,9 +17,9 @@ class MyFrameDatabaseModule {
     @Provides
     @Singleton
     fun providesMyFrameDataBase(
-        context: Application
+        app: Application
     ): MyFrameDataBase {
-        return context.myFrameDataBase()
+        return app.myFrameDataBase()
     }
 
     @Provides

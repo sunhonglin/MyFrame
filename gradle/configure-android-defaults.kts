@@ -18,14 +18,10 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled(true)
-            //Library will be obfuscated with the mentioned rules.
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "consumer-rules.pro")
+            resValue("bool", "isDebug", "false")
         }
         debug {
-            minifyEnabled(true)
-            //Library will be obfuscated with the mentioned rules.
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "consumer-rules.pro")
+            resValue("bool", "isDebug", "true")
         }
     }
 
