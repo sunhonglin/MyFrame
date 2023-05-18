@@ -1,5 +1,5 @@
 plugins {
-    kotlin("plugin.serialization")
+    kotlin("plugin.serialization")  version "1.8.10"
 }
 
 buildscript {

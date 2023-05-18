@@ -28,7 +28,7 @@ class HomeActivity : DefaultToolbarActivity() {
             if (TimeUtil.doubleClickExit(1500)) {
                 finish()
             } else {
-                Toast.makeText(mContext, R.string.tip_exit_app, Toast.LENGTH_SHORT).show()
+                Toast.makeText(mContext, com.sunhonglin.base.R.string.tip_exit_app, Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -25,7 +25,7 @@ android {
             isMinifyEnabled = true
             isDebuggable = false
             isShrinkResources = true
-            buildConfigField("String", "HOST_LOGIN", "\"http://iottest.langcoo.net:8012/after/sale/service/center/\"")
+            buildConfigField("String", "HOST_LOGIN", "\"http://iot.langcoo.net:8012/after/sale/service/center/\"")
         }
         getByName("debug") {
             signingConfig = signingConfigs["release"]

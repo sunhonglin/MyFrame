@@ -7,7 +7,7 @@ import com.sunhonglin.myframe.databinding.LayoutItemTestBinding
 
 class RcvAdapter : BaseRcvAdapter<String>(R.layout.layout_item_test) {
 
-    override fun onBind(holder: BaseViewHolder, item: String, i: Int) {
+    override fun onBind(holder: BaseViewHolder, item: String?, i: Int) {
         LayoutItemTestBinding.bind(holder.itemView).tvStr.text = item
     }
 }
