@@ -12,7 +12,7 @@ import kotlinx.serialization.encodeToString
 
 class RoomAdapter : BaseRcvAdapter<Student>(R.layout.layout_item_room) {
 
-    override fun onBind(holder: BaseViewHolder, item: Student?, position: Int) {
+    override fun onBind(holder: BaseViewHolder, item: Student?, i: Int) {
         LayoutItemRoomBinding.bind(holder.itemView).apply {
             item?.let {
                 tvId.text = item.id.toString()
