@@ -131,13 +131,16 @@ object Dependencies {
         const val junit = "junit:junit:_"
     }
 
-    object Permission {
-        const val acp = "com.mylhyl:acp:_"
-    }
-
     object SunHongLin {
         const val core_ktx = "com.sunhonglin:core-ktx:_"
         const val base_ktx = "com.sunhonglin:base-ktx:_"
+        const val scanner_ktx = "com.sunhonglin:scanner-ktx:_"
+        const val permission_ktx = "com.sunhonglin:permission-ktx:_"
+        const val ch34x_ktx = "com.sunhonglin:ch34xuartdriver-ktx:_"
+
+        object Map {
+            const val baidu = "com.sunhonglin.map:baidu-ktx:_"
+        }
     }
 
     const val autoSize = "me.jessyan:autosize:_"
