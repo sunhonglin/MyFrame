@@ -3,12 +3,12 @@ package com.sunhonglin.myframe.data.login
 import com.sunhonglin.core.data.service.BaseResponse
 import com.sunhonglin.core.data.service.RequestResult
 import com.sunhonglin.core.util.safeApiCall
-import com.sunhonglin.myframe.data.api.LoginService
+import com.sunhonglin.myframe.data.api.ApiService
 import com.sunhonglin.myframe.data.login.model.LoginData
 import javax.inject.Inject
 
 class LoginDataSource @Inject constructor(
-    private val loginService: LoginService
+    private val apiService: ApiService
 ) {
 
     suspend fun toLogin(
@@ -28,7 +28,7 @@ class LoginDataSource @Inject constructor(
         userName: String,
         password: String
     ): RequestResult<BaseResponse<LoginData>> {
-        val result = loginService.toLogin(
+        val result = apiService.toLogin(
             mapOf(
                 "userName" to userName,
                 "password" to password

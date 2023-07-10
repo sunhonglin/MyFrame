@@ -137,6 +137,7 @@ object Dependencies {
         const val scanner_ktx = "com.sunhonglin:scanner-ktx:_"
         const val permission_ktx = "com.sunhonglin:permission-ktx:_"
         const val ch34x_ktx = "com.sunhonglin:ch34xuartdriver-ktx:_"
+        const val rfidUtil = "com.sunhonglin.nfc:rfidutil:_"
 
         object Map {
             const val baidu = "com.sunhonglin.map:baidu-ktx:_"
