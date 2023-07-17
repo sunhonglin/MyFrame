@@ -9,11 +9,10 @@ import com.sunhonglin.base.activity.DefaultToolbarActivity
 import com.sunhonglin.base.activity.WebActivity
 import com.sunhonglin.base.databinding.ActivityBaseContentBinding
 import com.sunhonglin.base.databinding.LayoutDefaultToolbarBinding
+import com.sunhonglin.base.utils.ActivityUtil.skipActivity
 import com.sunhonglin.base.utils.TimeUtil
 import com.sunhonglin.base.utils.ViewUtil.gone
-import com.sunhonglin.base.utils.ActivityUtil.skipActivity
 import com.sunhonglin.base.utils.setDebounceOnClickListener
-import com.sunhonglin.myframe.R
 import com.sunhonglin.myframe.databinding.ActivityHomeBinding
 import com.sunhonglin.myframe.ui.login.LoginActivity
 import com.sunhonglin.myframe.ui.room.RoomActivity
@@ -28,7 +27,11 @@ class HomeActivity : DefaultToolbarActivity() {
             if (TimeUtil.doubleClickExit(1500)) {
                 finish()
             } else {
-                Toast.makeText(mContext, com.sunhonglin.base.R.string.tip_exit_app, Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    mContext,
+                    com.sunhonglin.base.R.string.tip_exit_app,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -36,6 +39,7 @@ class HomeActivity : DefaultToolbarActivity() {
     override fun configureToolbarContent(toolbarBinding: LayoutDefaultToolbarBinding) {
         super.configureToolbarContent(toolbarBinding)
         toolbarBinding.imageBack.gone()
+        toolbarBinding.vBack.gone()
     }
 
     override fun inflateContent(
