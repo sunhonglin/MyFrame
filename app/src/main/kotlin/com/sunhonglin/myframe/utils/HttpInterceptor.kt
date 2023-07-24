@@ -11,9 +11,9 @@ class HttpInterceptor : Interceptor {
     private var utf8 = Charset.forName("UTF-8")
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
-//        LoginSp.getLoginData()?.let {
+//        LoginDS.loginData?.let {
 //            request = request.newBuilder()
-//                .addHeader("Authorization", "Bearer ${it.token}").build()
+//                .addHeader("Authorization", "${it.tokenHead} ${it.token}").build()
 //        }
 
         val originalResponse = chain.proceed(request)
