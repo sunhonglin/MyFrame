@@ -9,11 +9,11 @@ import com.sunhonglin.myframe.data.db.dao.StudentDao
 import com.sunhonglin.myframe.data.db.entity.Student
 
 @Database(
-    version = 2,
+    version = 1,
     entities = [Student::class],
     exportSchema = true,// 导出schemas
     autoMigrations = [// 自动迁移
-        AutoMigration(from = 1, to = 2)
+//        AutoMigration(from = 1, to = 2)
     ]
 )
 abstract class MyFrameDataBase : RoomDatabase() {
