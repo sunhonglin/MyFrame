@@ -14,7 +14,7 @@ import com.sunhonglin.myframe.databinding.ActivityRecyclerviewTestBinding
 
 class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<RecyclerView> {
     lateinit var binding: ActivityRecyclerviewTestBinding
-    lateinit var testAdapter: RcvAdapter
+    private val testAdapter = RcvAdapter()
 
     override fun inflateContent(
         parentBinding: ActivityBaseContentBinding,
@@ -25,23 +25,15 @@ class RecyclerViewActivity : DefaultToolbarActivity(), OnRefreshListener2<Recycl
         binding =
             ActivityRecyclerviewTestBinding.inflate(layoutInflater, parentBinding.content, true)
 
-        testAdapter = RcvAdapter()
-
-        binding.rcvTest.getRefreshableView().layoutManager = LinearLayoutManager(mContext)
-        binding.rcvTest.getRefreshableView().adapter = testAdapter
-        binding.rcvTest.setOnRefreshListener(this)
-        binding.rcvTest.setScrollingWhileRefreshingEnabled(true)
-        binding.rcvTest.backUpView(binding.ivBackTop)
-
-        onPullDownToRefresh(binding.rcvTest)
-
-        binding.rcvTest.getLoadingLayoutProxy().setLastUpdatedLabel(TimeUtil.curTimeString("yyyy年MM月dd日 HH:mm:ss"))
-
-
         binding.rcvTest.apply {
+            mRefreshableView.layoutManager = LinearLayoutManager(mContext)
             mRefreshableView.adapter = testAdapter
-            testAdapter.setData(getData())
+            backUpView(binding.ivBackTop)
+            setOnRefreshListener(this@RecyclerViewActivity)
+            setScrollingWhileRefreshingEnabled(true)
+            getLoadingLayoutProxy().setLastUpdatedLabel(TimeUtil.curTimeString("yyyy年MM月dd日 HH:mm:ss"))
         }
+        onPullDownToRefresh(binding.rcvTest)
 
         binding.btnNext.setDebounceOnClickListener {
             testAdapter.addData(getData())
