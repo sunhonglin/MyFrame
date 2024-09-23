@@ -24,7 +24,8 @@ subprojects {
         maven(url = Repositories.REPO_MAVEN_LANGCOO)
     }
 
-    buildDir = File(rootProject.buildDir, name)
+    val dirNameLast = path.substringBeforeLast(":").replace(":","\\")
+    buildDir = File("${rootProject.buildDir}$dirNameLast", name)
     group = property("app.group").toString()
 }
 
