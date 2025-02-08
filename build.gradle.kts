@@ -22,6 +22,7 @@ subprojects {
         google()
         mavenCentral()
         maven(url = Repositories.REPO_MAVEN_LANGCOO)
+        maven(url = Repositories.REPO_MAVEN_HUAWEI)
     }
 
     val dirNameLast = path.substringBeforeLast(":").replace(":","\\")
